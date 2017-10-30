@@ -1,0 +1,83 @@
+﻿using System.Windows.Forms;
+
+namespace Demcon.ProductionTool.View
+{
+    public partial class MultiInputDialog : Form
+    {
+        private MultiInputDialog(string title, string text1, string preInput1, string text2, string preInput2, string text3, string preInput3, string text4, string preInput4, string text5, string preInput5)
+        {
+            InitializeComponent();
+            this.Text = title;
+            if (!string.IsNullOrWhiteSpace(text5))
+            {
+                this.MessageLabel5.Visible = true;
+                this.InputTextBox5.Visible = true;
+                this.MessageLabel5.Text = text5;
+                this.InputTextBox5.Text = preInput5;
+                this.InputTextBox5.Select();
+            }
+
+            if (!string.IsNullOrWhiteSpace(text4))
+            {
+                this.MessageLabel4.Visible = true;
+                this.InputTextBox4.Visible = true;
+                this.MessageLabel4.Text = text4;
+                this.InputTextBox4.Text = preInput4;
+                this.InputTextBox4.Select();
+            }
+
+            if (!string.IsNullOrWhiteSpace(text3))
+            {
+                this.MessageLabel3.Visible = true;
+                this.InputTextBox3.Visible = true;
+                this.MessageLabel3.Text = text3;
+                this.InputTextBox3.Text = preInput3;
+                this.InputTextBox3.Select();
+            }
+
+            if (!string.IsNullOrWhiteSpace(text2))
+            {
+                this.MessageLabel2.Visible = true;
+                this.InputTextBox2.Visible = true;
+                this.MessageLabel2.Text = text2;
+                this.InputTextBox2.Text = preInput2;
+                this.InputTextBox2.Select();
+            }
+
+            if (!string.IsNullOrWhiteSpace(text1))
+            {
+                this.MessageLabel1.Visible = true;
+                this.InputTextBox1.Visible = true;
+                this.MessageLabel1.Text = text1;
+                this.InputTextBox1.Text = preInput1;
+                this.InputTextBox1.Select();
+            }
+        }
+
+        public static bool GetInput(Form parent, string title, string text1, string preInput1, string text2, string preInput2, string text3, string preInput3, string text4, string preInput4, string text5, string preInput5, out string input1, out string input2, out string input3, out string input4, out string input5)
+        {
+            bool acceptInput = false;
+            input1 = string.Empty;
+            input2 = string.Empty;
+            input3 = string.Empty;
+            input4 = string.Empty;
+            input5 = string.Empty;
+            MultiInputDialog dialog = new MultiInputDialog(title, text1, preInput1, text2, preInput2, text3, preInput3, text4, preInput4, text5, preInput5);
+            // Show testDialog as a modal dialog and determine if DialogResult = OK.
+            if (dialog.ShowDialog(parent) == DialogResult.OK)
+            {
+                // Read the contents of testDialog's TextBox.
+                input1 = dialog.InputTextBox1.Text.Trim();
+                input2 = dialog.InputTextBox2.Text.Trim();
+                input3 = dialog.InputTextBox3.Text.Trim();
+                input4 = dialog.InputTextBox4.Text.Trim();
+                input5 = dialog.InputTextBox5.Text.Trim();
+                acceptInput = true;
+            }
+
+            dialog.Dispose();
+
+            return acceptInput;
+        }
+    }
+}

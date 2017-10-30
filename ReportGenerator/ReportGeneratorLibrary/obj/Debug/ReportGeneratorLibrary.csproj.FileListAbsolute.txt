@@ -1,0 +1,11 @@
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\bin\Debug\dep\wkhtmltopdf.exe
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\bin\Debug\Report\Logo.png
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\bin\Debug\Report\Report.css
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\bin\Debug\Report\Report.xslt
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\bin\Debug\Report\ReportHeader.html
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\bin\Debug\ReportGeneratorLibrary.dll
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\bin\Debug\ReportGeneratorLibrary.pdb
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.csprojResolveAssemblyReference.cache
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.csproj.CoreCompileInputs.cache
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.dll
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.pdb

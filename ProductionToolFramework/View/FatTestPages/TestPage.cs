@@ -1,0 +1,425 @@
+﻿using System;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using Demcon.ProductionTool.General;
+using Demcon.ProductionTool.Model;
+
+namespace Demcon.ProductionTool.View.FatTestPages
+{
+    public partial class TestPage : UserControl
+    {
+        public enum ImageIndexes
+        {
+            Nothing = 0,
+            Arrow = 1,
+            Check = 2,
+            Inconclusive = 3,
+            Cross = 4,
+        }
+
+        private ImageList TestImageList;
+        private ImageList TestStepImageList;
+        private TestTimeoutDialog timeoutDialog;
+
+
+        public TestPage()
+        {
+            InitializeComponent();
+
+            this.TestImageList = new ImageList();
+            this.TestImageList.ImageSize = new Size(24, 24);
+            this.TestStepImageList = new ImageList();
+            this.TestStepImageList.ImageSize = new Size(24, 24);
+            if (Directory.Exists("Images"))
+            {
+                // Load the images in an ImageList.
+                this.TestImageList.Images.Add(Image.FromFile(@"Images\List-24.png"));
+                this.TestImageList.Images.Add(Image.FromFile(@"Images\Arrow-24.png"));
+                this.TestImageList.Images.Add(Image.FromFile(@"Images\ListCheck-24.png"));
+                this.TestImageList.Images.Add(Image.FromFile(@"Images\ListInconclusive-24.png"));
+                this.TestImageList.Images.Add(Image.FromFile(@"Images\ListCross-24.png"));
+
+
+                this.TestStepImageList.Images.Add(Image.FromFile(@"Images\Nothing-24.png"));
+                this.TestStepImageList.Images.Add(Image.FromFile(@"Images\Arrow-24.png"));
+                this.TestStepImageList.Images.Add(Image.FromFile(@"Images\Check-24.png"));
+                this.TestStepImageList.Images.Add(Image.FromFile(@"Images\Inconclusive-24.png"));
+                this.TestStepImageList.Images.Add(Image.FromFile(@"Images\Cross-24.png"));
+            }
+        }
+
+        private TestManager testManager;
+        public TestManager TestManager
+        {
+            get
+            {
+                return this.testManager;
+            }
+
+            set
+            {
+                if (this.testManager != null)
+                {
+                    this.testManager.CurrentStepChangedEvent -= this.HandleCurrentStepChangedEvent;
+                    this.testManager.SetTestTimeout -= new EventHandler<EventArgs<int>>(HandleSetTestTimeout);
+                    this.testManager.TestSequenceRequestedEvent -= new EventHandler<EventArgs<string>>(OnTestSequenceRequestedEvent);
+                }
+
+                this.testManager = value;
+                if (this.testManager != null)
+                {
+                    this.testManager.CurrentStepChangedEvent += this.HandleCurrentStepChangedEvent;
+                    this.testManager.SetTestTimeout += new EventHandler<EventArgs<int>>(HandleSetTestTimeout);
+                    this.testManager.TestSequenceRequestedEvent += new EventHandler<EventArgs<string>>(OnTestSequenceRequestedEvent);
+                }
+            }
+        }
+
+        private void HandleSetTestTimeout(object sender, EventArgs<int> e)
+        {
+            int timeoutTime = e.Value;
+            if (timeoutTime > 0)
+            {
+                this.BeginInvoke((Action)(() =>
+                {
+                    this.timeoutDialog = new TestTimeoutDialog(timeoutTime);
+                    this.timeoutDialog.ShowDialog(this);
+                    if (this.timeoutDialog.TimeoutDialogResult == DialogResult.Cancel)
+                    {
+                        this.TestManager.SetCurrentTest(null);
+                    }
+
+                    this.timeoutDialog.Dispose();
+                }));
+            }
+            else if (this.timeoutDialog != null && this.timeoutDialog.Visible)
+            {
+                this.timeoutDialog.Stop();
+            }
+        }
+
+        private void HandleCurrentStepChangedEvent(object sender, EventArgs e)
+        {
+            if (this.timeoutDialog != null && this.timeoutDialog.Visible)
+            {
+                this.timeoutDialog.Stop();
+            }
+
+            TestSequence currSequence = this.testManager.CurrentSequence;
+            Test currTest = this.testManager.CurrentTest;
+            TestStep currStep = this.testManager.CurrentTestStep;
+            this.BeginInvoke((Action)(() =>
+            {
+                TestStep senderStep = sender as TestStep;
+                if (senderStep != null && senderStep.Results.Count > 0)
+                {
+                    Label captionLabel = new Label()
+                    {
+                        AutoSize = true,
+                        MinimumSize = new System.Drawing.Size(this.ResultsFlowLayoutPanel.Width - 50, 0),
+                        Text = senderStep.Name,
+                        ForeColor = Color.Black,
+                        Font = new Font(FontFamily.GenericSansSerif, 12,FontStyle.Bold)
+                    };
+                    this.ResultsFlowLayoutPanel.Controls.Add(captionLabel);
+                    this.ResultsFlowLayoutPanel.ScrollControlIntoView(captionLabel);
+
+                    foreach (Result currResult in senderStep.Results)
+                    {
+                        Color color;
+                        switch (currResult.Conclusion)
+                        {
+                            case ETestConclusion.Failed:
+                                color = Color.Red;
+                                break;
+                            case ETestConclusion.Passed:
+                                color = Color.Green;
+                                break;
+                            case ETestConclusion.NotTested:
+                            case ETestConclusion.Inconclusive:
+                            default:
+                                color = Color.Black;
+                                break;
+                        }
+
+                        Label resultLabel = new Label()
+                        {
+                            AutoSize = true,
+                            MinimumSize = new System.Drawing.Size(this.ResultsFlowLayoutPanel.Width - 50, 0),
+                            Text = currResult.ToString(),
+                            ForeColor = color,
+                            Font = new Font(FontFamily.GenericSansSerif, 10, FontStyle.Bold),
+                            Padding = new Padding(10, 0, 0, 0),
+                        };
+                        this.ResultsFlowLayoutPanel.Controls.Add(resultLabel);
+                        this.ResultsFlowLayoutPanel.ScrollControlIntoView(resultLabel);
+                    }
+                }
+
+                if (currSequence != null)
+                {
+                    this.SequenceNameLabel.Text = currSequence.Name;
+                    this.IDLabel.Text = String.Format("Serienummer: {0}", currSequence.SerialNumber);
+                }
+                else
+                {
+                    this.SequenceNameLabel.Text = "- No sequence selected -";
+                    this.IDLabel.Text = string.Empty;
+                }
+
+                if (currTest != null)
+                {
+                    this.TestNameLabel.Text = currTest.Name;
+                }
+                else
+                {
+                    this.TestNameLabel.Text = string.Empty;
+                }
+
+                this.EnableButtons();
+                this.EnableVarLabel();
+                if (currStep != null)
+                {
+                    this.TestNameLabel.Text += " - " + currStep.Name;
+                    this.StepDescriptionLabel.Text = currStep.Instructions;
+                    this.SupportingImageBox.ImageLocation = currStep.SupportingImage;
+                    this.CancelButton.Visible = true;
+                    this.GridButton.Visible = currStep.ButtonOptions.HasFlag(EButtonOptions.GRID);
+                    this.Grid4Button.Visible = currStep.ButtonOptions.HasFlag(EButtonOptions.GRID4);
+                    this.NoButton.Visible = currStep.ButtonOptions.HasFlag(EButtonOptions.No);
+                    this.OKButton.Visible = currStep.ButtonOptions.HasFlag(EButtonOptions.OK);
+                    this.YesButton.Visible = currStep.ButtonOptions.HasFlag(EButtonOptions.Yes);
+                    this.AnalyzeButton.Visible = currStep.ButtonOptions.HasFlag(EButtonOptions.Analyze);
+                    this.FinishedButton.Visible = false;
+
+                    this.varBox1.Visible = currStep.VarOptions.HasFlag(EVarOptions.Intensity);
+                    this.varBox2.Visible = currStep.VarOptions.HasFlag(EVarOptions.Mass);
+                    this.varBox3.Visible = currStep.VarOptions.HasFlag(EVarOptions.Distance);
+                    this.varBox4.Visible = currStep.VarOptions.HasFlag(EVarOptions.var4);
+                    this.varLabel1.Visible = currStep.VarOptions.HasFlag(EVarOptions.Intensity);
+                    this.varLabel2.Visible = currStep.VarOptions.HasFlag(EVarOptions.Mass);
+                    this.varLabel3.Visible = currStep.VarOptions.HasFlag(EVarOptions.Distance);
+                    this.varLabel4.Visible = currStep.VarOptions.HasFlag(EVarOptions.var4);
+                    
+
+                    
+                }
+                else
+                {
+                    this.StepDescriptionLabel.Text = string.Empty;
+                    this.SupportingImageBox.ImageLocation = string.Empty;
+                    this.CancelButton.Visible = false;
+                    this.NoButton.Visible = false;
+                    this.GridButton.Visible = false;
+                    this.Grid4Button.Visible = false;
+                    this.OKButton.Visible = false;
+                    this.YesButton.Visible = false;
+                    this.AnalyzeButton.Visible = false;
+                    this.FinishedButton.Visible = true;
+                    
+
+                    this.varBox1.Visible = false;
+                    this.varBox2.Visible = false;
+                    this.varBox3.Visible = false;
+                    this.varBox4.Visible = false;
+                    this.varLabel1.Visible = false;
+                    this.varLabel2.Visible = false;
+                    this.varLabel3.Visible = false;
+                    this.varLabel4.Visible = false;
+                }
+
+                this.FillTestList(currSequence);
+
+                if (currStep != null && (currStep.ButtonOptions == EButtonOptions.None || currStep.ButtonOptions == EButtonOptions.Cancel))
+                {
+                    this.BeginInvoke((Action)(() =>
+                        {
+                            this.TestManager.Execute(EButtonOptions.OK,"OK");
+                        }));
+                }
+            }));
+        }
+
+
+
+        private void OnTestSequenceRequestedEvent(object sender, EventArgs<string> e)
+        {
+            this.ResultsFlowLayoutPanel.Controls.Clear();
+        }
+
+        private void FillTestList(TestSequence currSequence)
+        {
+            foreach (TestStepListItem currTestItem in this.TestListBox.Controls)
+            {
+                currTestItem.Click -= new EventHandler(TestItemClick);
+            }
+            
+            this.TestListBox.Controls.Clear();
+            this.TestStepListBox.Controls.Clear();
+            if (currSequence != null && currSequence.Tests != null)
+            {
+                TestStepListItem selectedTestItem = null;
+                foreach (Test currTest in currSequence.Tests)
+                {
+                    TestStepListItem newTestItem = new TestStepListItem(currTest, this.TestImageList);
+                    newTestItem.IsHighlighted = currTest == currSequence.CurrentTest;
+                    newTestItem.Click += new EventHandler(TestItemClick);
+                    this.TestListBox.Controls.Add(newTestItem);
+                    if (currTest == currSequence.CurrentTest)
+                    {
+                        selectedTestItem = newTestItem;
+                        foreach (TestStep currTestStep in currTest.Steps)
+                        {
+                            TestStepListItem newTestStepItem = new TestStepListItem(currTestStep, this.TestStepImageList);
+                            newTestStepItem.IsHighlighted = currTestStep == currTest.CurrentTestStep;
+                            newTestStepItem.Width = this.TestStepListBox.Width - 5;
+                            newTestStepItem.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+                            this.TestStepListBox.Controls.Add(newTestStepItem);
+                        }
+                    }
+                }
+
+                if (selectedTestItem != null)
+                {
+                    this.TestListBox.ScrollControlIntoView(selectedTestItem);
+                }
+            }
+        }
+
+        private void TestItemClick(object sender, EventArgs e)
+        {
+            TestStepListItem typedSender = sender as TestStepListItem;
+            if (typedSender != null)
+            {
+                Test currTest = typedSender.ConclusionItem as Test;
+                if (currTest != null)
+                {
+                    this.testManager.SetCurrentTest(currTest);
+                }
+            }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            this.DisableButtons();
+            this.TestManager.SetCurrentTest(null);
+        }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+            this.DisableButtons();
+            this.TestManager.Execute(EButtonOptions.OK,"OK");
+        }
+
+        private void YesButton_Click(object sender, EventArgs e)
+        {
+            this.DisableButtons();
+            this.TestManager.Execute(EButtonOptions.Yes,"Yes");
+        }
+
+        private void NoButton_Click(object sender, EventArgs e)
+        {
+            this.DisableButtons();
+            this.TestManager.Execute(EButtonOptions.No,"No");
+        }
+
+        private void FinishedButton_Click(object sender, EventArgs e)
+        {
+            this.DisableButtons();
+            try
+            {
+                string savedPath = this.TestManager.StopTest();
+                if (string.IsNullOrWhiteSpace(savedPath))
+                {
+                    MessageBox.Show("Could not save the results!", "Test results", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Results saved to " + savedPath, "Test results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while saving results: " + ex.Message, "Test results", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void DisableButtons()
+        {
+            this.OKButton.Enabled = false;
+            this.YesButton.Enabled = false;
+            this.NoButton.Enabled = false;
+            this.FinishedButton.Enabled = false;
+        }
+
+        private void EnableButtons()
+        {
+            this.CancelButton.Enabled = true;
+            this.OKButton.Enabled = true;
+            this.YesButton.Enabled = true;
+            this.NoButton.Enabled = true;
+            this.FinishedButton.Enabled = true;
+        }
+
+        private void EnableVarLabel()
+        {
+            TestStep currStep = this.testManager.CurrentTestStep;
+
+            if (currStep.VarOptions.HasFlag(EVarOptions.Intensity))
+            {
+                    this.varLabel1.Text = "Intensity";
+                    this.varLabel2.Text = "Mass     ";
+                    this.varLabel3.Text = "Distance ";
+
+                    this.varBox1.Text = "0.4";
+                    this.varBox2.Text = "500000";
+                    this.varBox3.Text = "50";
+            }
+
+            
+        }
+
+        private void GridButton_Click(object sender, EventArgs e)
+        {
+            string info = "Dekstop";
+            this.DisableButtons();
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.Description = " Select Recording Folder";
+            fbd.ShowNewFolderButton = false;
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                info = fbd.SelectedPath;
+            }
+
+            this.TestManager.Execute(EButtonOptions.GRID,info);
+            
+        }
+
+        private void Grid4Button_Click(object sender, EventArgs e)
+        {
+            string info = "Dekstop";
+            this.DisableButtons();
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.Description = " Select Recording Folder";
+            fbd.ShowNewFolderButton = false;
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                info = fbd.SelectedPath;
+            }
+
+            this.TestManager.Execute(EButtonOptions.GRID4, info);
+        }
+
+        private void AnalyzeButton_Click(object sender, EventArgs e)
+        {
+            string info = "Analyze";
+            this.DisableButtons();
+            this.TestManager.Execute(EButtonOptions.Analyze, info);
+        }
+    }
+}
