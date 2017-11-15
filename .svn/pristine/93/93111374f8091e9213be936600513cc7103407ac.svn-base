@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using Demcon.ProductionTool.Hardware;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using HemicsFat;
+using System.Xml;
+
+
+namespace Demcon.ProductionTool.Model.Tests.SelfTest
+{
+    public class SelfTestStep003 : TestStep
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericTestStep001"/> class.
+        /// DO NOT USE! Only for Serializabililty!
+        /// </summary>
+        [Obsolete]
+        public SelfTestStep003()
+            : this(null)
+        { }
+
+        public SelfTestStep003(TestManager testManager)
+            : base(testManager)
+        {
+            this.Name = "Volunteerscan Check";
+            this.Instructions = "Press 'Ok' to run the Python script checking the volunteerscan";
+            this.SupportingImage = string.Empty;
+            this.ButtonOptions = EButtonOptions.OK;
+            this.Results = new List<Result>();
+            this.OnTestUpdated(false);
+        }
+
+        public override void Execute(EButtonOptions userAction, string info)
+        {
+            this.Results.Clear();
+            if (userAction == EButtonOptions.OK)
+            {
+                // Check or do something (with the hardware?) for the test
+                XmlDocument doc = new XmlDocument();
+                string filePath = @"C:\Users\JKA\Stage\Settings 14001\system";
+                string fixedMaskLeft = "TestLeft";
+                string fixedMaskRight = "TestRight"; 
+                //Load the xml file
+                doc.Load(filePath);
+
+                //Find the nodes Fixedmask
+                XmlNode elemLeft = doc.SelectSingleNode("/MeasurementConfig/HandExtraction/FixedMaskMotorPathLeft");
+                XmlNode elemRight = doc.SelectSingleNode("/MeasurementConfig/HandExtraction/FixedMaskMotorPathRight");
+                XmlNode NumbIte = doc.SelectSingleNode("/MeasurementConfig/HandExtraction/NumberOfIterations");
+                XmlNode EnableFixedMask = doc.SelectSingleNode("/MeasurementConfig/HandExtraction/EnableFixedMask");
+                XmlNode DefaultLaserPower = doc.SelectSingleNode("/MeasurementConfig/HandExtraction/DefaultLaserPower");
+
+                Console.WriteLine("The old fixedMask: " + elemLeft.InnerText);
+
+                //Change the value of the fixedmasks
+                elemLeft.InnerText = fixedMaskLeft;
+                elemRight.InnerText = fixedMaskRight;
+                NumbIte.InnerText = "0";
+                EnableFixedMask.InnerText = "true";
+                DefaultLaserPower.InnerText = "0";
+
+                Console.WriteLine("The new FixedMask: " + fixedMaskLeft);
+
+
+                //Save file
+                doc.Save(filePath);
+                //return true;
+              
+          
+            }
+                this.OnTestUpdated(true);
+        }
+    }
+}

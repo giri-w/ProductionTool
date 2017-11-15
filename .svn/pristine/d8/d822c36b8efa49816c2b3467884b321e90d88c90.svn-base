@@ -1,0 +1,43 @@
+2017-07-03 11:35:19,343 [816] INFO  RAAnalysis []- Logger initialized
+2017-07-03 11:35:19,343 [816] INFO  RAAnalysis []- Scan input file path: E:\measurements\297\20170703_113239_297\Reduced data\20170703_113518\scan.xml
+2017-07-03 11:35:19,343 [816] INFO  RAAnalysis []- Output file path: E:\measurements\297\20170703_113239_297\Reduced data\20170703_113518\phase1_result.xml
+2017-07-03 11:35:19,343 [816] INFO  RAAnalysis []- Config file path: [not specified]
+2017-07-03 11:35:19,343 [816] INFO  RAAnalysis []- Create WorkflowPhase1
+2017-07-03 11:35:19,343 [816] INFO  RAAnalysis []- WorkflowPhase1: Start executing WorkflowPhase1
+2017-07-03 11:35:19,343 [816] INFO  RAAnalysis []- WorkflowPhase1: Algorithm version: 3.0.0.0750-final
+2017-07-03 11:35:19,343 [816] INFO  RAAnalysis []- WorkflowPhase1: Start reading input XML
+2017-07-03 11:35:19,400 [816] INFO  RAAnalysis []- WorkflowPhase1: Finish reading input XML
+2017-07-03 11:35:19,400 [816] INFO  RAAnalysis []- WorkflowPhase1: Create progress report
+2017-07-03 11:35:19,400 [816] INFO  RAAnalysis []- WorkflowPhase1: Create progress report finished
+2017-07-03 11:35:19,400 [816] INFO  RAAnalysis []- WorkflowPhase1: Start check input paths
+2017-07-03 11:35:19,400 [816] INFO  RAAnalysis []- WorkflowPhase1: Finish check input paths
+2017-07-03 11:35:19,400 [816] INFO  RAAnalysis []- Config: Start reading XML
+2017-07-03 11:35:19,401 [816] INFO  RAAnalysis []- Config: Finish reading XML
+2017-07-03 11:35:19,405 [816] INFO  RAAnalysis []- WorkflowPhase1: Start data input
+2017-07-03 11:35:20,942 [816] INFO  RAAnalysis []- WorkflowPhase1: Finish data input
+2017-07-03 11:35:20,942 [816] INFO  RAAnalysis []- WorkflowPhase1: Start check input
+2017-07-03 11:35:20,942 [816] INFO  RAAnalysis []- WorkflowPhase1: Finish check input
+2017-07-03 11:35:20,942 [816] INFO  RAAnalysis []- Create WorkflowPhase1SingleHand
+2017-07-03 11:35:20,942 [816] INFO  RAAnalysis []- WorkflowPhase1: Start processing Left hand
+2017-07-03 11:35:20,943 [816] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Start preprocessing
+2017-07-03 11:35:20,943 [816] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Start
+2017-07-03 11:35:20,943 [816] INFO  RAAnalysis []- PreprocessorBase::Execute Start
+2017-07-03 11:35:20,943 [816] INFO  RAAnalysis []- PreprocessorBase::Execute Finish
+2017-07-03 11:35:21,390 [816] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Finish
+2017-07-03 11:35:21,390 [816] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Start
+2017-07-03 11:35:21,390 [816] INFO  RAAnalysis []- PreprocessorBase::Execute Start
+2017-07-03 11:35:21,390 [816] INFO  RAAnalysis []- PreprocessorBase::Execute Finish
+2017-07-03 11:35:21,600 [3488] INFO  RAAnalysis []- Progress: 15%
+2017-07-03 11:35:21,816 [816] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Finish
+2017-07-03 11:35:21,816 [816] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Finish preprocessing
+2017-07-03 11:35:21,816 [816] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Start parameter extraction for hand
+2017-07-03 11:35:21,828 [816] INFO  RAAnalysis []- ParameterExtraction::Execute Start
+2017-07-03 11:35:21,828 [816] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Start
+2017-07-03 11:35:21,828 [816] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Finish
+2017-07-03 11:35:22,731 [3488] INFO  RAAnalysis []- Progress: 21%
+2017-07-03 11:35:26,504 [816] INFO  RAAnalysis []- Destroy WorkflowPhase1SingleHand
+2017-07-03 11:35:26,520 [3488] INFO  RAAnalysis []- Progress: 100%
+2017-07-03 11:35:26,520 [816] FATAL RAAnalysis []- Fatal error: ParameterExtraction: Failed to analyze wave for pixel.
+2017-07-03 11:35:26,520 [816] INFO  RAAnalysis []- WorkflowPhase1: Start writing output XML
+2017-07-03 11:35:26,520 [816] INFO  RAAnalysis []- WorkflowPhase1: Stop writing XML
+2017-07-03 11:35:26,520 [816] INFO  RAAnalysis []- Destroy WorkflowPhase1

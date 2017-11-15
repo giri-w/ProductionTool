@@ -1,0 +1,73 @@
+2016-12-05 09:47:51,968 [3020] INFO  RAAnalysis []- Logger initialized
+2016-12-05 09:47:51,968 [3020] INFO  RAAnalysis []- Input file path: E:\measurements\297\20161205_094535_297\Reduced data\20161205_094751\phase1.xml
+2016-12-05 09:47:51,969 [3020] INFO  RAAnalysis []- Output file path: E:\measurements\297\20161205_094535_297\Reduced data\20161205_094751\phase1_result.xml
+2016-12-05 09:47:51,969 [3020] INFO  RAAnalysis []- Config file path: [not specified]
+2016-12-05 09:47:51,969 [3020] INFO  RAAnalysis []- Create WorkflowPhase1
+2016-12-05 09:47:51,969 [3020] INFO  RAAnalysis []- WorkflowPhase1: Start executing WorkflowPhase1
+2016-12-05 09:47:51,969 [3020] INFO  RAAnalysis []- WorkflowPhase1: Algorithm version: 1.3.1.0612-final
+2016-12-05 09:47:51,969 [3020] INFO  RAAnalysis []- WorkflowPhase1: Start reading input XML
+2016-12-05 09:47:52,027 [3020] INFO  RAAnalysis []- WorkflowPhase1: Finish reading input XML
+2016-12-05 09:47:52,027 [3020] INFO  RAAnalysis []- WorkflowPhase1: Create progress report
+2016-12-05 09:47:52,028 [3020] INFO  RAAnalysis []- WorkflowPhase1: Create progress report finished
+2016-12-05 09:47:52,028 [3020] INFO  RAAnalysis []- WorkflowPhase1: Start check input paths
+2016-12-05 09:47:52,028 [3020] INFO  RAAnalysis []- WorkflowPhase1: Finish check input paths
+2016-12-05 09:47:52,028 [3020] INFO  RAAnalysis []- Config: Start reading XML
+2016-12-05 09:47:52,028 [3020] INFO  RAAnalysis []- Config: Finish reading XML
+2016-12-05 09:47:52,029 [3020] INFO  RAAnalysis []- WorkflowPhase1: Start data input
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- WorkflowPhase1: Finish data input
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- WorkflowPhase1: Start check input
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- WorkflowPhase1: Finish check input
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- Create WorkflowPhase1SingleHand
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- WorkflowPhase1: Start processing Left hand
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Start preprocessing
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Start
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- PreprocessorBase::Execute Start
+2016-12-05 09:47:59,799 [3020] INFO  RAAnalysis []- PreprocessorBase::Execute Finish
+2016-12-05 09:48:00,221 [3020] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Finish
+2016-12-05 09:48:00,221 [3020] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Start
+2016-12-05 09:48:00,221 [3020] INFO  RAAnalysis []- PreprocessorBase::Execute Start
+2016-12-05 09:48:00,221 [3020] INFO  RAAnalysis []- PreprocessorBase::Execute Finish
+2016-12-05 09:48:00,642 [3020] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Finish
+2016-12-05 09:48:00,642 [3020] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Finish preprocessing
+2016-12-05 09:48:00,642 [3020] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Start parameter extraction for hand
+2016-12-05 09:48:00,642 [3020] INFO  RAAnalysis []- ParameterExtraction::Execute Start
+2016-12-05 09:48:00,642 [3020] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Start
+2016-12-05 09:48:00,642 [3020] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Finish
+2016-12-05 09:48:13,122 [3020] INFO  RAAnalysis []- ParameterExtraction::Execute Finish
+2016-12-05 09:48:13,169 [3020] INFO  RAAnalysis []- ParameterExtraction::Execute Start
+2016-12-05 09:48:13,169 [3020] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Start
+2016-12-05 09:48:13,169 [3020] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Finish
+2016-12-05 09:48:13,746 [3452] INFO  RAAnalysis []- Progress: 26%
+2016-12-05 09:48:27,255 [3020] INFO  RAAnalysis []- ParameterExtraction::Execute Finish
+2016-12-05 09:48:27,302 [3020] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Finish parameter extraction for hand
+2016-12-05 09:48:27,302 [3020] INFO  RAAnalysis []- WorkflowPhase1: Finish processing Left hand
+2016-12-05 09:48:27,302 [3020] INFO  RAAnalysis []- WorkflowPhase1: Start processing Right hand
+2016-12-05 09:48:27,302 [3020] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Start preprocessing
+2016-12-05 09:48:27,302 [3020] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Start
+2016-12-05 09:48:27,302 [3020] INFO  RAAnalysis []- PreprocessorBase::Execute Start
+2016-12-05 09:48:27,302 [3020] INFO  RAAnalysis []- PreprocessorBase::Execute Finish
+2016-12-05 09:48:27,739 [3020] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Finish
+2016-12-05 09:48:27,739 [3020] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Start
+2016-12-05 09:48:27,739 [3020] INFO  RAAnalysis []- PreprocessorBase::Execute Start
+2016-12-05 09:48:27,739 [3020] INFO  RAAnalysis []- PreprocessorBase::Execute Finish
+2016-12-05 09:48:28,160 [3020] INFO  RAAnalysis []- PreprocessorRAHandscan::Execute Finish
+2016-12-05 09:48:28,160 [3020] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Finish preprocessing
+2016-12-05 09:48:28,160 [3020] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Start parameter extraction for hand
+2016-12-05 09:48:28,160 [3020] INFO  RAAnalysis []- ParameterExtraction::Execute Start
+2016-12-05 09:48:28,160 [3020] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Start
+2016-12-05 09:48:28,160 [3020] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Finish
+2016-12-05 09:48:31,873 [3452] INFO  RAAnalysis []- Progress: 57%
+2016-12-05 09:48:41,233 [3020] INFO  RAAnalysis []- ParameterExtraction::Execute Finish
+2016-12-05 09:48:41,280 [3020] INFO  RAAnalysis []- ParameterExtraction::Execute Start
+2016-12-05 09:48:41,280 [3020] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Start
+2016-12-05 09:48:41,280 [3020] INFO  RAAnalysis []- ParameterExtraction::DetermineDefaults Finish
+2016-12-05 09:48:44,166 [3452] INFO  RAAnalysis []- Progress: 80%
+2016-12-05 09:48:53,900 [3020] INFO  RAAnalysis []- ParameterExtraction::Execute Finish
+2016-12-05 09:48:53,931 [3020] INFO  RAAnalysis []- WorkflowPhase1SingleHand: Finish parameter extraction for hand
+2016-12-05 09:48:53,931 [3020] INFO  RAAnalysis []- WorkflowPhase1: Finish processing Right hand
+2016-12-05 09:48:53,931 [3020] INFO  RAAnalysis []- WorkflowPhase1: Start writing output XML
+2016-12-05 09:48:53,931 [3020] INFO  RAAnalysis []- WorkflowPhase1: Stop writing XML
+2016-12-05 09:48:53,931 [3020] INFO  RAAnalysis []- Destroy WorkflowPhase1SingleHand
+2016-12-05 09:48:53,947 [3452] INFO  RAAnalysis []- Progress: 100%
+2016-12-05 09:48:53,947 [3020] INFO  RAAnalysis []- Finished executing WorkflowPhase1
+2016-12-05 09:48:53,947 [3020] INFO  RAAnalysis []- Destroy WorkflowPhase1

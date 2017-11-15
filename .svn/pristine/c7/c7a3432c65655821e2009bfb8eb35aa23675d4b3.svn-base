@@ -1,0 +1,271 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml;
+using System.Data;
+using System.Diagnostics;
+using System.Net;
+using System.IO;
+using WinSCP;
+
+namespace HemicsFat
+{
+    public class Python
+    {
+        public static StringBuilder output = new StringBuilder();
+        string result { get; set; }
+
+        public string CheckVolunteerScan()
+        {
+            try
+            {
+
+
+                Process process = new Process();
+                process.StartInfo.FileName = "cmd.exe";
+                process.StartInfo.WorkingDirectory = "C:\\Users\\JKA\\Stage\\Python";
+                process.StartInfo.Arguments = "/C python checkVolunteerScan_1_9_0.py";
+                process.StartInfo.RedirectStandardError = true;
+                process.StartInfo.RedirectStandardOutput = true;
+
+                process.StartInfo.UseShellExecute = false;
+                process.OutputDataReceived += new DataReceivedEventHandler((sender, e) =>
+                {
+                    // Prepend line numbers to each line of the output.
+                    if (!String.IsNullOrEmpty(e.Data))
+                    {
+                        output.Append(e.Data + "\n");
+                    }
+
+                });
+
+                process.Start();
+                // Asynchronously read the standard output of the spawned process. 
+                // This raises OutputDataReceived events for each line of output.
+                process.BeginOutputReadLine();
+                process.WaitForExit();
+
+                // Write the redirected output to this application's window.
+                Console.WriteLine(output);
+
+                process.WaitForExit();
+                process.Close();
+                result = output.ToString();
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e);
+                return "Error, file not complete";
+            }
+
+        }
+        public bool ResultVolunteerScan()
+        {
+            //Python volunteerScan = new Python();
+            //var result = volunteerScan.CheckVolunteerScan();
+         
+            if (result.Contains("PASS"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        
+            }
+        
+           
+    }
+        public class ChangeXml
+        {
+            public bool ChangeFixedMask(string filePath, string fixedMask)
+            {
+                XmlDocument doc = new XmlDocument();
+
+                //Load the xml file
+                doc.Load(filePath);
+
+                //Find the nodes Fixedmask
+                XmlNode elemLeft = doc.SelectSingleNode("/MeasurementConfig/HandExtraction/FixedMaskMotorPathLeft");
+                XmlNode elemRight = doc.SelectSingleNode("/MeasurementConfig/HandExtraction/FixedMaskMotorPathRight");
+
+                Console.WriteLine("The old fixedMask: " + elemLeft.InnerText);
+
+                //Change the value of the fixedmasks
+                elemLeft.InnerText = fixedMask;
+                elemRight.InnerText = fixedMask;
+
+                Console.WriteLine("The new FixedMask: " + fixedMask);
+
+
+                //Save file
+                doc.Save(filePath);
+                return true;
+
+            }
+        }
+
+        public class FtpTransfer
+        {
+            public bool Upload(string _hostName, string fingerprint, string localFile, string hostPath)
+            {
+                try
+                {
+                    // Set up session options
+                    SessionOptions sessionOptions = new SessionOptions
+                    {
+                        Protocol = Protocol.Ftp,
+                        HostName = _hostName,
+                        PortNumber = 21,
+                        UserName = "Service Engineer",
+                        Password = "192+SERV.HEMI",
+                        TlsHostCertificateFingerprint = fingerprint,
+                        FtpSecure = FtpSecure.Explicit,
+                    };
+
+                    using (Session session = new Session())
+                    {
+                        // Connect
+                        session.Open(sessionOptions);
+
+                        // Your code
+
+                        // Upload file
+                        TransferOptions transferOptions = new TransferOptions();
+                        transferOptions.TransferMode = TransferMode.Binary;
+
+                        TransferOperationResult transferResultUpload;
+                        transferResultUpload = session.PutFiles(localFile, hostPath, false, transferOptions);
+
+                        // Throw on any error
+                        transferResultUpload.Check();
+
+                        // Print results
+                        foreach (TransferEventArgs transfer in transferResultUpload.Transfers)
+                        {
+                            Console.WriteLine("Upload of {0} succeeded", transfer.FileName);
+                            return true;
+                        }
+                        return true;
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error: {0}", e);
+                    return false;
+                }
+            }
+
+            public bool Download(string _hostName, string fingerprint, string localPath, string ftpFile)
+            {
+                try
+                {
+                    // Set up session options
+                    SessionOptions sessionOptions = new SessionOptions
+                    {
+                        Protocol = Protocol.Ftp,
+                        HostName = _hostName,
+                        PortNumber = 21,
+                        UserName = "Service Engineer",
+                        Password = "192+SERV.HEMI",
+                        TlsHostCertificateFingerprint = fingerprint,
+                        FtpSecure = FtpSecure.Explicit,
+                    };
+
+                    using (Session session = new Session())
+                    {
+                        // Connect
+                        session.Open(sessionOptions);
+
+                        // Your code
+
+                        // Upload file
+                        TransferOptions transferOptions = new TransferOptions();
+                        transferOptions.TransferMode = TransferMode.Binary;
+
+                        TransferOperationResult transferResultDownload;
+                        transferResultDownload = session.GetFiles(ftpFile, localPath, false, transferOptions);
+
+                        // Throw on any error
+                        transferResultDownload.Check();
+
+                        // Print results
+                        foreach (TransferEventArgs transfer in transferResultDownload.Transfers)
+                        {
+                            Console.WriteLine("Download of {0} succeeded", transfer.FileName);
+                            return true;
+                        }
+                        return true;
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error: {0}", e);
+                    return false;
+                }
+            }
+
+            public bool DownloadLatest(string _hostName, string fingerprint, string localPath, string hostPath)
+            {
+                try
+                {
+                    // Set up session options
+                    SessionOptions sessionOptions = new SessionOptions
+                    {
+                        Protocol = Protocol.Ftp,
+                        HostName = _hostName,
+                        PortNumber = 21,
+                        UserName = "Service Engineer",
+                        Password = "192+SERV.HEMI",
+                        TlsHostCertificateFingerprint = fingerprint,
+                        FtpSecure = FtpSecure.Explicit,
+                    };
+
+                    using (Session session = new Session())
+                    {
+                        // Connect
+                        session.Open(sessionOptions);
+
+                        // Your code
+                        RemoteDirectoryInfo directoryInfo = session.ListDirectory(hostPath);
+
+
+                        IEnumerable<RemoteFileInfo> latest =
+                        directoryInfo.Files
+                            .Where(file => file.IsDirectory)
+                            .OrderByDescending(file => file.FullName)
+                            .Take(2);
+
+                        // Upload file
+                        TransferOptions transferOptions = new TransferOptions();
+                        transferOptions.TransferMode = TransferMode.Binary;
+
+                        foreach (RemoteFileInfo currInfo in latest)
+                        {
+                            string directoryName = Path.GetFileName(currInfo.FullName);
+                            string localDirePath = Path.Combine(localPath, directoryName);
+                            Directory.CreateDirectory(localDirePath);
+                            session.GetFiles(session.EscapeFileMask(currInfo.FullName), localDirePath, false, transferOptions);
+                        }
+                        return true;
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error: {0}", e);
+                    return false;
+                }
+            }
+        }
+    }
+
+

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Test>
+  <FAT1>
+    <id>1</id>
+    <LUT>
+      <GRID4>C:\Users\GWA\Desktop\Internship DEMCON\1. Matlab to Python Project\20161205_094405_297_grid4</GRID4>
+      <GRID>C:\Users\GWA\Desktop\Internship DEMCON\1. Matlab to Python Project\20161205_094535_297_grid</GRID>
+      <Intensity>0.4</Intensity>
+      <Mass>500000</Mass>
+      <Distance>50</Distance>
+    </LUT>
+    <FMG>
+      <Source>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\1. Test Source\20170629_090733_297 Fieldmask</Source>
+      <Threshold>40</Threshold>
+    </FMG>
+  </FAT1>
+  <FAT2>
+    <id>2</id>
+  </FAT2>
+  <FAT3>
+    <id>3</id>
+  </FAT3>
+  <FAT4>
+    <id>4</id>
+    <SS>
+      <Source>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\1. Test Source\20170703_113239_297 SignalStability</Source>
+    </SS>
+  </FAT4>
+</Test>

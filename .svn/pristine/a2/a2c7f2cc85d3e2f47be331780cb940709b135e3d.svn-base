@@ -1,0 +1,109 @@
+﻿using System;
+using System.Collections.Generic;
+using Demcon.ProductionTool.Hardware;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using HemicsFat;
+using System.Xml.Linq;
+
+
+namespace Demcon.ProductionTool.Model.Tests.LUTDetermination
+{
+    public class LUTTestStep0023 : TestStep
+    {
+
+        Boolean resultBool { get; set; }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericTestStep0023"/> class.
+        /// DO NOT USE! Only for Serializabililty!
+        /// </summary>
+        [Obsolete]
+        public LUTTestStep0023()
+            : this(null)
+        { }
+
+        private Double Intensity;
+        private Double Mass;
+        private Double Distance;
+        private string testSetting = @"Setting\config.xml";
+
+        public LUTTestStep0023(TestManager testManager)
+            : base(testManager)
+        {
+            ChangeXml chg = new ChangeXml();
+            this.Name = "Data Processing";
+            this.Instructions = " Setting up variable that are used in measurement \n" +
+                                " - var Intensity   -> Default : 0.4\n" +
+                                " - var Mass        -> Default : 500000\n" +
+                                " - var Distance  -> Default : 50\n" +
+                                "\nWhen finished, press Next";
+            this.SupportingImage = string.Empty;
+            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
+            this.VarOptions = EVarOptions.Intensity | EVarOptions.Mass | EVarOptions.Distance;
+
+            // set initial value for setting from XML
+            Intensity = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "Intensity"));
+            Mass = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "Mass"));
+            Distance = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "Distance"));
+
+            this.VarValue = Intensity.ToString() + "," + Mass.ToString() + "," + Distance.ToString();
+            this.Results = new List<Result>();
+            this.OnTestUpdated(false);
+            this.OnTestCanceled(false);
+            resultBool = false;
+        }
+
+     
+
+        public override void Execute(EButtonOptions userAction, string info)
+        {
+            this.Stop();
+
+            this.Results.Clear();
+            if (userAction == EButtonOptions.Next)
+            {
+                // Check or do something (with the hardware?) for the test
+                this.Results.Add(new BooleanResult("Data Processing", "Python Script executed", resultBool));
+                this.OnTestUpdated(true);
+            }
+
+            if (userAction == EButtonOptions.Analyze)
+            {
+                ChangeXml chg = new ChangeXml();
+
+                MessageBox.Show(VarValue);
+                // retrieve variable value from text Box
+                string[] textValue = VarValue.Split(',');
+                Intensity = Convert.ToDouble(textValue[0]);
+                Mass = Convert.ToDouble(textValue[1]);
+                Distance = Convert.ToDouble(textValue[2]);
+
+                chg.modifyElement(testSetting, "Test", "FAT1", "LUT", "Intensity", Intensity.ToString());
+                chg.modifyElement(testSetting, "Test", "FAT1", "LUT", "Mass", Mass.ToString());
+                chg.modifyElement(testSetting, "Test", "FAT1", "LUT", "Distance", Distance.ToString());
+
+                // Check or do something (with the hardware?) for the test
+                Python py = new Python();
+                String pythonLocation = @"Python/2. FieldMaskGeneration.py";
+                String pythonArgument = "1"; //additional
+                string fullPath = Path.GetFullPath(pythonLocation);
+                string result = py.run_cmd(fullPath, pythonArgument);
+                resultBool = py.BoolPython();
+                MessageBox.Show(result, "Python Script Execution");
+            }
+
+            if (userAction == EButtonOptions.Back)
+            {
+                this.OnTestCanceled(true);
+            }
+
+
+
+
+
+
+        }
+    }
+}

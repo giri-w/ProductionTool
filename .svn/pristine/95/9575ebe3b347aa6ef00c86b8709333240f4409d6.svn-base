@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="7">
+  <Parameters>
+    <ScannerId>15009</ScannerId>
+    <Preprocessor>RAHandscan</Preprocessor>
+    <AlgorithmType>RA</AlgorithmType>
+    <HandForAnalysis>BothHands</HandForAnalysis>
+    <ConfigFolder>D:\Firmware\Current\20161121 GUI 1.4.4 Prod\RAAnalysis\</ConfigFolder>
+    <InputFolder>E:\measurements\297\20161205_094535_297\Raw data</InputFolder>
+    <OutputPhase1Folder>E:\measurements\297\20161205_094535_297\Reduced data\20161205_094751</OutputPhase1Folder>
+    <OutputPhase2Folder>E:\measurements\297\20161205_094535_297\Result data\20161205_094857</OutputPhase2Folder>
+    <ProgressFile>E:\measurements\297\20161205_094535_297\Result data\20161205_094857\progress.txt</ProgressFile>
+  </Parameters>
+</boost_serialization>

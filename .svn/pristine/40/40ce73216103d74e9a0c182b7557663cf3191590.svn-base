@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="7">
+<Result>
+	<AlgorithmVersion>1.3.1.0612-final</AlgorithmVersion>
+	<Date>5-12-2016 9:49:7</Date>
+	<Success>True</Success>
+	<Exception></Exception>
+</Result>
+</boost_serialization>
+

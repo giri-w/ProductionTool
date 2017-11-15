@@ -1,0 +1,358 @@
+IMPROVEMENT
+
+WITH FORTRAN 
+Left hand photo to grid processing
+- compose mask grid4
+-time: 0.001497030258178711
+- detect photo grid4
+-time: 2.6466240882873535
+- compose mask grid
+-time: 0.0014989376068115234
+- predict photo grid
+-time: 0.028996944427490234
+- detect photo grid[1]
+-time: 36.141160011291504
+- extrapolate photo grid[1]
+C:\pyzo2015a\lib\site-packages\numpy\linalg\linalg.py:1425: RuntimeWarning: divide by zero encountered in double_scalars
+  return s[0]/s[-1]
+-time: 0.34250497817993164
+- detect photo grid[2]
+-time: 12.708009004592896
+- extrapolate photo grid[2]
+-time: 0.28854799270629883
+- detect photo grid[3]
+-time: 10.101844072341919
+- extrapolate photo grid[3]
+-time: 0.29300713539123535
+- finish photo grid left
+-time: 0.02449798583984375
+Right hand photo to grid processing
+- compose mask grid4
+-time: 0.00150299072265625
+- detect photo grid4
+-time: 2.5490081310272217
+- compose mask grid
+-time: 0.002488851547241211
+- predict photo grid
+-time: 0.033493995666503906
+- detect photo grid[1]
+-time: 36.07274103164673
+- extrapolate photo grid[1]
+C:\pyzo2015a\lib\site-packages\numpy\linalg\linalg.py:1425: RuntimeWarning: invalid value encountered in double_scalars
+  return s[0]/s[-1]
+-time: 0.4240000247955322
+- detect photo grid[2]
+-time: 17.193610191345215
+- extrapolate photo grid[2]
+-time: 0.9200439453125
+- detect photo grid[3]
+-time: 29.256957054138184
+- extrapolate photo grid[3]
+-time: 0.7715001106262207
+- finish photo grid right
+-time: 0.07750105857849121
+Compiling the LUTs
+D:\\PyLeft-MotorMatrix-High.xml
+D:\\PyLeft-MotorMatrix-Low.xml
+D:\\PyRight-MotorMatrix-High.xml
+D:\\PyRight-MotorMatrix-Low.xml
+Finish
+
+
+Left hand photo to grid processing
+- compose mask grid4
+-time: 0.0014998912811279297
+- detect photo grid4
+-time: 11.916284084320068
+- compose mask grid
+-time: 0.002504110336303711
+- predict photo grid
+-time: 0.027611970901489258
+- detect photo grid[1]
+-time: 103.08349680900574
+- extrapolate photo grid[1]
+C:\pyzo2015a\lib\site-packages\numpy\linalg\linalg.py:1425: RuntimeWarning: divide by zero encountered in double_scalars
+  return s[0]/s[-1]
+-time: 0.33350300788879395
+- detect photo grid[2]
+-time: 36.0445351600647
+- extrapolate photo grid[2]
+-time: 0.2559969425201416
+- detect photo grid[3]
+-time: 28.613370180130005
+- extrapolate photo grid[3]
+-time: 0.2824997901916504
+- finish photo grid left
+-time: 0.020495176315307617
+Right hand photo to grid processing
+- compose mask grid4
+-time: 0.0009980201721191406
+- detect photo grid4
+-time: 11.357707977294922
+- compose mask grid
+-time: 0.0019981861114501953
+- predict photo grid
+-time: 0.02750086784362793
+- detect photo grid[1]
+-time: 104.12367010116577
+- extrapolate photo grid[1]
+C:\pyzo2015a\lib\site-packages\numpy\linalg\linalg.py:1425: RuntimeWarning: invalid value encountered in double_scalars
+  return s[0]/s[-1]
+-time: 0.34999608993530273
+- detect photo grid[2]
+-time: 36.785773038864136
+- extrapolate photo grid[2]
+-time: 0.3005211353302002
+- detect photo grid[3]
+-time: 34.2612988948822
+- extrapolate photo grid[3]
+-time: 0.25402307510375977
+- finish photo grid right
+-time: 0.015645980834960938
+Compiling the LUTs
+D:\\PyLeft-MotorMatrix-High.xml
+D:\\PyLeft-MotorMatrix-Low.xml
+D:\\PyRight-MotorMatrix-High.xml
+D:\\PyRight-MotorMatrix-Low.xml
+Finish
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def centre_of_mass4(photo, threshold, disc):
+   photo_disc = np.array([])
+   for i in range (0, len(photo[0])):
+      for j in range (0,len(photo)):
+         if (disc[j][i]):
+            photo_disc = np.append(photo_disc,photo[j][i])
+   
+   intensity = threshold * np.amax(photo_disc) #use absolute threshold
+   
+   photo_disc[np.where(photo_disc<intensity)] = 0
+   matrix_size = np.array(photo).shape
+   photo       = np.zeros(matrix_size)
+   k = 0
+   
+   for i in range (0, len(photo[0])):
+      for j in range (0,len(photo)):
+         if (disc[j][i]):
+            photo[j][i] = photo_disc[k]
+            k = k+1
+
+   x = matrix_size[1]   # 512 or 256
+   y = matrix_size[0]   # 640 or 320
+
+   #create y and x matrix dimension
+   y_dim = np.arange(1,y+1)
+   y_dim = np.array(list(zip(y_dim))) * np.ones((y,x))
+   
+   x_dim = np.arange(1,x+1)
+   x_dim = np.array(x_dim) * np.ones((y,x)) 
+
+   # mass value
+   mass   = photo_disc.sum()
+   
+   # com value
+   com = []
+   com.append((np.sum(photo*x_dim))/mass)
+   com.append((np.sum(photo*y_dim))/mass)
+   com    = np.around(com)       #rounding using numpy.around function
+
+   # r_quad value
+   r_quad = np.power((x_dim-com[0]),2) + np.power((y_dim-com[1]),2)
+   
+   # moi value
+   moi    = np.sum(photo*r_quad)/ mass
+   
+   # photo_disc value
+   photo_disc = np.array(photo_disc,dtype='uint16')
+   
+   return com, moi, photo_disc
+
+   
+def centre_of_mass(photo, threshold, disc):
+   #np.savetxt('photo.csv',np.array(photo,dtype='int'),delimiter=",")
+   
+   
+   photo_disc = np.array([])
+   for i in range (0, len(photo[0])):
+      for j in range (0,len(photo)):
+         
+         if (disc[j][i]):
+            photo_disc = np.append(photo_disc,photo[j][i])
+            
+   intensity = threshold * np.amax(photo_disc) #use absolute threshold
+   photo_disc[np.where(photo_disc<intensity)] = 0
+   matrix_size = np.array(photo).shape
+   
+   photo       = np.zeros(matrix_size)
+   # photo[disc] = photo_disc
+   k = 0
+   for i in range (0, len(photo[0])):
+      for j in range (0,len(photo)):
+         
+         if (disc[j][i]):
+            photo[j][i] = photo_disc[k]
+            k = k+1
+   
+   # np.savetxt('photo(1,5)_int.csv',np.array(photo,dtype='double'),delimiter=",")
+   
+   x = matrix_size[1]   # 512 or 256
+   y = matrix_size[0]   # 640 or 320
+  
+   #create y and x matrix dimension
+   y_dim = np.arange(1,y+1)
+   y_dim = np.array(list(zip(y_dim))) * np.ones((y,x))
+   
+   x_dim = np.arange(1,x+1)
+   x_dim = np.array(x_dim) * np.ones((y,x))
+   
+   # np.savetxt('x_dim(1,5).csv',np.array(x_dim,dtype='double'),delimiter=",")
+   # np.savetxt('y_dim(1,5).csv',np.array(y_dim,dtype='double'),delimiter=",")
+   mass   = photo_disc.sum()
+   com = []
+   com.append((np.sum(photo*x_dim))/mass) #shift 1 due to one-based indexing in Matlab
+   com.append((np.sum(photo*y_dim))/mass) #shift 1 due to one-based indexing in Matlab
+   #com    = np.vectorize(np.around(np.array(com)))
+   com = np.around(com)
+   # com = np.rint(com)
+   # for x in range (0,len(com)):
+     # com[x] = Decimal(com[x])
+     # com[x] = Decimal(com[x].quantize(Decimal('1'), rounding=ROUND_HALF_DOWN))
+   com = np.array(com,dtype='int')
+   r_quad = np.power((x_dim-com[0]),2) + np.power((y_dim-com[1]),2)
+   # np.savetxt('r_quad(1,5).csv',np.array(r_quad,dtype='double'),delimiter=",")
+   moi    = np.sum(np.array(photo)*np.array(r_quad)) / mass
+   # print('sum = '+str(np.sum(np.array(photo)*np.array(r_quad))))
+   photo_disc = np.array(photo_disc,dtype='uint16')
+   return com, moi, photo_disc, mass
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   x = photo_size[0]   # 512 or 256
+   y = photo_size[1]   # 640 or 320
+   
+   disc = np.zeros((y,x),dtype=np.bool)
+   
+   #create y and x matrix dimension
+   y_dim = np.arange(1,y+1)
+   y_dim = np.array(list(zip(y_dim))) * np.ones((y,x))
+   
+   x_dim = np.arange(1,x+1)
+   x_dim = np.array(x_dim) * np.ones((y,x)) 
+   
+   col_ind = np.power((x_dim-point[0]),2)
+   row_ind = np.power((y_dim-point[1]),2)
+   
+   # disc value
+   disc[np.where((col_ind + row_ind) < np.power(radius,2))] = True
+   
+   return disc
+   
+   
+   
+   #-------------------------------------------------------------------------------------------------#
+#     Private functions
+#-------------------------------------------------------------------------------------------------#
+
+# Photo pixel coordinates [x ; y] <=> photo pixel matrix (y, x)
+# with x = 1..256 and y = 1..320. (or 512x640)
+#function disc = disc_selection(photo_size, point, radius)
+def disc_selection(photo_size, point, radius):
+   x = photo_size[0]   # 512 or 256
+   y = photo_size[1]   # 640 or 320
+   disc = np.zeros((y,x),dtype=np.bool)
+   
+   #create y and x matrix dimension
+   y_dim = np.arange(1,y+1)
+   y_dim = np.array(list(zip(y_dim))) * np.ones((y,x))
+   
+   x_dim = np.arange(1,x+1)
+   x_dim = np.array(x_dim) * np.ones((y,x)) 
+   
+   col_ind = np.power((x_dim-point[0]),2)
+   row_ind = np.power((y_dim-point[1]),2)
+   
+   # for i in range (0,y+1):
+    # for j in range (0,x+1):
+      # if ((np.power((x_dim[i][j]-point[0]),2) + np.power((y_dim[i][j]-point[0]),2)) < np.power(radius,2)):
+        # disc[i][j] = True
+   disc[np.where((col_ind + row_ind) < np.power(radius,2))] = True
+   return disc
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   DEBUG COPY REFERENCE
+   # if (colind == 1 and rowind == 3):
+               # print(colind)
+               # print(rowind)
+               # print('========LOCAL GRID========')
+               # for i in range (0,5):
+                  # for j in range (0,5):
+                     # print(local_grid[i][j].validity, local_grid[i][j].point)
+                  # print('new line',i+1)
+               
+               # print('========POINT AND STATUS========')
+               # print (well_conditioned)
+               # print (point)
+               
+              
+               # print('***********************************NILAI GRID DI AKHIR==========================')
+               # for i in range (0,12):
+                  # for j in range (0,6):
+                     # print(grid[i][j].mask_point, grid[i][j].photo_point, grid[i][j].status)
+                  # print('new line',i+1)
+                  
+                  
+               # print('***********************************NILAI GRID SATU DI AKHIR==========================')
+               # for i in range (0,12):
+                  # for j in range (0,6):
+                     # print(grid1[i][j].mask_point, grid1[i][j].photo_point, grid1[i][j].status)
+                  # print('new line',i+1)
+                  
+               # exit()
+            

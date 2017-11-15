@@ -1,0 +1,26 @@
+
+
+[2017-07-03 11:32:52.297] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] Measurement started
+[2017-07-03 11:32:52.468] [Application    ] [Demcon.Hemics.Controller.HighBackgroundState] Recording Background image
+[2017-07-03 11:32:53.373] [Application    ] [Demcon.Hemics.Controller.HighBackgroundState] High-res Background image captured successfully
+[2017-07-03 11:32:53.373] [Application    ] [Demcon.Hemics.Controller.HighReflectionState] Recording Reflection image
+[2017-07-03 11:32:54.777] [Application    ] [Demcon.Hemics.Controller.HighReflectionState] High-res Reflection image captured successfully
+[2017-07-03 11:32:54.777] [Application    ] [Demcon.Hemics.Controller.WaitForMotorsState] Wait for motors to reach required speed
+[2017-07-03 11:33:07.101] [Application    ] [Demcon.Hemics.Controller.WaitForMotorsState] Motors have reached required speed
+[2017-07-03 11:33:07.117] [Application    ] [Demcon.Hemics.Controller.LaserCalibrationState] Calibrating Lasers
+[2017-07-03 11:33:07.912] [Application    ] [Demcon.Hemics.Controller.HandExtractionState] Starting auto tuning procedure
+[2017-07-03 11:33:07.990] [Application    ] [Demcon.Hemics.Controller.HandExtractionHandAnalysisTransmissionState] Using left Motor fixed mask: D:\Settings\system\FixedMasks\MotorMatrixMask_handL_max63.png with laser power offset 0
+[2017-07-03 11:33:08.271] [Application    ] [Demcon.Hemics.Controller.HandExtractionHandAnalysisTransmissionState] Using right Motor fixed mask: D:\Settings\system\FixedMasks\MotorMatrixMask_handR_max63.png with laser power offset 0
+[2017-07-03 11:33:29.206] [Application    ] [Demcon.Hemics.Controller.HandExtractionMotorCoordinatesTransmissionState] Send power map to hardware
+[2017-07-03 11:33:30.174] [Application    ] [Demcon.Hemics.Controller.HandExtractionMotorCoordinatesTransmissionState] Finished sending power map to hardware
+[2017-07-03 11:33:30.330] [Application    ] [Demcon.Hemics.Controller.HandExtractionMotorCoordinatesTransmissionState] Finalized hand extraction
+[2017-07-03 11:33:30.330] [Application    ] [Demcon.Hemics.Controller.HandExtractionState] Hand extraction completed
+[2017-07-03 11:33:30.330] [Application    ] [Demcon.Hemics.Controller.HighTransmissionVisState] Recording Transmission VIS image
+[2017-07-03 11:33:31.422] [Application    ] [Demcon.Hemics.Controller.HighTransmissionVisState] High-res transmission VIS image captured successfully
+[2017-07-03 11:33:31.422] [Application    ] [Demcon.Hemics.Controller.HighTransmissionNirState] Recording Transmission NIR image
+[2017-07-03 11:33:32.529] [Application    ] [Demcon.Hemics.Controller.HighTransmissionNirState] High-res transmission NIR image captured successfully
+[2017-07-03 11:33:32.529] [Application    ] [Demcon.Hemics.Controller.SequenceState  ] Recording Transmission sequence
+[2017-07-03 11:35:14.498] [Application    ] [Demcon.Hemics.Controller.SequenceState  ] [SystemWarning] [EC_1305] Cuff pressure sensor in pressurized state is lower than 45
+[2017-07-03 11:35:17.703] [Application    ] [Demcon.Hemics.Controller.SequenceState  ] Measurement 20170703_113239_297 finished successfully
+[2017-07-03 11:35:17.760] [Application    ] [Demcon.Hemics.Controller.SequenceState  ] Measurement usage increased
+[2017-07-03 11:35:18.114] [Application    ] [Demcon.Hemics.Controller.FinalizeState  ] Measurement completed successfully

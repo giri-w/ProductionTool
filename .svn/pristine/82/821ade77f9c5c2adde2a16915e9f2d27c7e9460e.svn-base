@@ -1,0 +1,1223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Measurement xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.hemics.com/schemas/HandScan/201505/">
+  <Institute>[Name of clinic]</Institute>
+  <LogFile>20161205_094405_297.log</LogFile>
+  <MeasurementName>20161205_094405_297</MeasurementName>
+  <PatientData xmlns:d2p1="http://schemas.datacontract.org/2004/07/Demcon.Hemics.DataClasses" i:type="d2p1:PatientData">
+    <d2p1:LocalPatientId>297</d2p1:LocalPatientId>
+  </PatientData>
+  <RawData xmlns:d2p1="http://schemas.datacontract.org/2004/07/Demcon.Hemics.DataClasses" i:type="d2p1:RawScan">
+    <d2p1:EndTime>0001-01-01T00:00:00</d2p1:EndTime>
+    <d2p1:HwStatusLow xmlns:d3p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+      <d3p1:anyType i:type="d2p1:HwStatusLow">
+        <d2p1:CpuFanSpeed>1632</d2p1:CpuFanSpeed>
+        <d2p1:CpuTemp>36</d2p1:CpuTemp>
+        <d2p1:EnclosureFanSpeed>0</d2p1:EnclosureFanSpeed>
+        <d2p1:Timestamp>PT31.777139S</d2p1:Timestamp>
+      </d3p1:anyType>
+    </d2p1:HwStatusLow>
+    <d2p1:IsDeleted>false</d2p1:IsDeleted>
+    <d2p1:IsSequentialScan>false</d2p1:IsSequentialScan>
+    <d2p1:IsValid>false</d2p1:IsValid>
+    <d2p1:Left i:type="d2p1:RawScanHand">
+      <d2p1:BackgroundImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>30.629358804589003</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>7.6938503866088332</d2p1:CuffPressure>
+          <d2p1:CuffState>Touch</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>0</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>18.977953634830556</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>0</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>18.977953634830556</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>20.637520097570189</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>19.63549359299742</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>18.977953634830556</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>3</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>1</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>115</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>120</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>1</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>left_high_background.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT10.5597022S</d2p1:Timestamp>
+      </d2p1:BackgroundImageHigh>
+      <d2p1:FieldMaskImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>NaN</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>NaN</d2p1:CuffPressure>
+          <d2p1:CuffState>Unknown</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>NaN</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>NaN</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>NaN</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>NaN</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>NaN</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>NaN</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>NaN</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>0</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>0</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>0</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>0</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>0</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>left_high_fieldmask.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT0S</d2p1:Timestamp>
+      </d2p1:FieldMaskImageHigh>
+      <d2p1:IlluminationImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>NaN</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>NaN</d2p1:CuffPressure>
+          <d2p1:CuffState>Unknown</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>NaN</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>NaN</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>NaN</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>NaN</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>NaN</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>NaN</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>NaN</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>0</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>0</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>0</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>0</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>0</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>left_high_nir_powermap-iter-1</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT0S</d2p1:Timestamp>
+      </d2p1:IlluminationImageHigh>
+      <d2p1:ReflectionImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>30.629358804589003</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>9.90223389070978</d2p1:CuffPressure>
+          <d2p1:CuffState>Touch</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>0</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>18.977953634830556</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>0</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>18.977953634830556</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>20.637520097570189</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>19.63549359299742</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>18.977953634830556</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>3</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>1</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>115</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>120</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>1</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>left_high_reflection.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT11.3865036S</d2p1:Timestamp>
+      </d2p1:ReflectionImageHigh>
+      <d2p1:TransNirImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>30.629358804589003</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>8.3248171020662465</d2p1:CuffPressure>
+          <d2p1:CuffState>Touch</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>0.053330999999999996</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>18.977953634830556</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>0.1259047</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>18.977953634830556</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>20.637520097570189</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>19.63549359299742</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>18.977953634830556</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>3</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>1</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>115</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>220</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>1</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>left_high_nir.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT30.3249369S</d2p1:Timestamp>
+      </d2p1:TransNirImageHigh>
+      <d2p1:TransNirImages xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <d2p1:TransVisImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>30.629358804589003</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>8.3248171020662465</d2p1:CuffPressure>
+          <d2p1:CuffState>Touch</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>0.053330999999999996</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>18.977953634830556</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>0.1259047</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>18.977953634830556</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>20.637520097570189</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>19.63549359299742</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>18.977953634830556</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>3</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>1</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>115</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>220</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>1</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>left_high_vis.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT29.3421351S</d2p1:Timestamp>
+      </d2p1:TransVisImageHigh>
+      <d2p1:TransVisImages xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </d2p1:Left>
+    <d2p1:OperatorName>Administrator</d2p1:OperatorName>
+    <d2p1:Right i:type="d2p1:RawScanHand">
+      <d2p1:BackgroundImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>30.629358804589003</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>7.6938503866088332</d2p1:CuffPressure>
+          <d2p1:CuffState>Touch</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>0</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>18.977953634830556</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>0</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>18.977953634830556</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>20.301382049725078</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>19.63549359299742</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>18.977953634830556</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>3</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>1</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>115</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>120</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>1</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>right_high_background.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT10.5597022S</d2p1:Timestamp>
+      </d2p1:BackgroundImageHigh>
+      <d2p1:FieldMaskImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>NaN</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>NaN</d2p1:CuffPressure>
+          <d2p1:CuffState>Unknown</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>NaN</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>NaN</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>NaN</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>NaN</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>NaN</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>NaN</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>NaN</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>0</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>0</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>0</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>0</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>0</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>right_high_fieldmask.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT0S</d2p1:Timestamp>
+      </d2p1:FieldMaskImageHigh>
+      <d2p1:IlluminationImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>NaN</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>NaN</d2p1:CuffPressure>
+          <d2p1:CuffState>Unknown</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>NaN</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>NaN</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>NaN</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>NaN</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>NaN</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>NaN</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>NaN</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>0</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>0</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>0</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>0</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>0</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>right_high_nir_powermap-iter-1</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT0S</d2p1:Timestamp>
+      </d2p1:IlluminationImageHigh>
+      <d2p1:ReflectionImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>30.629358804589003</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>9.90223389070978</d2p1:CuffPressure>
+          <d2p1:CuffState>Touch</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>0</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>18.977953634830556</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>0</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>18.977953634830556</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>20.301382049725078</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>19.63549359299742</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>18.977953634830556</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>3</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>1</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>115</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>120</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>1</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>right_high_reflection.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT11.3865036S</d2p1:Timestamp>
+      </d2p1:ReflectionImageHigh>
+      <d2p1:TransNirImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>30.629358804589003</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>8.3248171020662465</d2p1:CuffPressure>
+          <d2p1:CuffState>Touch</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>0.066293999999999992</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>18.977953634830556</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>0.14557070000000003</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>18.977953634830556</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>20.301382049725078</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>19.63549359299742</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>18.977953634830556</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>3</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>1</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>115</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>220</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>1</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>right_high_nir.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT30.3249369S</d2p1:Timestamp>
+      </d2p1:TransNirImageHigh>
+      <d2p1:TransNirImages xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <d2p1:TransVisImageHigh i:type="d2p1:Snapshot">
+        <d2p1:HWStatus i:type="d2p1:HwStatus">
+          <d2p1:CompartmentTemp>30.629358804589003</d2p1:CompartmentTemp>
+          <d2p1:CuffPressure>8.3248171020662465</d2p1:CuffPressure>
+          <d2p1:CuffState>Touch</d2p1:CuffState>
+          <d2p1:LaserNirCurrent>0.066293999999999992</d2p1:LaserNirCurrent>
+          <d2p1:LaserNirTemp>18.977953634830556</d2p1:LaserNirTemp>
+          <d2p1:LaserVisCurrent>0.14557070000000003</d2p1:LaserVisCurrent>
+          <d2p1:LaserVisTemp>18.977953634830556</d2p1:LaserVisTemp>
+          <d2p1:Motor1Temp>20.301382049725078</d2p1:Motor1Temp>
+          <d2p1:Motor2Temp>19.63549359299742</d2p1:Motor2Temp>
+          <d2p1:Motor3Temp>18.977953634830556</d2p1:Motor3Temp>
+        </d2p1:HWStatus>
+        <d2p1:HwSettings i:type="d2p1:HwSettings">
+          <d2p1:CameraBinning>3</d2p1:CameraBinning>
+          <d2p1:CameraBinningSoftware>1</d2p1:CameraBinningSoftware>
+          <d2p1:CameraBlackLevel>115</d2p1:CameraBlackLevel>
+          <d2p1:CameraExposure>220</d2p1:CameraExposure>
+          <d2p1:CameraGain>0</d2p1:CameraGain>
+          <d2p1:CameraScaling>1</d2p1:CameraScaling>
+        </d2p1:HwSettings>
+        <d2p1:Image i:type="d2p1:Image">
+          <d2p1:FileName>right_high_vis.png</d2p1:FileName>
+          <d2p1:ImageType>PNG_16BIT_GRAY</d2p1:ImageType>
+        </d2p1:Image>
+        <d2p1:SequenceNumber>-1</d2p1:SequenceNumber>
+        <d2p1:Timestamp>PT29.3421351S</d2p1:Timestamp>
+      </d2p1:TransVisImageHigh>
+      <d2p1:TransVisImages xmlns:d4p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </d2p1:Right>
+    <d2p1:ScannedHand>Both</d2p1:ScannedHand>
+    <d2p1:ScannerId>15009</d2p1:ScannerId>
+    <d2p1:SoftwareVersion>1.4.4 (rev2186)</d2p1:SoftwareVersion>
+    <d2p1:StartTime>2016-12-05T09:44:05.2875488Z</d2p1:StartTime>
+  </RawData>
+  <ReducedData xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <Remarks></Remarks>
+  <Results xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <RoiSelections xmlns:d2p1="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+    <d2p1:anyType xmlns:d3p1="http://schemas.datacontract.org/2004/07/Demcon.Hemics.DataClasses" i:type="d3p1:RoiSelection">
+      <d3p1:AlgorithmType>RAAnalysis</d3p1:AlgorithmType>
+      <d3p1:IsAnalyzed>false</d3p1:IsAnalyzed>
+      <d3p1:Left i:type="d3p1:RoiSelectionHand">
+        <d3p1:AuxiliaryBoxWrist i:type="d3p1:Roi">
+          <d3p1:Enabled>true</d3p1:Enabled>
+          <d3p1:Id>WristRef</d3p1:Id>
+          <d3p1:Region i:type="d3p1:Region">
+            <d3p1:Angle>0</d3p1:Angle>
+            <d3p1:X1>280</d3p1:X1>
+            <d3p1:X2>144</d3p1:X2>
+            <d3p1:Y1>493</d3p1:Y1>
+            <d3p1:Y2>404</d3p1:Y2>
+          </d3p1:Region>
+          <d3p1:RoiType>Wrist</d3p1:RoiType>
+        </d3p1:AuxiliaryBoxWrist>
+        <d3p1:Joints>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp1</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp1</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-52.883139316729732</d3p1:Angle>
+                <d3p1:X1>339</d3p1:X1>
+                <d3p1:X2>368</d3p1:X2>
+                <d3p1:Y1>407</d3p1:Y1>
+                <d3p1:Y2>439</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp2</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp2</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-27.824096384253259</d3p1:Angle>
+                <d3p1:X1>308</d3p1:X1>
+                <d3p1:X2>342</d3p1:X2>
+                <d3p1:Y1>287</d3p1:Y1>
+                <d3p1:Y2>321</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp3</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp3</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-13.626994859891541</d3p1:Angle>
+                <d3p1:X1>265</d3p1:X1>
+                <d3p1:X2>293</d3p1:X2>
+                <d3p1:Y1>268</d3p1:Y1>
+                <d3p1:Y2>301</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp4</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp4</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-9.4623222080256166</d3p1:Angle>
+                <d3p1:X1>224</d3p1:X1>
+                <d3p1:X2>249</d3p1:X2>
+                <d3p1:Y1>275</d3p1:Y1>
+                <d3p1:Y2>306</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp5</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp5</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-1.9091524329963647</d3p1:Angle>
+                <d3p1:X1>171</d3p1:X1>
+                <d3p1:X2>203</d3p1:X2>
+                <d3p1:Y1>289</d3p1:Y1>
+                <d3p1:Y2>320</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip1</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip1</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-52.883139316729732</d3p1:Angle>
+                <d3p1:X1>411</d3p1:X1>
+                <d3p1:X2>438</d3p1:X2>
+                <d3p1:Y1>357</d3p1:Y1>
+                <d3p1:Y2>387</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip2</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip2</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-27.824096384253259</d3p1:Angle>
+                <d3p1:X1>348</d3p1:X1>
+                <d3p1:X2>378</d3p1:X2>
+                <d3p1:Y1>211</d3p1:Y1>
+                <d3p1:Y2>242</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip3</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip3</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-13.626994859891541</d3p1:Angle>
+                <d3p1:X1>300</d3p1:X1>
+                <d3p1:X2>325</d3p1:X2>
+                <d3p1:Y1>184</d3p1:Y1>
+                <d3p1:Y2>214</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip4</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip4</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-9.4623222080256166</d3p1:Angle>
+                <d3p1:X1>243</d3p1:X1>
+                <d3p1:X2>266</d3p1:X2>
+                <d3p1:Y1>189</d3p1:Y1>
+                <d3p1:Y2>217</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip5</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip5</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-1.9091524329963647</d3p1:Angle>
+                <d3p1:X1>180</d3p1:X1>
+                <d3p1:X2>205</d3p1:X2>
+                <d3p1:Y1>219</d3p1:Y1>
+                <d3p1:Y2>244</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Dip2</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Dip2</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-27.824096384253259</d3p1:Angle>
+                <d3p1:X1>372</d3p1:X1>
+                <d3p1:X2>396</d3p1:X2>
+                <d3p1:Y1>169</d3p1:Y1>
+                <d3p1:Y2>194</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Dip3</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Dip3</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-13.626994859891541</d3p1:Angle>
+                <d3p1:X1>318</d3p1:X1>
+                <d3p1:X2>339</d3p1:X2>
+                <d3p1:Y1>135</d3p1:Y1>
+                <d3p1:Y2>159</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Dip4</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Dip4</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-9.4623222080256166</d3p1:Angle>
+                <d3p1:X1>257</d3p1:X1>
+                <d3p1:X2>276</d3p1:X2>
+                <d3p1:Y1>142</d3p1:Y1>
+                <d3p1:Y2>165</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Dip5</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Dip5</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-1.9091524329963647</d3p1:Angle>
+                <d3p1:X1>185</d3p1:X1>
+                <d3p1:X2>205</d3p1:X2>
+                <d3p1:Y1>181</d3p1:Y1>
+                <d3p1:Y2>201</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Cmc1</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Cmc1</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-63.43494882292201</d3p1:Angle>
+                <d3p1:X1>257</d3p1:X1>
+                <d3p1:X2>286</d3p1:X2>
+                <d3p1:Y1>448</d3p1:Y1>
+                <d3p1:Y2>480</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+        </d3p1:Joints>
+        <d3p1:References>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp1Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp1Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-52.883139316729732</d3p1:Angle>
+                <d3p1:X1>382</d3p1:X1>
+                <d3p1:X2>394</d3p1:X2>
+                <d3p1:Y1>390</d3p1:Y1>
+                <d3p1:Y2>404</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp2Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp2Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-27.824096384253259</d3p1:Angle>
+                <d3p1:X1>337</d3p1:X1>
+                <d3p1:X2>351</d3p1:X2>
+                <d3p1:Y1>258</d3p1:Y1>
+                <d3p1:Y2>272</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp3Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp3Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-13.626994859891541</d3p1:Angle>
+                <d3p1:X1>289</d3p1:X1>
+                <d3p1:X2>301</d3p1:X2>
+                <d3p1:Y1>234</d3p1:Y1>
+                <d3p1:Y2>248</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp4Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp4Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-9.4623222080256166</d3p1:Angle>
+                <d3p1:X1>240</d3p1:X1>
+                <d3p1:X2>250</d3p1:X2>
+                <d3p1:Y1>239</d3p1:Y1>
+                <d3p1:Y2>253</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp5Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp5Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-1.9091524329963647</d3p1:Angle>
+                <d3p1:X1>183</d3p1:X1>
+                <d3p1:X2>195</d3p1:X2>
+                <d3p1:Y1>261</d3p1:Y1>
+                <d3p1:Y2>273</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip1Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip1Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>70.966666666666683</d3p1:X1>
+                <d3p1:X2>90.4666666666667</d3p1:X2>
+                <d3p1:Y1>204.21666666666675</d3p1:Y1>
+                <d3p1:Y2>229.21666666666675</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip2Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip2Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-27.824096384253259</d3p1:Angle>
+                <d3p1:X1>367</d3p1:X1>
+                <d3p1:X2>381</d3p1:X2>
+                <d3p1:Y1>195</d3p1:Y1>
+                <d3p1:Y2>209</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip3Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip3Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-13.626994859891541</d3p1:Angle>
+                <d3p1:X1>314</d3p1:X1>
+                <d3p1:X2>326</d3p1:X2>
+                <d3p1:Y1>164</d3p1:Y1>
+                <d3p1:Y2>178</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip4Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip4Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-9.4623222080256166</d3p1:Angle>
+                <d3p1:X1>255</d3p1:X1>
+                <d3p1:X2>265</d3p1:X2>
+                <d3p1:Y1>169</d3p1:Y1>
+                <d3p1:Y2>183</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip5Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip5Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>-1.9091524329963647</d3p1:Angle>
+                <d3p1:X1>187</d3p1:X1>
+                <d3p1:X2>199</d3p1:X2>
+                <d3p1:Y1>203</d3p1:Y1>
+                <d3p1:Y2>215</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Cmc1Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Cmc1Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>200</d3p1:X1>
+                <d3p1:X2>240</d3p1:X2>
+                <d3p1:Y1>405</d3p1:Y1>
+                <d3p1:Y2>443</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+        </d3p1:References>
+        <d3p1:Wrist i:type="d3p1:Roi">
+          <d3p1:Enabled>true</d3p1:Enabled>
+          <d3p1:Id>Wrist</d3p1:Id>
+          <d3p1:Region i:type="d3p1:Region">
+            <d3p1:Angle>-33.201207550268691</d3p1:Angle>
+            <d3p1:X1>145</d3p1:X1>
+            <d3p1:X2>226</d3p1:X2>
+            <d3p1:Y1>464</d3p1:Y1>
+            <d3p1:Y2>505</d3p1:Y2>
+          </d3p1:Region>
+          <d3p1:RoiType>Wrist</d3p1:RoiType>
+        </d3p1:Wrist>
+      </d3p1:Left>
+      <d3p1:OperatorName>Administrator</d3p1:OperatorName>
+      <d3p1:Right i:type="d3p1:RoiSelectionHand">
+        <d3p1:AuxiliaryBoxWrist i:type="d3p1:Roi">
+          <d3p1:Enabled>true</d3p1:Enabled>
+          <d3p1:Id>WristRef</d3p1:Id>
+          <d3p1:Region i:type="d3p1:Region">
+            <d3p1:Angle>0</d3p1:Angle>
+            <d3p1:X1>248</d3p1:X1>
+            <d3p1:X2>378</d3p1:X2>
+            <d3p1:Y1>495</d3p1:Y1>
+            <d3p1:Y2>423</d3p1:Y2>
+          </d3p1:Region>
+          <d3p1:RoiType>Wrist</d3p1:RoiType>
+        </d3p1:AuxiliaryBoxWrist>
+        <d3p1:Joints>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp1</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp1</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>56.659292653523</d3p1:Angle>
+                <d3p1:X1>152</d3p1:X1>
+                <d3p1:X2>180</d3p1:X2>
+                <d3p1:Y1>406</d3p1:Y1>
+                <d3p1:Y2>441</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp2</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp2</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>24.567171320601318</d3p1:Angle>
+                <d3p1:X1>179</d3p1:X1>
+                <d3p1:X2>211</d3p1:X2>
+                <d3p1:Y1>293</d3p1:Y1>
+                <d3p1:Y2>329</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp3</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp3</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>18.434948822922024</d3p1:Angle>
+                <d3p1:X1>224</d3p1:X1>
+                <d3p1:X2>253</d3p1:X2>
+                <d3p1:Y1>278</d3p1:Y1>
+                <d3p1:Y2>312</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp4</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp4</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>7.59464336859142</d3p1:Angle>
+                <d3p1:X1>271</d3p1:X1>
+                <d3p1:X2>296</d3p1:X2>
+                <d3p1:Y1>282</d3p1:Y1>
+                <d3p1:Y2>313</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp5</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp5</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>313</d3p1:X1>
+                <d3p1:X2>341</d3p1:X2>
+                <d3p1:Y1>296</d3p1:Y1>
+                <d3p1:Y2>327</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip1</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip1</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>56.659292653523</d3p1:Angle>
+                <d3p1:X1>77</d3p1:X1>
+                <d3p1:X2>103</d3p1:X2>
+                <d3p1:Y1>355</d3p1:Y1>
+                <d3p1:Y2>388</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip2</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip2</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>24.567171320601318</d3p1:Angle>
+                <d3p1:X1>137</d3p1:X1>
+                <d3p1:X2>166</d3p1:X2>
+                <d3p1:Y1>212</d3p1:Y1>
+                <d3p1:Y2>245</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip3</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip3</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>18.434948822922024</d3p1:Angle>
+                <d3p1:X1>194</d3p1:X1>
+                <d3p1:X2>220</d3p1:X2>
+                <d3p1:Y1>186</d3p1:Y1>
+                <d3p1:Y2>217</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip4</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip4</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>7.59464336859142</d3p1:Angle>
+                <d3p1:X1>252</d3p1:X1>
+                <d3p1:X2>275</d3p1:X2>
+                <d3p1:Y1>191</d3p1:Y1>
+                <d3p1:Y2>220</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip5</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip5</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>314</d3p1:X1>
+                <d3p1:X2>336</d3p1:X2>
+                <d3p1:Y1>223</d3p1:Y1>
+                <d3p1:Y2>248</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Dip2</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Dip2</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>24.567171320601318</d3p1:Angle>
+                <d3p1:X1>118</d3p1:X1>
+                <d3p1:X2>141</d3p1:X2>
+                <d3p1:Y1>165</d3p1:Y1>
+                <d3p1:Y2>192</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Dip3</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Dip3</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>18.434948822922024</d3p1:Angle>
+                <d3p1:X1>181</d3p1:X1>
+                <d3p1:X2>202</d3p1:X2>
+                <d3p1:Y1>133</d3p1:Y1>
+                <d3p1:Y2>158</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Dip4</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Dip4</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>7.59464336859142</d3p1:Angle>
+                <d3p1:X1>243</d3p1:X1>
+                <d3p1:X2>261</d3p1:X2>
+                <d3p1:Y1>140</d3p1:Y1>
+                <d3p1:Y2>163</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Dip5</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Dip5</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>313</d3p1:X1>
+                <d3p1:X2>331</d3p1:X2>
+                <d3p1:Y1>183</d3p1:Y1>
+                <d3p1:Y2>203</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Cmc1</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Cmc1</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>62.132996150343146</d3p1:Angle>
+                <d3p1:X1>239</d3p1:X1>
+                <d3p1:X2>267</d3p1:X2>
+                <d3p1:Y1>452</d3p1:Y1>
+                <d3p1:Y2>487</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Joint</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+        </d3p1:Joints>
+        <d3p1:References>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp1Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp1Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>56.659292653523</d3p1:Angle>
+                <d3p1:X1>122</d3p1:X1>
+                <d3p1:X2>134</d3p1:X2>
+                <d3p1:Y1>389</d3p1:Y1>
+                <d3p1:Y2>405</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp2Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp2Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>24.567171320601318</d3p1:Angle>
+                <d3p1:X1>166</d3p1:X1>
+                <d3p1:X2>180</d3p1:X2>
+                <d3p1:Y1>261</d3p1:Y1>
+                <d3p1:Y2>277</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp3Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp3Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>18.434948822922024</d3p1:Angle>
+                <d3p1:X1>216</d3p1:X1>
+                <d3p1:X2>228</d3p1:X2>
+                <d3p1:Y1>241</d3p1:Y1>
+                <d3p1:Y2>255</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp4Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp4Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>7.59464336859142</d3p1:Angle>
+                <d3p1:X1>268</d3p1:X1>
+                <d3p1:X2>278</d3p1:X2>
+                <d3p1:Y1>244</d3p1:Y1>
+                <d3p1:Y2>258</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Mcp5Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Mcp5Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>321</d3p1:X1>
+                <d3p1:X2>331</d3p1:X2>
+                <d3p1:Y1>267</d3p1:Y1>
+                <d3p1:Y2>279</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip1Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip1Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>418.36666666666673</d3p1:X1>
+                <d3p1:X2>438.86666666666673</d3p1:X2>
+                <d3p1:Y1>243.46811594202893</d3p1:Y1>
+                <d3p1:Y2>262.40289855072456</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip2Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip2Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>24.567171320601318</d3p1:Angle>
+                <d3p1:X1>132</d3p1:X1>
+                <d3p1:X2>146</d3p1:X2>
+                <d3p1:Y1>193</d3p1:Y1>
+                <d3p1:Y2>209</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip3Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip3Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>18.434948822922024</d3p1:Angle>
+                <d3p1:X1>192</d3p1:X1>
+                <d3p1:X2>204</d3p1:X2>
+                <d3p1:Y1>164</d3p1:Y1>
+                <d3p1:Y2>178</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip4Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip4Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>7.59464336859142</d3p1:Angle>
+                <d3p1:X1>252</d3p1:X1>
+                <d3p1:X2>262</d3p1:X2>
+                <d3p1:Y1>169</d3p1:Y1>
+                <d3p1:Y2>183</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Pip5Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Pip5Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>318</d3p1:X1>
+                <d3p1:X2>328</d3p1:X2>
+                <d3p1:Y1>206</d3p1:Y1>
+                <d3p1:Y2>218</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+          <d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+            <d2p1:Key>Cmc1Ref</d2p1:Key>
+            <d2p1:Value i:type="d3p1:Roi">
+              <d3p1:Enabled>true</d3p1:Enabled>
+              <d3p1:Id>Cmc1Ref</d3p1:Id>
+              <d3p1:Region i:type="d3p1:Region">
+                <d3p1:Angle>0</d3p1:Angle>
+                <d3p1:X1>200</d3p1:X1>
+                <d3p1:X2>240</d3p1:X2>
+                <d3p1:Y1>405</d3p1:Y1>
+                <d3p1:Y2>443</d3p1:Y2>
+              </d3p1:Region>
+              <d3p1:RoiType>Reference</d3p1:RoiType>
+            </d2p1:Value>
+          </d2p1:KeyValueOfERoiIdanyTypexdnl2MJq>
+        </d3p1:References>
+        <d3p1:Wrist i:type="d3p1:Roi">
+          <d3p1:Enabled>true</d3p1:Enabled>
+          <d3p1:Id>Wrist</d3p1:Id>
+          <d3p1:Region i:type="d3p1:Region">
+            <d3p1:Angle>28.979707697928777</d3p1:Angle>
+            <d3p1:X1>299</d3p1:X1>
+            <d3p1:X2>373</d3p1:X2>
+            <d3p1:Y1>473</d3p1:Y1>
+            <d3p1:Y2>510</d3p1:Y2>
+          </d3p1:Region>
+          <d3p1:RoiType>Wrist</d3p1:RoiType>
+        </d3p1:Wrist>
+      </d3p1:Right>
+      <d3p1:RoiSelectionDate>2016-12-05T09:44:05.2875488Z</d3p1:RoiSelectionDate>
+    </d2p1:anyType>
+  </RoiSelections>
+</Measurement>

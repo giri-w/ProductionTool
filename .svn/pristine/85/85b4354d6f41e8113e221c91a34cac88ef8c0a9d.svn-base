@@ -1,0 +1,54 @@
+﻿using System;
+using System.Collections.Generic;
+using Demcon.ProductionTool.Hardware;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using HemicsFat;
+
+
+namespace Demcon.ProductionTool.Model.Tests.SelfTest
+{
+    public class SelfTestStep002 : TestStep
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericTestStep001"/> class.
+        /// DO NOT USE! Only for Serializabililty!
+        /// </summary>
+        [Obsolete]
+        public SelfTestStep002()
+            : this(null)
+        { }
+
+        public SelfTestStep002(TestManager testManager)
+            : base(testManager)
+        {
+            this.Name = "Analyze measurements";
+            this.Instructions = "If any measurements were done wrong first remove them from the system. \n" +
+                                "Press 'Ok' to analyze the measurements";
+            this.SupportingImage = string.Empty;
+            this.ButtonOptions = EButtonOptions.OK;
+            this.Results = new List<Result>();
+            this.OnTestUpdated(false);
+        }
+
+        string hostName = "172.17.5.108";
+        string fingerprint = "ea:11:8b:78:c3:85:8b:25:3b:a3:7a:38:4e:68:81:d7:07:3d:d6:4f";
+        string localPath = @"C:\Users\JKA\Stage\TestFolder";
+        string hostPath = "/Measurements/297/";
+
+        public override void Execute(EButtonOptions userAction, string info)
+        {
+            this.Results.Clear();
+            if (userAction == EButtonOptions.OK)
+            {
+                // Check or do something (with the hardware?) for the test
+                FtpTransfer ftpTransfer = new FtpTransfer();
+
+                bool result = ftpTransfer.DownloadLatest(hostName, fingerprint, localPath, hostPath);
+                this.Results.Add(new BooleanResult("File transfer", "", result));
+            }
+
+            this.OnTestUpdated(true);
+        }
+    }
+}

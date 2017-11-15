@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+using Demcon.ProductionTool.Hardware;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using HemicsFat;
+
+
+namespace Demcon.ProductionTool.Model.Tests.VolunteerScan
+{
+    public class VolunteerScanStep003 : TestStep
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericTestStep001"/> class.
+        /// DO NOT USE! Only for Serializabililty!
+        /// </summary>
+        [Obsolete]
+        public VolunteerScanStep003()
+            : this(null)
+        { }
+
+        public VolunteerScanStep003(TestManager testManager)
+            : base(testManager)
+        {
+            this.Name = "Volunteerscan Check";
+            this.Instructions = "Press 'Ok' to run the Python script checking the volunteerscan";
+            this.SupportingImage = string.Empty;
+            this.ButtonOptions = EButtonOptions.OK;
+            this.Results = new List<Result>();
+            this.OnTestUpdated(false);
+        }
+
+        public override void Execute(EButtonOptions userAction, string info)
+        {
+            this.Results.Clear();
+            if (userAction == EButtonOptions.OK)
+            {
+                // Check or do something (with the hardware?) for the test
+                Python volunteerScan = new Python();
+                string pythonLocation = @"Python/checkVolunteerScan_1_9_0.py";
+                string pythonArgument = "";
+                var result = volunteerScan.RunPython(pythonLocation, pythonArgument);
+                bool resultBool = volunteerScan.BoolPython();
+                this.Results.Add(new BooleanResult("Python script:", result, resultBool));
+                
+          
+            }
+                this.OnTestUpdated(true);
+        }
+    }
+}

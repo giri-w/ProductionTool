@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using Demcon.ProductionTool.Hardware;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Diagnostics;
+using System.IO;
+
+namespace Demcon.ProductionTool.Model.Tests.LUTDetermination
+{
+    public class LUTTestStep0031 : TestStep
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericTestStep0031"/> class.
+        /// DO NOT USE! Only for Serializabililty!
+        /// </summary>
+        [Obsolete]
+        public LUTTestStep0031()
+            : this(null)
+        { }
+
+        public LUTTestStep0031(TestManager testManager)
+            : base(testManager)
+        {
+            this.Name = "Analyze the measurement";
+            this.Instructions = "Measurement Information\n" +
+                                "- Grid4 Location   : \n" +
+                                "- Grid  Location   : \n" +
+                                "- Var Intensity    : \n" +
+                                "- Var Mass         : \n" +
+                                "- Var Distance     : \n\n" +
+                                "Check if every green dots are in white dots\n" +
+                                "- Press Next to continue\n" +
+                                "- or press Back to change the measurement setting";
+            this.SupportingImage = @"Python\figure\FieldMask.png";
+            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back;
+            this.Results = new List<Result>();
+            this.OnTestUpdated(false);
+        }
+
+        public override void Execute(EButtonOptions userAction, string info)
+        {
+            this.Results.Clear();
+            if (userAction == EButtonOptions.Next)
+            {
+                // Check or do something (with the hardware?) for the test
+                this.Results.Add(new BooleanResult("Analyze the measurement", "Mask has been set up properly", true));
+                this.OnTestUpdated(true);
+            }
+
+            if (userAction == EButtonOptions.Back)
+            {
+                this.OnTestCanceled(true);
+            }
+
+
+        }
+
+      
+    }
+
+    
+
+}

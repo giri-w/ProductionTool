@@ -1,0 +1,78 @@
+2016-12-05 09:48:58,331 [1228] INFO  RAAnalysis []- Logger initialized
+2016-12-05 09:48:58,331 [1228] INFO  RAAnalysis []- Input file path: E:\measurements\297\20161205_094535_297\Result data\20161205_094857\phase2.xml
+2016-12-05 09:48:58,331 [1228] INFO  RAAnalysis []- Output file path: E:\measurements\297\20161205_094535_297\Result data\20161205_094857\phase2_result.xml
+2016-12-05 09:48:58,331 [1228] INFO  RAAnalysis []- Config file path: [not specified]
+2016-12-05 09:48:58,331 [1228] INFO  RAAnalysis []- Create WorkflowPhase2
+2016-12-05 09:48:58,331 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start executing WorkflowPhase2
+2016-12-05 09:48:58,331 [1228] INFO  RAAnalysis []- WorkflowPhase2: Algorithm version: 1.3.1.0612-final
+2016-12-05 09:48:58,331 [1228] INFO  RAAnalysis []- WorkflowPhase2Input::Deserialize: Start deserializing inputs
+2016-12-05 09:48:58,409 [1228] INFO  RAAnalysis []- WorkflowPhase2Input::Deserialize: Finish deserializing inputs
+2016-12-05 09:48:58,409 [1228] INFO  RAAnalysis []- Config: Start reading XML
+2016-12-05 09:48:58,409 [1228] INFO  RAAnalysis []- Config: Finish reading XML
+2016-12-05 09:48:58,409 [1228] INFO  RAAnalysis []- Create WorkflowPhase2SingleHand
+2016-12-05 09:48:58,409 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start processing Left hand
+2016-12-05 09:48:58,440 [1228] INFO  RAAnalysis []- WorkflowPhase2Input::CheckInputs: Start checking inputs
+2016-12-05 09:48:58,471 [1228] INFO  RAAnalysis []- WorkflowPhase2Input::CheckInputs: Finish checking inputs
+2016-12-05 09:48:58,471 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start executing scan analysis
+2016-12-05 09:48:58,518 [1228] INFO  RAAnalysis []- ScanAnalysis::Execute Start
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- ScanAnalysis::Execute Finish
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finish executing scan analysis
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start executing scan scoring for one hand
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- ScanScoring::Execute Start
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- ScanScoring::Execute Finish
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finished executing scan scoring for one hand
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start executing inflammation visualization
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- InflammationVisualization::ReadLookupTable
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- InflammationVisualization::Configure
+2016-12-05 09:49:02,418 [1228] INFO  RAAnalysis []- InflammationVisualization::Execute Start draw inflammation
+2016-12-05 09:49:02,449 [1228] INFO  RAAnalysis []- InflammationVisualization::Execute Finish draw inflammation
+2016-12-05 09:49:02,449 [1228] INFO  RAAnalysis []- InflammationVisualization::Execute Start draw ROI
+2016-12-05 09:49:02,449 [1228] INFO  RAAnalysis []- InflammationVisualization::Execute Finish draw ROI
+2016-12-05 09:49:02,449 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finish executing inflammation visualization
+2016-12-05 09:49:02,449 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finish processing Left hand
+2016-12-05 09:49:02,449 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start processing Right hand
+2016-12-05 09:49:02,465 [1228] INFO  RAAnalysis []- WorkflowPhase2Input::CheckInputs: Start checking inputs
+2016-12-05 09:49:02,465 [1228] INFO  RAAnalysis []- WorkflowPhase2Input::CheckInputs: Finish checking inputs
+2016-12-05 09:49:02,465 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start executing scan analysis
+2016-12-05 09:49:02,511 [1228] INFO  RAAnalysis []- ScanAnalysis::Execute Start
+2016-12-05 09:49:03,089 [1428] INFO  RAAnalysis []- Progress: 60%
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- ScanAnalysis::Execute Finish
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finish executing scan analysis
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start executing scan scoring for one hand
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- ScanScoring::Execute Start
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- ScanScoring::Execute Finish
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finished executing scan scoring for one hand
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start executing inflammation visualization
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- InflammationVisualization::ReadLookupTable
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- InflammationVisualization::Configure
+2016-12-05 09:49:06,162 [1228] INFO  RAAnalysis []- InflammationVisualization::Execute Start draw inflammation
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- InflammationVisualization::Execute Finish draw inflammation
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- InflammationVisualization::Execute Start draw ROI
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- InflammationVisualization::Execute Finish draw ROI
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finish executing inflammation visualization
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finish processing Right hand
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start executing scan scoring for the optical score
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finished executing scan scoring for the optical score
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start creating output images
+2016-12-05 09:49:06,178 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finished creating output images
+2016-12-05 09:49:06,209 [1428] INFO  RAAnalysis []- Progress: 90%
+2016-12-05 09:49:06,802 [1228] INFO  RAAnalysis []- WorkflowPhase2: Start writing output XML
+2016-12-05 09:49:06,833 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finished writing output XML
+2016-12-05 09:49:06,833 [1228] INFO  RAAnalysis []- Destroy WorkflowPhase2SingleHand
+2016-12-05 09:49:06,848 [1428] INFO  RAAnalysis []- Progress: 100%
+2016-12-05 09:49:06,848 [1228] INFO  RAAnalysis []- WorkflowPhase2: Finished executing WorkflowPhase2
+2016-12-05 09:49:06,848 [1228] INFO  RAAnalysis []- Destroy WorkflowPhase2
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- Logger initialized
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- Input file path: E:\measurements\297\20161205_094535_297\Result data\20161205_094857\finish.xml
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- Output file path: E:\measurements\297\20161205_094535_297\Result data\20161205_094857\finish_result.xml
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- Config file path: [not specified]
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- Create WorkflowFinish
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- Start executing WorkflowFinish
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- WorkflowFinish :Algorithm version: 1.3.1.0612-final
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- WorkflowFinish: Start reading input XML
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- WorkflowFinish: Finished reading input XML
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- WorkflowFinish: Start writing output XML
+2016-12-05 09:49:07,441 [1544] INFO  RAAnalysis []- Progress: 100%
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- WorkflowFinish: Finished writing output XML
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- Finished executing WorkflowFinish
+2016-12-05 09:49:07,441 [3336] INFO  RAAnalysis []- Destroy WorkflowFinish

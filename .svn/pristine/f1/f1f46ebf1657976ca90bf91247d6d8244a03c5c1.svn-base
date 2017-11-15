@@ -1,0 +1,38 @@
+
+
+[2016-12-05 09:44:15.082] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] Measurement started
+[2016-12-05 09:44:15.082] [Application    ] [Demcon.Hemics.Controller.HighBackgroundState] Recording Background image
+[2016-12-05 09:44:15.925] [Application    ] [Demcon.Hemics.Controller.HighBackgroundState] High-res Background image captured successfully
+[2016-12-05 09:44:15.925] [Application    ] [Demcon.Hemics.Controller.HighReflectionState] Recording Reflection image
+[2016-12-05 09:44:17.251] [Application    ] [Demcon.Hemics.Controller.HighReflectionState] High-res Reflection image captured successfully
+[2016-12-05 09:44:17.251] [Application    ] [Demcon.Hemics.Controller.WaitForMotorsState] Wait for motors to reach required speed
+[2016-12-05 09:44:31.431] [Application    ] [Demcon.Hemics.Controller.WaitForMotorsState] Motors have reached required speed
+[2016-12-05 09:44:31.447] [Application    ] [Demcon.Hemics.Controller.LaserCalibrationState] Calibrating Lasers
+[2016-12-05 09:44:32.258] [Application    ] [Demcon.Hemics.Controller.HandExtractionState] Starting auto tuning procedure
+[2016-12-05 09:44:32.320] [Application    ] [Demcon.Hemics.Controller.HandExtractionHandAnalysisTransmissionState] Using left Motor fixed mask: D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_grid4L.png with laser power offset 0
+[2016-12-05 09:44:32.445] [Application    ] [Demcon.Hemics.Controller.HandExtractionHandAnalysisTransmissionState] Using right Motor fixed mask: D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_grid4R.png with laser power offset 0
+[2016-12-05 09:44:32.508] [Application    ] [Demcon.Hemics.Controller.HandExtractionMotorCoordinatesTransmissionState] Send power map to hardware
+[2016-12-05 09:44:33.490] [Application    ] [Demcon.Hemics.Controller.HandExtractionMotorCoordinatesTransmissionState] Finished sending power map to hardware
+[2016-12-05 09:44:33.631] [Application    ] [Demcon.Hemics.Controller.HandExtractionMotorCoordinatesTransmissionState] Finalized hand extraction
+[2016-12-05 09:44:33.631] [Application    ] [Demcon.Hemics.Controller.HandExtractionState] Hand extraction completed
+[2016-12-05 09:44:33.631] [Application    ] [Demcon.Hemics.Controller.HighTransmissionVisState] Recording Transmission VIS image
+[2016-12-05 09:44:34.723] [Application    ] [Demcon.Hemics.Controller.HighTransmissionVisState] High-res transmission VIS image captured successfully
+[2016-12-05 09:44:34.723] [Application    ] [Demcon.Hemics.Controller.HighTransmissionNirState] Recording Transmission NIR image
+[2016-12-05 09:44:35.690] [Application    ] [Demcon.Hemics.Controller.HighTransmissionNirState] High-res transmission NIR image captured successfully
+[2016-12-05 09:44:35.690] [Application    ] [Demcon.Hemics.Controller.SequenceState  ] Recording Transmission sequence
+[2016-12-05 09:44:43.929] [Application    ] [Demcon.Hemics.Controller.CancelState    ] Measurement 20161205_094405_297 cancelled
+[2016-12-05 09:44:44.010] [Application    ] [Demcon.Hemics.Controller.LiveState      ] Starting live feed
+[2016-12-05 09:45:07.678] [Application    ] [Demcon.Hemics.Controller.LiveState      ] Stopping live feed
+[2016-12-05 09:45:07.772] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] Start new measurement
+[2016-12-05 09:45:07.944] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] Starting measurement: 20161205_094507_297
+[2016-12-05 09:45:07.961] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] [SystemWarning] [EC_0040] Flash memory clear not yet complete. Please wait a few moments and try again.
+[2016-12-05 09:45:08.585] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] Cancel measurement
+[2016-12-05 09:45:08.586] [Application    ] [Demcon.Hemics.Controller.CancelState    ] Measurement cancelled
+[2016-12-05 09:45:08.586] [Application    ] [Demcon.Hemics.Controller.LiveState      ] Starting live feed
+[2016-12-05 09:45:12.918] [Application    ] [Demcon.Hemics.Controller.LiveState      ] Stopping live feed
+[2016-12-05 09:45:12.993] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] Start new measurement
+[2016-12-05 09:45:13.196] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] Starting measurement: 20161205_094512_297
+[2016-12-05 09:45:13.211] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] [SystemWarning] [EC_0040] Flash memory clear not yet complete. Please wait a few moments and try again.
+[2016-12-05 09:45:13.608] [Application    ] [Demcon.Hemics.Controller.PrepareState   ] Cancel measurement
+[2016-12-05 09:45:13.609] [Application    ] [Demcon.Hemics.Controller.CancelState    ] Measurement cancelled
+[2016-12-05 09:45:13.609] [Application    ] [Demcon.Hemics.Controller.LiveState      ] Starting live feed

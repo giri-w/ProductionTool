@@ -1,0 +1,368 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Xml.Serialization;
+using Demcon.ProductionTool.General;
+
+namespace Demcon.ProductionTool.Model
+{
+    [Serializable]
+    [XmlInclude(typeof(GenericTestSequence))]
+    [XmlInclude(typeof(CalibrationTestSequence))]
+    public abstract class TestSequence
+    {
+        public static int DataFormatVersionNumber = 1;
+        private int currentTestIndex = -1;
+        protected TestManager testManager;
+        private static Regex SerialRegex = new Regex(@"^FNN\d{9}$");
+        private static Regex DwoRegex = new Regex(@"^[-_A-Za-z0-9 ]+$");
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestSequence"/> class.
+        /// DO NOT USE! Only for Serializabililty!
+        /// </summary>
+        [Obsolete]
+        public TestSequence()
+            : this(null)
+        { }
+
+        public TestSequence(TestManager testManager)
+        {
+            this.testManager = testManager;
+            this.PCID = Environment.MachineName;
+            this.AutoGenerateReport = false;
+            this.Version = TestSequence.DataFormatVersionNumber;
+        }
+
+        public event EventHandler<EventArgs<bool>> UpdatedEvent;
+
+
+        [XmlAttribute]
+        public int Version { get; set; }
+
+        [XmlAttribute]
+        public string Name { get; set; }
+
+        [XmlAttribute]
+        public string SerialNumber { get; set; }
+
+        [XmlAttribute]
+        public string Dwo { get; set; }
+
+        [XmlAttribute]
+        public string OperatorID { get; set; }
+
+        [XmlAttribute]
+        public string PCID { get; set; }
+
+        [XmlAttribute]
+        public string AddtionalInformationRequestText1 { get; set; }
+
+        [XmlAttribute]
+        public string AddtionalInformationRequestText2 { get; set; }
+
+        [XmlAttribute]
+        public string AddtionalInformation1 { get; set; }
+
+        [XmlAttribute]
+        public string AddtionalInformation2 { get; set; }
+
+        [XmlAttribute]
+        public string HardwareVersion { get; set; }
+
+        [XmlIgnore]
+        public bool AutoGenerateReport { get; set; }
+
+        [XmlIgnore]
+        public string Description { get; set; }
+        public List<Test> Tests { get; set; }
+        public int TestCount
+        {
+            get
+            {
+                int retVal = 0;
+                if (this.Tests != null)
+                {
+                    retVal = this.Tests.Count(t => t.StepCount > 0);
+                }
+
+                return retVal;
+            }
+        }
+
+        [XmlAttribute]
+        public ETestConclusion Conclusion
+        {
+            get
+            {
+                return (ETestConclusion)this.Tests.Min(t => (int)t.Conclusion);
+            }
+
+            set
+            {
+                // ignore the set; only here in order to enable this property to be serialized.
+            }
+        }
+
+        public Test CurrentTest
+        {
+            get
+            {
+                Test retVal = null;
+                List<Test> tests = this.Tests;
+                if (tests != null && this.CurrentTestIndex >= 0 && this.CurrentTestIndex < tests.Count)
+                {
+                    retVal = tests[this.CurrentTestIndex];
+                }
+
+                return retVal;
+            }
+        }
+
+        public TestStep CurrentTestStep
+        {
+            get
+            {
+                TestStep retVal = null;
+                if (this.CurrentTest != null)
+                {
+                    retVal = this.CurrentTest.CurrentTestStep;
+                }
+
+                return retVal;
+            }
+        }
+
+        public string StoragePath(string dataRootPath, bool isCalibration)
+        {
+            string retVal;
+            if (this as CalibrationTestSequence == null)
+            {
+                retVal = Path.Combine(dataRootPath, this.SerialNumber, this.Dwo, this.Name);
+            }
+            else
+            {
+                retVal = Path.Combine(dataRootPath, "Calibration");
+            }
+
+            return retVal;
+        }
+
+        public virtual void Execute(EButtonOptions userAction, string info)
+        {
+            if (this.CurrentTest != null)
+            {
+                this.CurrentTest.Execute(userAction,info);
+            }
+        }
+
+ 
+
+        public string AcceptInput(string serial, string dwo, string operatorID, string additionalInfo1, string additionalInfo2)
+        {
+            string retVal = string.Empty;
+
+            if (!SerialRegex.IsMatch(serial))
+            {
+                retVal += "Serienummer formaat: FNNYYMMXXXX, waar YY: jaartal, MM: maandnummer en XXXXX een 5-cijferig nummer\n";
+            }
+
+            if (!DwoRegex.IsMatch(dwo))
+            {
+                retVal += "DWO/klachtnummer mag niet leeg zijn en moet uit letters en/of cijfers bestaan\n";
+            }
+
+            if (string.IsNullOrWhiteSpace(operatorID))
+            {
+                retVal += "Operator ID mag niet leeg zijn\n";
+            }
+
+            retVal += this.CheckAdditionalInfo1(additionalInfo1);
+            retVal += this.CheckAdditionalInfo2(additionalInfo2);
+
+            return retVal;
+        }
+
+        protected virtual string CheckAdditionalInfo1(string additionalInfo)
+        {
+            string retVal = string.Empty;
+
+            // No input expected by default, implement check to verify the input.
+            if (!string.IsNullOrWhiteSpace(additionalInfo))
+            {
+                retVal = this.AddtionalInformationRequestText1 + " moet leeg zijn";
+            }
+
+            return retVal;
+        }
+
+        protected virtual string CheckAdditionalInfo2(string additionalInfo)
+        {
+            string retVal = string.Empty;
+
+            // No input expected by default, implement check to verify the input.
+            if (!string.IsNullOrWhiteSpace(additionalInfo))
+            {
+                retVal = this.AddtionalInformationRequestText2 + " moet leeg zijn";
+            }
+
+            return retVal;
+        }
+
+        public TestStep GetNextStep()
+        {
+            TestStep retVal = null;
+            Test currentTest = this.CurrentTest;
+            if (currentTest != null)
+            {
+                retVal = currentTest.GetNextStep();
+                if (retVal == null)
+                {
+                    this.CurrentTestIndex++;
+                    currentTest = this.CurrentTest;
+                    if (currentTest != null)
+                    {
+                        currentTest.SetToFirstStep();
+                        retVal = currentTest.CurrentTestStep;
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
+        public void SetToFirstTest()
+        {
+            this.CurrentTestIndex = 0;
+            Test currentTest = this.CurrentTest;
+            if (currentTest != null)
+            {
+                currentTest.SetToFirstStep();
+            }
+        }
+
+        public void SetCurrentTest(Test newCurrentTest)
+        {
+            if (this.CurrentTest != null)
+            {
+                this.CurrentTest.CurrentTestStep.Stop();
+            }
+
+            if (newCurrentTest == null)
+            {
+                this.CurrentTestIndex = -1;
+            }
+            else if (newCurrentTest != this.CurrentTest)
+            {
+                this.CurrentTestIndex = this.Tests.IndexOf(newCurrentTest);
+            }
+
+            if (this.CurrentTest != null)
+            {
+                this.CurrentTest.SetToFirstStep();
+            }
+
+            this.OnTestUpdated(this, new EventArgs<bool>(false));
+        }
+
+        public string Save(string dataRootPath)
+        {
+            // collect NanoCore version information
+            this.HardwareVersion = "#Set Hardware version here#";
+
+            // save XML file
+            string sequencePath = this.StoragePath(dataRootPath, this as CalibrationTestSequence == null);
+
+            try
+            {
+                if (!Directory.Exists(sequencePath))
+                {
+                    Directory.CreateDirectory(sequencePath);
+                }
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    sequencePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "NanoCoreTestResults", this.SerialNumber, this.Name);
+                    if (!Directory.Exists(sequencePath))
+                    {
+                        Directory.CreateDirectory(sequencePath);
+                    }
+                }
+                catch (Exception)
+                {
+                    sequencePath = string.Empty;
+                }
+            }
+
+            if (sequencePath != string.Empty)
+            {
+                string fileName = String.Format("{0} - {1} - {2:yyyy-MM-dd HH.mm.ss}.xml", this.SerialNumber, this.Name, DateTime.Now);
+                try
+                {
+                    using (FileStream stream = File.Create(Path.Combine(sequencePath, fileName)))
+                    using (StreamWriter writer = new StreamWriter(stream, System.Text.Encoding.Unicode))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(TestSequence));
+                        serializer.Serialize(writer, this);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Unable to save the test sequence to file " + fileName + "!", ex.Message);
+                    throw ex;
+                }
+            }
+
+            return sequencePath;
+        }
+
+        /// <summary>
+        /// Called when [test updated].
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="EventArgs{System.Boolean}"/> instance containing the event data. The boolean indicates whether the current test was finished.</param>
+        protected void OnTestUpdated(object sender, EventArgs<bool> e)
+        {
+            if (e.Value)
+            {
+                this.GetNextStep();
+            }
+
+            EventHandler<EventArgs<bool>> handler = this.UpdatedEvent;
+            if (handler != null)
+            {
+                bool completed = this.CurrentTest == null;
+                this.UpdatedEvent(sender, new EventArgs<bool>(completed));
+            }
+        }
+
+        private int CurrentTestIndex
+        {
+            get
+            {
+                return this.currentTestIndex;
+            }
+
+            set
+            {
+                if (this.currentTestIndex != value)
+                {
+                    if (this.CurrentTest != null)
+                    {
+                        this.CurrentTest.UpdatedEvent -= new EventHandler<EventArgs<bool>>(this.OnTestUpdated);
+                    }
+
+                    this.currentTestIndex = value;
+                    if (this.CurrentTest != null)
+                    {
+                        this.CurrentTest.UpdatedEvent += new EventHandler<EventArgs<bool>>(this.OnTestUpdated);
+                    }
+                }
+            }
+        }
+    }
+}

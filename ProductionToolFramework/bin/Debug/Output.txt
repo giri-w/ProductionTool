@@ -1,0 +1,5 @@
+Variabel 1: C:\Users\GWA\.ipython
+Variabel 2: C:\Users\GWA\Pictures
+Variabel 3: 33
+Variabel 4: 70
+Variabel 5: 100

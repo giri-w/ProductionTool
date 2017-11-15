@@ -1,0 +1,75 @@
+﻿using System;
+using System.Globalization;
+using System.IO;
+using HemicsFat;
+
+namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
+{
+    public class LUTTestStep005 : SpecificTestStep
+    {
+        private float inputTemperature = 0;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericTestStep005"/> class.
+        /// DO NOT USE! Only for Serializabililty!
+        /// </summary>
+        [Obsolete]
+        public LUTTestStep005()
+            : this(null)
+        { }
+
+
+        string hostName = "172.17.5.108";
+        string fingerprint = "ea:11:8b:78:c3:85:8b:25:3b:a3:7a:38:4e:68:81:d7:07:3d:d6:4f";
+        string localPath1 = @"C:\Test\PyLeft-MotorMatrix-High.xml";
+        string localPath2 = @"C:\Test\PyRight-MotorMatrix-High.xml";
+        string hostPath = "/Settings/system/CameraSettings/";
+        string checkFile = String.Empty;
+        
+
+        public LUTTestStep005(TestManager testManager)
+            : base(testManager)
+        {
+
+            // check the existance of the XML file
+            if (File.Exists(localPath1) & File.Exists(localPath2))
+                checkFile = "EXIST.\nPress Next to transfer the files to the machine";
+            else
+                checkFile = "NOT EXIST.\nPress Back to go to the previous step and don't forget to press Analyze button to generate the files";
+
+
+                this.Name = "Send XML files to HandScanner";
+            this.Instructions = "XML files in this computer are " + checkFile;
+            this.SupportingImage = String.Empty;
+            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back;
+            this.OnTestUpdated(false);
+            
+        }
+
+        public override void Execute(EButtonOptions userAction, string info)
+        {
+            this.Results.Clear();
+            if (userAction == EButtonOptions.Next)
+            {
+                // Check or do something (with the hardware?) for the test
+                FtpTransfer ftpTransfer = new FtpTransfer();
+
+                
+            
+
+                bool result1 = ftpTransfer.Upload(hostName, fingerprint, localPath1, hostPath);
+                bool result2 = ftpTransfer.Upload(hostName, fingerprint, localPath2, hostPath);
+                this.Results.Add(new BooleanResult("File transfer", "", (result1 & result2)));
+                this.OnTestUpdated(true);
+            }
+
+            if (userAction == EButtonOptions.Back)
+            {
+                this.OnTestCanceled(true);
+            }
+
+        }
+
+       
+    }
+}
