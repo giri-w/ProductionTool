@@ -2,25 +2,26 @@ import matplotlib
 matplotlib.use('Agg')
 import numpy as np
 import copy
+import sys
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 from matplotlib import gridspec
 
-# debug
-a = "C:\\Users\\GWA\\Documents\\GitHub\\Demcon\\ProductionToolFramework\\ProductionToolFramework\\bin\\Debug\\Python"
-b = "C:\\Users\\GWA\\Desktop\\Internship DEMCON\\2. Hemics production tools\\1. Test Source\\20170703_113239_297 SignalStability"
+# # debug
+# a = "C:\\Users\\GWA\\Documents\\GitHub\\Demcon\\ProductionToolFramework\\ProductionToolFramework\\bin\\Debug\\Python\\figure"
+# b = "C:\\Users\\GWA\\Desktop\\Internship DEMCON\\2. Hemics production tools\\1. Test Source\\20170703_113239_297 SignalStability"
 
 
-# 
-# import sys
-# # path location of output
-# a0 = str(sys.argv[1]) 
-# a1 = a0.rsplit("\\",1)
-# a = a1[0] + "\\figure";
-# 
-# # location of image source
-# b = str(sys.argv[2]) 
-# b = b.replace("\\","\\\\")
+
+
+# path location of output
+a0 = str(sys.argv[1]) 
+a1 = a0.rsplit("\\",1)
+a = a1[0] + "\\figure";
+
+# location of image source
+b = str(sys.argv[2]) 
+b = b.replace("\\","\\\\")
 
 
 # change dir work
@@ -355,3 +356,4 @@ plt.show()
 plt.savefig('SignalStability.png')
 
 print("100,Signal Stability Test : PASS")
+sys.stdout.flush()

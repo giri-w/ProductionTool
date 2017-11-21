@@ -25,13 +25,18 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             this.Description = "Generate Field Mask from camera images";
             this.Steps = new List<TestStep>()
             {
-                new FMGTestStep001(this.testManager),
-                new FMGTestStep002(this.testManager),
-                new FMGTestStep003(this.testManager),
-                new FMGTestStep004(this.testManager),
-                new FMGTestStep005(this.testManager),
-                new FMGTestStep006(this.testManager),
-
+                new FMGTestStep01(this.testManager),
+                new FMGTestStep02(this.testManager),
+                new FMGTestStep03(this.testManager),
+                new FMGTestStep04(this.testManager),
+                new FMGTestStep05(this.testManager),
+                new FMGTestStep06(this.testManager),
+                new FMGTestStep07(this.testManager),
+                new FMGTestStep08(this.testManager),
+                new FMGTestStep09(this.testManager),
+                new FMGTestStep10(this.testManager),
+                new FMGTestStep11(this.testManager),
+                new FMGTestStep12(this.testManager),
             };
             this.SetToFirstStep();
         }

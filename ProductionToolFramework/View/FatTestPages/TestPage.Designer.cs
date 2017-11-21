@@ -1,4 +1,7 @@
-﻿namespace Demcon.ProductionTool.View.FatTestPages
+﻿using System;
+using System.ComponentModel;
+
+namespace Demcon.ProductionTool.View.FatTestPages
 {
     partial class TestPage
     {
@@ -272,6 +275,7 @@
             this.varLabel1.Size = new System.Drawing.Size(28, 13);
             this.varLabel1.TabIndex = 8;
             this.varLabel1.Text = "var1";
+            this.varLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // varBox1
             // 
@@ -371,7 +375,7 @@
             this.RetryButton.Name = "RetryButton";
             this.RetryButton.Size = new System.Drawing.Size(120, 46);
             this.RetryButton.TabIndex = 1;
-            this.RetryButton.Text = "Retry";
+            this.RetryButton.Text = "Update";
             this.RetryButton.UseVisualStyleBackColor = false;
             this.RetryButton.Click += new System.EventHandler(this.RetryButton_Click);
             // 
@@ -559,6 +563,7 @@
             // backgroundWorker1
             // 
             this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
@@ -592,6 +597,8 @@
             this.ResumeLayout(false);
 
         }
+
+   
 
         #endregion
 

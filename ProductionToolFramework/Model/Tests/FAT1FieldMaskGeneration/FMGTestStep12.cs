@@ -7,24 +7,24 @@ using System.Windows.Forms;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
-    public class FMGTestStep001 : TestStep
+    public class FMGTestStep12 : TestStep
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep001"/> class.
+        /// Initializes a new instance of the <see cref="GenericTestStep12"/> class.
         /// DO NOT USE! Only for Serializabililty!
         /// </summary>
         [Obsolete]
-        public FMGTestStep001()
+        public FMGTestStep12()
             : this(null)
         { }
 
-        public FMGTestStep001(TestManager testManager)
+        public FMGTestStep12(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "SVN Number Information";
-            this.Instructions = "Write the SVN Number in the work instruction\n";
+            this.Name = "Field Mask Generation complete";
+            this.Instructions = "LUT Test is complete.\nPress Finish to return to main menu or press Back to review the result";
             this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next;
+            this.ButtonOptions = EButtonOptions.Finish|EButtonOptions.Back;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
@@ -35,10 +35,16 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             if (userAction == EButtonOptions.Next)
             {
                 // Check or do something (with the hardware?) for the test
-                this.Results.Add(new BooleanResult("SVN Number", "Checked", true));
+                this.Results.Add(new BooleanResult("Field Mask Generation complete", "FMG Test is finished", true));
+                this.OnTestUpdated(true);
             }
 
-            this.OnTestUpdated(true);
+            if (userAction == EButtonOptions.Back)
+            {
+                this.OnTestCanceled(true);
+            }
+
+            
         }
     }
 }

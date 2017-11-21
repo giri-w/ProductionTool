@@ -9,7 +9,8 @@ namespace Demcon.ProductionTool.Model
         Distance = 4,
         var4 = 8,
         Measurements = 16,
-        Threshold = 32
+        Threshold = 32,
+            LED=64
 
     }
 }

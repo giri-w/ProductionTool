@@ -10,7 +10,7 @@ namespace Demcon.ProductionTool.Model
         Yes = 4,
         No = 8,
         Browse = 16,
-        Retry = 32,
+        Update = 32,
         Analyze = 64,
         Back = 128,
         Next = 256,

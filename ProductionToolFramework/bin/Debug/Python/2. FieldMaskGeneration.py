@@ -2,13 +2,13 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import PIL
-
+import scipy.misc
 import copy
 import scipy.ndimage.morphology as scp
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 
-
+from PIL import Image
 from skimage.morphology import watershed
 from scipy import misc as img 
 from scipy import ndimage as ndi
@@ -22,7 +22,7 @@ import time
 # path location of output
 a0 = str(sys.argv[1]) 
 a1 = a0.rsplit("\\",1)
-a = a1[0] + "\\figure";
+a = a1[0] + "\\figure\\FAT1FieldMaskGeneration";
 
 # location of image source
 b = str(sys.argv[2]) 
@@ -31,34 +31,49 @@ b = str(sys.argv[2])
 # threshold value
 c = float(sys.argv[3]) 
 
+# choosen hand
+d = str(sys.argv[4]) 
+
 # ## debug
-# a = r'C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\bin\Debug\Python\figure'
+# a = r'C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\bin\Debug\Python\figure\FAT1FieldMaskGeneration'
 # b = r'C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\1. Test Source\20170629_090733_297 Fieldmask'
 # c = 40
+# d = 'left'
 
-## change dir work
-import os.path
+
+## check dir location
+import os, os.path, errno
+
+if not os.path.exists(a):
+    try:
+        os.makedirs(a)
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise
+
+## initiate value
 os.chdir(a) 
 ThresholdSlider = c
 
 def mainProgram(ThresholdSlider):
-    print('45,Processing right Hand\r\n')
-    FMGCreation(ThresholdSlider,"right")
-    #time.sleep(5)
-    print('70,Processing left Hand\r\n')
-    FMGCreation(ThresholdSlider,"left")
-    #time.sleep(5)
-    print('100,Field Mask Generation: PASS\r\n')
-
+    print('60,Processing ' + d + ' Hand')
+    FMGCreation(ThresholdSlider,d)
+   
+    print('100,Field Mask Generation: PASS')
+    sys.stdout.flush()
     
     
 def FMGCreation(ThresholdSlider,hand):
     
     ## source location
-    if hand == "right":
+    if hand == "Right":
         im_path = b + "\\Raw data\\right_high_reflection.png"
+        name = 'right_mask_high.png'
+        name_s = 'right_mask.png'
     else :
         im_path = b + "\\Raw data\\left_high_reflection.png"
+        name = 'left_mask_high.png'
+        name_s = 'left_mask.png'
     
     ## image reading
     A = mpimg.imread(im_path)
@@ -69,7 +84,8 @@ def FMGCreation(ThresholdSlider,hand):
     A1 = copy.copy(A > Th)
     
     # 2) Resize image
-    image_size = np.array(A).shape
+    image_size = np.array(np.array(A).shape)
+    
     A2 = A1[:]
     
     # 3) Erosion
@@ -118,6 +134,17 @@ def FMGCreation(ThresholdSlider,hand):
     plt.savefig(hand + 'FieldMask.png')
     # show image
     plt.show()  
+    
+    
+    ## generate image
+    scipy.misc.imsave(name,B)
+    
+    ## resize image
+    im = Image.open(name)
+    image_size_s = np.array(image_size/2,dtype='int')
+    im_s = im.resize((image_size_s[1],image_size_s[0]), Image.NEAREST)
+    scipy.misc.imsave(name_s,im_s)
+
     return
 
 ## main program

@@ -196,7 +196,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
                     this.stepDescriptionText.GotFocus += TextBoxGotFocus;
                     this.SupportingImageBox.ImageLocation = currStep.SupportingImage;
                     this.BrowseButton.Visible        = currStep.ButtonOptions.HasFlag(EButtonOptions.Browse);
-                    this.RetryButton.Visible         = currStep.ButtonOptions.HasFlag(EButtonOptions.Retry);
+                    this.RetryButton.Visible         = currStep.ButtonOptions.HasFlag(EButtonOptions.Update);
                     this.NoButton.Visible            = currStep.ButtonOptions.HasFlag(EButtonOptions.No);
                     this.OKButton.Visible            = currStep.ButtonOptions.HasFlag(EButtonOptions.OK);
                     this.YesButton.Visible           = currStep.ButtonOptions.HasFlag(EButtonOptions.Yes);
@@ -453,8 +453,12 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private void RetryButton_Click(object sender, EventArgs e)
         {
             this.DisableButtons();
-            string info = "Retry";
-            this.TestManager.Execute(EButtonOptions.Retry, info);
+            string info = "Change";
+            this.testManager.CurrentTestStep.VarValue = this.varBox1.Text + "," +
+                                                        this.varBox2.Text + "," +
+                                                        this.varBox3.Text + "," +
+                                                        this.varBox4.Text;
+            this.TestManager.Execute(EButtonOptions.Update, info);
             this.EnableButtons();
         }
 
@@ -467,10 +471,11 @@ namespace Demcon.ProductionTool.View.FatTestPages
                                                         this.varBox4.Text;
 
             this.DisableButtons();
-            
-          
+            progressLabel.Text = " ";
+            progressBar1.Value = 0;
 
-            // execute Yes Button at child
+
+            // execute Analyze Button at child
             this.TestManager.Execute(EButtonOptions.Analyze, info);
 
             // get the location and argument data from child
@@ -488,16 +493,17 @@ namespace Demcon.ProductionTool.View.FatTestPages
 
             MessageBox.Show("Script Executed", "Python Script Execution");
             // run backgroundWorker
+            finishFlag = false;
             progressBar1.Visible = true;
             progressLabel.Visible = true;
-            backgroundWorker1.DoWork += (obj, f) => backgroundWorker1_DoWork(location, arg);
+            //backgroundWorker1.DoWork += (obj, f) => backgroundWorker1_DoWork(location, arg);
             backgroundWorker1.RunWorkerAsync();
-
             this.EnableButtons();
-
+            Console.WriteLine("SUDAH SELESAI");
+            //backgroundWorker1.DoWork -= (obj, f) => backgroundWorker1_DoWork(location, arg);
 
         }
-
+        
         private void NextButton_Click(object sender, EventArgs e)
         {
             string info = "Next";
@@ -555,100 +561,89 @@ namespace Demcon.ProductionTool.View.FatTestPages
             // debug to console
             Console.WriteLine("Siap menerima input");
             Console.WriteLine(location);
-            Console.WriteLine(arg[0] + arg[1]);
-            Console.WriteLine(arg[1]);
-
-            flagFinish = false;
-
+            
             // run backgroundWorker
             progressBar1.Visible = true;
             progressLabel.Visible = true;
-            backgroundWorker1.DoWork += (obj, f) => backgroundWorker1_DoWork(location, arg);
+            //backgroundWorker1.DoWork += (obj, f) => backgroundWorker1_DoWork(location, arg);
             backgroundWorker1.RunWorkerAsync();
         }
-
-        //private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
-        private void backgroundWorker1_DoWork(string location, string[] arg)
+        public bool finishFlag;
+        private void backgroundWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        //private void backgroundWorker1_DoWork(string location, string[] arg)
         {
-            // obtain argument from backgroundWorker (only 1 argument available, try to use LIST)
-            string fullPath = location;
-            string[] param  = arg;
-            string line = string.Empty;
-            
-            // initialize process
-            backgroundWorker1.ReportProgress(10, "Collecting sources file");
-            Thread.Sleep(2000);
-            backgroundWorker1.ReportProgress(20, "Processing files");
+            TestStep currStep = this.testManager.CurrentTestStep;
+            string location = currStep.pyFullPath;
+            string[] arg = currStep.pyArgument;
 
-            // start process
-            Process process = new Process();
-            process.StartInfo.FileName = "C:/pyzo2015a/python.exe";
-            process.StartInfo.Arguments = string.Format("\"{0}\"  \"{1}\"  \"{2}\"  \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\"",
-                                                          fullPath, param[0], param[1], param[2], param[3], param[4], param[5], param[6], param[7], param[8], param[9]);
-
-            process.StartInfo.UseShellExecute = false;// Do not use OS shell
-            process.StartInfo.CreateNoWindow = true; // We don't need new window
-            process.StartInfo.RedirectStandardOutput = true;// Any output, generated by application will be redirected back
-            process.StartInfo.RedirectStandardError = true; // Any error in standard output will be redirected back (for example exceptions)
-            process.EnableRaisingEvents = true;
-            backgroundWorker1.ReportProgress(10, "Collecting sources file");
-            Thread.Sleep(2000);
-            backgroundWorker1.ReportProgress(20, "Processing files");
-
-
-            // event when line received
-            process.OutputDataReceived += new DataReceivedEventHandler((ysender, h) =>
+            Console.WriteLine(location);
+            if (!finishFlag)
             {
-                line = h.Data;
-                try
+                // if you put -u, then background worker will stop immediately
+                //string fullPath = "-u " + location;
+                string fullPath = location;
+                string[] param = arg;
+                string line = string.Empty;
+                int counter = 0;
+                Console.WriteLine("Start Processing");
+
+                // initialize process
+                backgroundWorker1.ReportProgress(10, "Collecting sources file");
+                Thread.Sleep(2000);
+                backgroundWorker1.ReportProgress(20, "Processing files");
+
+                // start process
+                Process process = new Process();
+                process.StartInfo.FileName = @"C:\Python\Demcon2017\python.exe";
+                process.StartInfo.Arguments = string.Format(" \"{0}\"  \"{1}\"  \"{2}\"  \"{3}\" \"{4}\" \"{5}\" \"{6}\" \"{7}\" \"{8}\" \"{9}\" \"{10}\"",
+                                                              fullPath, param[0], param[1], param[2], param[3], param[4], param[5], param[6], param[7], param[8], param[9]);
+
+                process.StartInfo.UseShellExecute = false;
+                process.StartInfo.CreateNoWindow = true;
+                process.StartInfo.RedirectStandardOutput = true;
+                process.StartInfo.RedirectStandardError = true;
+                process.EnableRaisingEvents = true;
+
+                process.OutputDataReceived += (object xsender, DataReceivedEventArgs f) =>
                 {
-                    if (!String.IsNullOrEmpty(line) && !flagFinish)
+                    Console.WriteLine(f.Data);
+                    line = f.Data;
+                    if (!String.IsNullOrEmpty(line))
                     {
                         string[] words = line.Split(',');
-
                         if (words.Length == 2)
                         {
-                            int counter = Convert.ToInt16(words[0]);
-                            backgroundWorker1.ReportProgress(counter, words[1]);
+                            counter = Convert.ToInt16(words[0]);
+                            backgroundWorker1.ReportProgress(counter, words[1]); // Update progress
 
                             // store result to child
                             if (counter == 100)
-                            {
                                 this.testManager.CurrentTestStep.testResult = line;
-                                flagFinish = true;
-                            }
-
+                            finishFlag = true;
 
                             Thread.Sleep(1000);
                         }
                     }
-                }
-                catch (Exception g)
-                {
-                    Console.WriteLine("Error: {0}", g);
-                }
-            });
 
+                };
 
+                process.Start();
+                process.BeginOutputReadLine();
+                process.BeginErrorReadLine();
+                process.WaitForExit();
 
-            process.Start();
-
-            process.BeginOutputReadLine();
-            process.BeginErrorReadLine();
-            process.WaitForExit();
-
-            Console.WriteLine(line);
-
-            process.WaitForExit();
+            }
+            
+            
 
         }
 
-        public bool flagFinish = false;
-        
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             string result = e.UserState.ToString();
             Console.WriteLine("Update progress");
+
+            // set progress Label and progress Bar Value
             progressLabel.Text = result;
             progressBar1.Value = e.ProgressPercentage;
             
@@ -669,8 +664,11 @@ namespace Demcon.ProductionTool.View.FatTestPages
                 // use it on the UI thread
                 Thread.Sleep(1000);
                 Console.WriteLine("FINISH PROCESSING");
-                //progressLabel.Visible = false;
-                progressBar1.Visible = false;
+                
+
+                // set Progress Bar and Progress Label visbility
+                progressLabel.Visible   = true;
+                progressBar1.Visible    = false;
                 
             }
         }

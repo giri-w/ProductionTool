@@ -42,8 +42,8 @@ namespace Demcon.ProductionTool.Model.Tests.SelfTest
         string hostPath = "/Settings/system/";
 
 
-        string skipSelfTest1 = "false";
-        string skipSelfTest2 = "false";
+        string skipSelfTest1 = "true";
+        string skipSelfTest2 = "true";
         string skipSelfTest3 = "false";
         string skipSelfTest4 = "false";
 

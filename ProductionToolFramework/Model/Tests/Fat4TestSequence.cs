@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Demcon.ProductionTool.Model.Tests.VolunteerScan;
 using Demcon.ProductionTool.Model.Tests.FAT4SignalStability;
+using Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy;
+using Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan;
 
 namespace Demcon.ProductionTool.Model
 {
@@ -25,8 +27,11 @@ namespace Demcon.ProductionTool.Model
             this.AddtionalInformationRequestText1 = "PCA serie nummer";
             this.AddtionalInformationRequestText2 = "W100 batch nummer";
             this.Tests = new List<Test>();
+            this.Tests.Add(new LPSTest(this.testManager));
+            this.Tests.Add(new SACTest(this.testManager));
+            this.Tests.Add(new VSCTest(this.testManager));
             this.Tests.Add(new VolunteerScan(this.testManager));
-            this.Tests.Add(new SSTest(this.testManager));
+            
             this.SetToFirstTest();
         }
 

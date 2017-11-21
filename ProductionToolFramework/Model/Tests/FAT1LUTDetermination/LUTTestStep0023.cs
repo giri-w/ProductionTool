@@ -119,8 +119,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             {
                 ChangeXml chg = new ChangeXml();
 
-                
 
+                Console.WriteLine("Execute LUT");
                 // retrieve variable value from text Box
                 string[] textValue = VarValue.Split(',');
                 string printXML = "YES";

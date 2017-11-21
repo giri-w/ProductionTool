@@ -25,11 +25,11 @@ namespace Demcon.ProductionTool.Model.Tests.SelfTest
             this.Description = "Check if the volunteer scan results are correct";
             this.Steps = new List<TestStep>()
             {
-                new SelfTestStep000(this.testManager),
-                new SelfTestStep005(this.testManager),
+
+                new SelfTestStep003(this.testManager),
                 new SelfTestStep001(this.testManager),
                 new SelfTestStep002(this.testManager),
-                new SelfTestStep003(this.testManager),
+                
                 new SelfTestStep004(this.testManager),
                
             };

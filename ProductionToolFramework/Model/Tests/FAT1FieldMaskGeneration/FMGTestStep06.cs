@@ -8,14 +8,14 @@ using System.IO;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
-    public class FMGTestStep003 : TestStep
+    public class FMGTestStep06 : TestStep
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep003"/> class.
+        /// Initializes a new instance of the <see cref="GenericTestStep06"/> class.
         /// DO NOT USE! Only for Serializabililty!
         /// </summary>
         [Obsolete]
-        public FMGTestStep003()
+        public FMGTestStep06()
             : this(null)
         { }
 
@@ -30,7 +30,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                                 "\n\nTo start measurement, press Process" +
                                 "To check the result, press Next";
 
-        public FMGTestStep003(TestManager testManager)
+        public FMGTestStep06(TestManager testManager)
             : base(testManager)
         {
             // set initial value for setting from XML
@@ -38,7 +38,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Source");
             Threshold = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Threshold"));
 
-            this.Name = "Data Processing";
+            this.Name = "Data Processing : Right Hand";
             this.Instructions =
                                 " Setting up variable that are used in measurement \n" +
                                 " - Source Location  -> " + SourceLocation + "\n" +
@@ -66,7 +66,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                 SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Source");
                 Threshold = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Threshold"));
                 
-                this.Instructions = string.Format(FMGTestStep003.InstructionText, SourceLocation, Threshold);
+                this.Instructions = string.Format(FMGTestStep06.InstructionText, SourceLocation, Threshold);
 
             }).Start();
         }
@@ -112,7 +112,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                 Python py = new Python();
                 String pythonLocation = @"Python/2. FieldMaskGeneration.py";
                 string fullPath = Path.GetFullPath(pythonLocation);
-                string[] pythonArgument = { fullPath, SourceLocation, Threshold.ToString() }; //additional
+                string[] pythonArgument = { fullPath, SourceLocation, Threshold.ToString(),"Right" }; //additional
                 pyFullPath = fullPath;
                 pyArgument = py.compArray(pythonArgument);
                 

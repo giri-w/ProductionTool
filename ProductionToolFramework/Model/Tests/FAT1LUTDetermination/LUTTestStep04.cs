@@ -5,26 +5,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
+namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 {
-    public class FMGTestStep006 : TestStep
+    public class LUTTestStep04 : TestStep
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep006"/> class.
+        /// Initializes a new instance of the <see cref="GenericTest04"/> class.
         /// DO NOT USE! Only for Serializabililty!
         /// </summary>
         [Obsolete]
-        public FMGTestStep006()
+        public LUTTestStep04()
             : this(null)
         { }
 
-        public FMGTestStep006(TestManager testManager)
+        public LUTTestStep04(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Field Mask Generation complete";
-            this.Instructions = "LUT Test is complete.\nPress Finish to return to main menu or press Back to review the result";
+            this.Name = "Data Selection Grid4";
+            this.Instructions = "Write the SVN Number in the work instruction\n";
             this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Finish|EButtonOptions.Back;
+            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
@@ -35,14 +35,17 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             if (userAction == EButtonOptions.Next)
             {
                 // Check or do something (with the hardware?) for the test
-                this.Results.Add(new BooleanResult("Field Mask Generation complete", "FMG Test is finished", true));
+                this.Results.Add(new BooleanResult("Data Selection Grid4", "Checked", true));
                 this.OnTestUpdated(true);
             }
 
             if (userAction == EButtonOptions.Back)
             {
+                // back to previous step
                 this.OnTestCanceled(true);
             }
+
+
 
             
         }

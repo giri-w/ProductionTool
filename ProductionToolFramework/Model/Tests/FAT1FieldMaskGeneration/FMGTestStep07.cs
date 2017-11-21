@@ -9,14 +9,14 @@ using HemicsFat;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
-    public class FMGTestStep004 : TestStep
+    public class FMGTestStep07 : TestStep
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep004"/> class.
+        /// Initializes a new instance of the <see cref="GenericTestStep07"/> class.
         /// DO NOT USE! Only for Serializabililty!
         /// </summary>
         [Obsolete]
-        public FMGTestStep004()
+        public FMGTestStep07()
             : this(null)
         { }
 
@@ -34,13 +34,13 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
         private string testSetting = @"Setting\config.xml";
 
 
-        public FMGTestStep004(TestManager testManager)
+        public FMGTestStep07(TestManager testManager)
             : base(testManager)
         {
             ChangeXml chg = new ChangeXml();
             this.Name = "Analyze Right Mask";
             this.Instructions = string.Empty;
-            this.SupportingImage = @"Python\figure\RightFieldMask.png";
+            this.SupportingImage = @"Python\figure\FAT1FieldMaskGeneration\RightFieldMask.png";
             this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
@@ -60,7 +60,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             {
                 SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Source");
                 Threshold = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Threshold"));
-                this.Instructions = string.Format(FMGTestStep004.InstructionText, SourceLocation, Threshold);
+                this.Instructions = string.Format(FMGTestStep07.InstructionText, SourceLocation, Threshold);
                
             }).Start();
         }

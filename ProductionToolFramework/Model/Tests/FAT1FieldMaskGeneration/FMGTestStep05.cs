@@ -11,14 +11,14 @@ using System.Linq;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
-    public class FMGTestStep002 : TestStep
+    public class FMGTestStep05 : TestStep
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep002"/> class.
+        /// Initializes a new instance of the <see cref="GenericTestStep05"/> class.
         /// DO NOT USE! Only for Serializabililty!
         /// </summary>
         [Obsolete]
-        public FMGTestStep002()
+        public FMGTestStep05()
             : this(null)
         { }
 
@@ -33,7 +33,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 
 
 
-        public FMGTestStep002(TestManager testManager)
+        public FMGTestStep05(TestManager testManager)
             : base(testManager)
         {
             ChangeXml chg = new ChangeXml();
@@ -60,7 +60,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             new Task(() =>
             {
                 SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Source");
-                this.Instructions = string.Format(FMGTestStep002.InstructionText, SourceLocation);
+                this.Instructions = string.Format(FMGTestStep05.InstructionText, SourceLocation);
             }).Start();
         }
 

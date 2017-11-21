@@ -9,7 +9,7 @@ g = "YES"
 
 
 
-# import sys
+# 
 # # Python output directory
 # # a = str(sys.argv[1])  
 # a0 = str(sys.argv[1])  
@@ -34,6 +34,7 @@ g = "YES"
 
 
 ## Setting Work Directory
+import sys
 import os.path
 os.chdir(a)
 
@@ -70,6 +71,7 @@ print("80,Compiling the LUTs")
 lut_table_compilation(grid_left, grid_right, output_path)
 
 print("100,LUT Determination: PASS")
+sys.stdout.flush()
 
 
 
