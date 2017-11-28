@@ -19,6 +19,7 @@ namespace Demcon.ProductionTool.View
         private void btnTestSet1_Click(object sender, EventArgs e)
         {
             this.StartTest(ETestSequence.Fat1);
+          
         }
 
         private void btnTestSet2_Click(object sender, EventArgs e)
@@ -40,14 +41,7 @@ namespace Demcon.ProductionTool.View
         {
             if (sequence as CalibrationTestSequence == null)
             {
-                /*
-                // Original Setting
-                string dwo = string.Empty;
-                string operatorID = string.Empty;
-                string additionalInfo1 = string.Empty;
-                string additionalInfo2 = string.Empty;
-                */
-
+               
                 // read setting from profile.xml
                 string localSetting = @"Setting\profile.xml";
                 XmlDocument doc = new XmlDocument();
@@ -155,16 +149,78 @@ namespace Demcon.ProductionTool.View
                         }
                     }
                 }
+            }
+            else
+            {
+                return true;
+            }
 
+            return false;
+        }
 
+        private bool InitSequenceReport(TestSequence sequence)
+        {
+            if (sequence as CalibrationTestSequence == null)
+            {
 
+                // read setting from profile.xml
+                string localSetting = @"Setting\profile.xml";
+                XmlDocument doc = new XmlDocument();
 
+                // load variable values
+                doc.Load(localSetting);
 
+                // update test information
+                XmlNode xserial = doc.SelectSingleNode("/Profile/Serial");
+                XmlNode xoperatorID = doc.SelectSingleNode("/Profile/ID");
+                XmlNode xWO = doc.SelectSingleNode("/Profile/WO");
+                XmlNode xSVN = doc.SelectSingleNode("/Profile/SVN");
 
+                string serial = string.Format("FNN{0:yy}", DateTime.Now);
+                serial = xserial.InnerText;
+                string dwo = xWO.InnerText;
+                string operatorID = xoperatorID.InnerText;
+                string additionalInfo1 = "001";
+                string additionalInfo2 = "SV001";
 
+                string remarks = "first pass";
+                bool hiddenVariable = true;
 
+                // cek operator info
+                while (!string.IsNullOrWhiteSpace(remarks))
+                {
+                    remarks = string.Empty;
+                    if (MultiInputDialog.GetInput(this.ParentForm, "Test Information",
+                        "Serial Number (FNNYYMMXXXXX)", serial,
+                        "Work Order", dwo,
+                        "Operator ID", operatorID,
+                        sequence.AddtionalInformationRequestText1, additionalInfo1,
+                        sequence.AddtionalInformationRequestText2, additionalInfo2,
+                        !hiddenVariable,
+                        out serial, out dwo, out operatorID, out additionalInfo1, out additionalInfo2))
+                    {
+                        remarks = sequence.AcceptInput(serial, dwo, operatorID, additionalInfo1, additionalInfo2);
+                        if (string.IsNullOrWhiteSpace(remarks))
+                        {
+                            sequence.SerialNumber = serial;
+                            sequence.Dwo = dwo;
+                            sequence.OperatorID = operatorID;
+                            sequence.AddtionalInformation1 = additionalInfo1;
+                            sequence.AddtionalInformation2 = additionalInfo2;
 
+                            // Save variable values to XML
+                            xserial.InnerText = serial;
+                            xWO.InnerText = dwo;
+                            xoperatorID.InnerText = operatorID;
+                            return true;
 
+                        }
+                        else
+                        {
+                            MessageBox.Show(remarks, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
 
             }
             else
@@ -213,7 +269,7 @@ namespace Demcon.ProductionTool.View
         private void btnReport_Click(object sender, EventArgs e)
         {
             var sequence = new Demcon.ProductionTool.Model.ReportGeneratorTestSequence(this.TestManager);
-            if (InitSequence(sequence))
+            if (InitSequenceReport(sequence))
             {
                 try
                 {
@@ -234,5 +290,7 @@ namespace Demcon.ProductionTool.View
         {
             this.StartTest(ETestSequence.Calibration);
         }
+
+  
     }
 }

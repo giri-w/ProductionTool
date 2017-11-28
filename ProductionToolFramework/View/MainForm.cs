@@ -14,6 +14,7 @@ namespace Demcon.ProductionTool.View
     {
         private TestPage testPage;
 
+        
         public MainForm()
         {
 
@@ -26,6 +27,15 @@ namespace Demcon.ProductionTool.View
                 this.Text = versionString;
                 this.tabFatTests1.TestManager = this.TestManager;
                 this.testPage1.TestManager = this.TestManager;
+
+               // Set Tooltip for the user control element
+                toolTip1.SetToolTip(tabFatTests1.btnTestSet1,   "Setting and Calibration of the System");
+                toolTip1.SetToolTip(tabFatTests1.btnTestSet2,   "System Safety With Respect to the Lasers");
+                toolTip1.SetToolTip(tabFatTests1.btnTestSet3,   "Grounding, Leakage Current, and High Voltage Tests");
+                toolTip1.SetToolTip(tabFatTests1.btnTestSet4,   "System Validation Test");
+                toolTip1.SetToolTip(tabFatTests1.btnReport,     "Generate Report Based on the Test Results");
+
+                toolTip1.SetToolTip(linkStatus1, "Check Connection Status to the Machine");
             }
             catch (Exception ex)
             {
@@ -125,18 +135,18 @@ namespace Demcon.ProductionTool.View
 
         private void SetText(string text, int color)
         {
-            if (this.statusText.InvokeRequired)
+            if (this.statusText1.InvokeRequired)
             {
                 SetTextCallback d = new SetTextCallback(SetText);
                 this.Invoke(d, new object[] { text,color });
             }
             else
             {
-                this.statusText.Text = text;
+                this.statusText1.Text = text;
                 if (color == 1)
-                    this.statusText.ForeColor = System.Drawing.Color.Green;
+                    this.statusText1.ForeColor = System.Drawing.Color.Green;
                 else if (color == 2)
-                    this.statusText.ForeColor = System.Drawing.Color.Red;
+                    this.statusText1.ForeColor = System.Drawing.Color.Red;
             }
         }
 
@@ -163,9 +173,6 @@ namespace Demcon.ProductionTool.View
 
         }
 
-        private void statusText_Click(object sender, EventArgs e)
-        {
-
-        }
+      
     }
 }

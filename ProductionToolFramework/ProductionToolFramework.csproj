@@ -386,6 +386,7 @@
     <Content Include="Images\Foto10.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Images\handScan Brand.png" />
     <Content Include="Images\Inconclusive-24.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -58,6 +58,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.BrowseButton = new System.Windows.Forms.Button();
             this.AnalyzeButton = new System.Windows.Forms.Button();
             this.RetryButton = new System.Windows.Forms.Button();
+            this.DownloadButton = new System.Windows.Forms.Button();
             this.TestNameLabel = new System.Windows.Forms.Label();
             this.TestListPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,7 +77,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.DownloadButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.DescriptionPanel.SuspendLayout();
             this.ButtonsFlowLayoutPanel.SuspendLayout();
@@ -381,6 +381,17 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.RetryButton.UseVisualStyleBackColor = false;
             this.RetryButton.Click += new System.EventHandler(this.RetryButton_Click);
             // 
+            // DownloadButton
+            // 
+            this.DownloadButton.BackColor = System.Drawing.Color.Lime;
+            this.DownloadButton.Location = new System.Drawing.Point(381, 3);
+            this.DownloadButton.Name = "DownloadButton";
+            this.DownloadButton.Size = new System.Drawing.Size(120, 46);
+            this.DownloadButton.TabIndex = 17;
+            this.DownloadButton.Text = "Download";
+            this.DownloadButton.UseVisualStyleBackColor = false;
+            this.DownloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
+            // 
             // TestNameLabel
             // 
             this.TestNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -572,17 +583,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // DownloadButton
-            // 
-            this.DownloadButton.BackColor = System.Drawing.Color.Lime;
-            this.DownloadButton.Location = new System.Drawing.Point(381, 3);
-            this.DownloadButton.Name = "DownloadButton";
-            this.DownloadButton.Size = new System.Drawing.Size(120, 46);
-            this.DownloadButton.TabIndex = 17;
-            this.DownloadButton.Text = "Download";
-            this.DownloadButton.UseVisualStyleBackColor = false;
-            this.DownloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 
             // TestPage
             // 

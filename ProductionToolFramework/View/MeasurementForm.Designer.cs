@@ -38,7 +38,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.addButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
-            this.explorerButton = new System.Windows.Forms.Button();
             this.includeDir = new System.Windows.Forms.RadioButton();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
@@ -63,7 +62,7 @@
             // 
             // downloadButton
             // 
-            this.downloadButton.Location = new System.Drawing.Point(265, 207);
+            this.downloadButton.Location = new System.Drawing.Point(265, 205);
             this.downloadButton.Name = "downloadButton";
             this.downloadButton.Size = new System.Drawing.Size(101, 23);
             this.downloadButton.TabIndex = 2;
@@ -73,7 +72,7 @@
             // 
             // exitButton
             // 
-            this.exitButton.Location = new System.Drawing.Point(265, 247);
+            this.exitButton.Location = new System.Drawing.Point(265, 246);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(101, 23);
             this.exitButton.TabIndex = 3;
@@ -118,7 +117,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(265, 87);
+            this.addButton.Location = new System.Drawing.Point(265, 123);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(101, 23);
             this.addButton.TabIndex = 9;
@@ -128,23 +127,13 @@
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Location = new System.Drawing.Point(265, 127);
+            this.DeleteButton.Location = new System.Drawing.Point(265, 164);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(101, 23);
             this.DeleteButton.TabIndex = 10;
             this.DeleteButton.Text = "<< Del Source";
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // explorerButton
-            // 
-            this.explorerButton.Location = new System.Drawing.Point(265, 167);
-            this.explorerButton.Name = "explorerButton";
-            this.explorerButton.Size = new System.Drawing.Size(101, 23);
-            this.explorerButton.TabIndex = 11;
-            this.explorerButton.Text = "<< Explorer >>";
-            this.explorerButton.UseVisualStyleBackColor = true;
-            this.explorerButton.Click += new System.EventHandler(this.explorerButton_Click);
             // 
             // includeDir
             // 
@@ -175,7 +164,6 @@
             this.ClientSize = new System.Drawing.Size(632, 311);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.includeDir);
-            this.Controls.Add(this.explorerButton);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.label3);
@@ -206,7 +194,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button DeleteButton;
-        private System.Windows.Forms.Button explorerButton;
         private System.Windows.Forms.RadioButton includeDir;
         private System.Windows.Forms.LinkLabel linkLabel1;
     }

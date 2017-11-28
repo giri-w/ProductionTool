@@ -92,6 +92,7 @@
             // 
             // tableLayoutPanel
             // 
+            this.tableLayoutPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(191)))), ((int)(((byte)(255)))));
             this.tableLayoutPanel.ColumnCount = 2;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -153,13 +154,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnTestSet2;
-        private System.Windows.Forms.Button btnTestSet1;
-        private System.Windows.Forms.Button btnTestSet3;
-        private System.Windows.Forms.Button btnTestSet4;
+        public System.Windows.Forms.Button btnTestSet2;
+        public System.Windows.Forms.Button btnTestSet1;
+        public System.Windows.Forms.Button btnTestSet3;
+        public System.Windows.Forms.Button btnTestSet4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
-        private System.Windows.Forms.Button btnReport;
-        private System.Windows.Forms.Button btnCalibrate;
+        public System.Windows.Forms.Button btnReport;
+        public System.Windows.Forms.Button btnCalibrate;
 
 
     }
