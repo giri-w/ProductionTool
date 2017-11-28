@@ -118,15 +118,17 @@
     <Compile Include="Model\Tests\FAT4SignalStability\SSTest.cs" />
     <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep001.cs" />
     <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep002.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep07a.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep09.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep10.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep04.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep05.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep12b.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep13.cs" />
-    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep12.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep12a.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep11.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep08.cs" />
-    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep07.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep07b.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep06.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep03.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep02.cs" />
@@ -198,6 +200,12 @@
     <Compile Include="View\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MeasurementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MeasurementForm.Designer.cs">
+      <DependentUpon>MeasurementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\MultiInputDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +256,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FatTestPages\TabFatTests.resx">
       <DependentUpon>TabFatTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MeasurementForm.resx">
+      <DependentUpon>MeasurementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MultiInputDialog.resx">
+      <DependentUpon>MultiInputDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TestStepListItem.resx">
       <DependentUpon>TestStepListItem.cs</DependentUpon>

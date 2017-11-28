@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Demcon.ProductionTool.Hardware;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using HemicsFat;
+using TestToolFramework.View;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
 {
@@ -13,6 +14,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         public LPSTestStep04()
             : this(null)
         { }
+
+        string localPath = @"TestFolder\";
 
         public LPSTestStep04(TestManager testManager)
             : base(testManager)
@@ -27,6 +30,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
+
+     
 
         public override void Execute(EButtonOptions userAction, string info)
         {
@@ -43,6 +48,27 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                 // Back to previous step
                 this.OnTestCanceled(true);
             }
+            
+            if (userAction==EButtonOptions.Update)
+            {
+                
+
+                MeasurementForm browser = new MeasurementForm();
+                Application.Run(browser);
+                //browser.Show();
+                /*
+                FtpTransfer ftp = new FtpTransfer();
+                // retrieve value from textbox
+                string[] textValue = VarValue.Split(',');
+                string measurementPath = textValue[0];
+                
+                // download measurement
+                bool result1 = ftp.Download(localPath, measurementPath);
+                this.Results.Add(new BooleanResult("File transfer", "Downloaded:" + measurementPath, result1));
+                Console.WriteLine("Download Measurement");
+                */
+            }
+
         }
     }
 }

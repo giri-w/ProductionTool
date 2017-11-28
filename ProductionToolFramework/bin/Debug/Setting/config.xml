@@ -25,9 +25,9 @@
     <LPS>
       <Source>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\1. Test Source\20170703_113239_297 SignalStability</Source>
     </LPS>
-	<SAC>
-	  <SourcePS>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\Spatial accuracy\Measurements</SourcePS>
-	  <SourcePA>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\Spatial accuracy\Measurements</SourcePA>
-	</SAC>
+    <SAC>
+      <SourcePS>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\Spatial accuracy\Measurements</SourcePS>
+      <SourcePA>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\Spatial accuracy\Measurements</SourcePA>
+    </SAC>
   </FAT4>
 </Test>

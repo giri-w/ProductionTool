@@ -76,6 +76,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.DownloadButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.DescriptionPanel.SuspendLayout();
             this.ButtonsFlowLayoutPanel.SuspendLayout();
@@ -340,6 +341,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.flowLayoutPanel1.Controls.Add(this.BrowseButton);
             this.flowLayoutPanel1.Controls.Add(this.AnalyzeButton);
             this.flowLayoutPanel1.Controls.Add(this.RetryButton);
+            this.flowLayoutPanel1.Controls.Add(this.DownloadButton);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 295);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(522, 50);
@@ -571,6 +573,17 @@ namespace Demcon.ProductionTool.View.FatTestPages
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // DownloadButton
+            // 
+            this.DownloadButton.BackColor = System.Drawing.Color.Lime;
+            this.DownloadButton.Location = new System.Drawing.Point(381, 3);
+            this.DownloadButton.Name = "DownloadButton";
+            this.DownloadButton.Size = new System.Drawing.Size(120, 46);
+            this.DownloadButton.TabIndex = 17;
+            this.DownloadButton.Text = "Download";
+            this.DownloadButton.UseVisualStyleBackColor = false;
+            this.DownloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
+            // 
             // TestPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,5 +659,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private System.Windows.Forms.Label progressLabel;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button DownloadButton;
     }
 }

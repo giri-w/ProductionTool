@@ -12,12 +12,10 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
     {
 
         // Variables 
-        string hostName = "172.17.5.108";
-        string fingerprint = "ea:11:8b:78:c3:85:8b:25:3b:a3:7a:38:4e:68:81:d7:07:3d:d6:4f";
         string localPath = @"C:\TestFolder\";
         string localFile1 = @"C:\TestFolder\Measurement_test.xml";
-        string ftpFile1 = "/Settings/system/testFolder/Measurement_test.xml";
-        string hostPath = "/Settings/system/testFolder/";
+        string ftpFile1 = "/Settings/system/Measurement_test.xml";
+        string hostPath = "/Settings/system/";
 
         [Obsolete]
         public LPSTestStep02()
@@ -63,7 +61,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                 XmlDocument doc = new XmlDocument();
                 
                 // download measurement.xml from the machine
-                bool resultDownload1 = ftp.Download(hostName, fingerprint, localPath, ftpFile1);
+                bool resultDownload1 = ftp.Download(localPath, ftpFile1);
                 this.Results.Add(new BooleanResult("Download configuration","Measurement.xml",resultDownload1));
 
                 // update setting values
@@ -84,10 +82,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                 this.Results.Add(new BooleanResult("Setting Values", "Updated", true));
 
                 // upload measurement.xml to the machine
-                bool resultUpload1 = ftp.Upload(hostName, fingerprint, localFile1, hostPath);
+                bool resultUpload1 = ftp.Upload(localFile1, hostPath);
                 this.Results.Add(new BooleanResult("Upload configuration", "Measurement.xml", resultUpload1));
 
                 // write result to debug console
+                MessageBox.Show("Configuration Updated", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Console.WriteLine("Initial Configuration: DONE");
                 this.OnTestUpdated(true);
 

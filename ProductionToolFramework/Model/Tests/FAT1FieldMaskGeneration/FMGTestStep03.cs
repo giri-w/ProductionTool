@@ -9,10 +9,6 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
     public class FMGTestStep03 : TestStep
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep03"/> class.
-        /// DO NOT USE! Only for Serializabililty!
-        /// </summary>
         [Obsolete]
         public FMGTestStep03()
             : this(null)
@@ -21,14 +17,15 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
         public FMGTestStep03(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Data Generation";
-            this.Instructions = "1. Start the measurement\n" +
-                                "2. Break measurement when sequence has started\n" +
-                                "3. Record the measurement name in the assignment\n" +
-                                "4. Press Next when finished or Press Back to go to previous step\n";
-            this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back;
-            this.Results = new List<Result>();
+            this.Name 				= "Data Generation";
+            this.Instructions  		= "1. Start the measurement\n" +
+									  "2. Break measurement when sequence has started\n" +
+									  "3. Record the measurement name in the assignment\n" +
+									  "4. Press Next when finished or Press Back to go to previous step\n";
+            this.SupportingImage 	= string.Empty;
+            this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back;
+            this.Results 			= new List<Result>();
+			// forward and backward handler
             this.OnTestUpdated(false);
         }
 
@@ -37,14 +34,14 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             this.Results.Clear();
             if (userAction == EButtonOptions.Next)
             {
-                // Check or do something (with the hardware?) for the test
+                // Continue to the next step
                 this.Results.Add(new BooleanResult("Data Generation","Measurement process has been done", true));
                 this.OnTestUpdated(true);
             }
 
             if (userAction == EButtonOptions.Back)
             {
-                
+                // Back to previous step
                 this.OnTestCanceled(true);
             }
 

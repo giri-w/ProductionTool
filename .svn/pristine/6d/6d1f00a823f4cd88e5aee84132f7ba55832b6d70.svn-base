@@ -1,0 +1,168 @@
+﻿using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Demcon.ProductionTool.General;
+using Demcon.ProductionTool.Model;
+using System.Xml;
+
+namespace Demcon.ProductionTool.View
+{
+    public partial class TabFatTests : UserControl
+    {
+        public TabFatTests()
+        {
+            InitializeComponent();
+        }
+
+        public TestManager TestManager { get; set; }
+
+        private void btnTestSet1_Click(object sender, EventArgs e)
+        {
+            this.StartTest(ETestSequence.Fat1);
+        }
+
+        private void btnTestSet2_Click(object sender, EventArgs e)
+        {
+            //this.StartTest(ETestSequence.Generic);
+        }
+
+        private void btnTestSet3_Click(object sender, EventArgs e)
+        {
+            //this.StartTest(ETestSequence.None);
+        }
+
+        private void btnTestSet4_Click(object sender, EventArgs e)
+        {
+            this.StartTest(ETestSequence.Fat4);
+        }
+
+        private bool InitSequence(TestSequence sequence)
+        {
+            if (sequence as CalibrationTestSequence == null)
+            {
+                /*
+                // Original Setting
+                string dwo = string.Empty;
+                string operatorID = string.Empty;
+                string additionalInfo1 = string.Empty;
+                string additionalInfo2 = string.Empty;
+                */
+
+                // read setting from profile.xml
+                string localSetting = @"Setting\profile.xml";
+                XmlDocument doc = new XmlDocument();
+
+                // load variable values
+                doc.Load(localSetting);
+                XmlNode xserial = doc.SelectSingleNode("/Profile/Serial");
+                XmlNode xoperatorID = doc.SelectSingleNode("/Profile/ID");
+                XmlNode xWO = doc.SelectSingleNode("/Profile/WO");
+                XmlNode xSVN = doc.SelectSingleNode("/Profile/SVN");
+
+                // update variable values
+                string serial = string.Format("FNN{0:yy}", DateTime.Now);
+                serial = xserial.InnerText;
+                string dwo = xWO.InnerText;
+                string operatorID = xoperatorID.InnerText;
+                string additionalInfo1 = xSVN.InnerText;
+                string additionalInfo2 = "SV001";
+                string remarks = "first pass";
+                doc.Save(localSetting);
+
+                while (!string.IsNullOrWhiteSpace(remarks))
+                {
+                    remarks = string.Empty;
+                    if (MultiInputDialog.GetInput(this.ParentForm, "Test Information",
+                        "Serial Number (FNNYYMMXXXXX)", serial,
+                        "Work Order", dwo,
+                        "Operator ID", operatorID,
+                        sequence.AddtionalInformationRequestText1, additionalInfo1,
+                        sequence.AddtionalInformationRequestText2, additionalInfo2,
+                        out serial, out dwo, out operatorID, out additionalInfo1, out additionalInfo2))
+                    {
+                        remarks = sequence.AcceptInput(serial, dwo, operatorID, additionalInfo1, additionalInfo2);
+                        if (string.IsNullOrWhiteSpace(remarks))
+                        {
+                            sequence.SerialNumber = serial;
+                            sequence.Dwo = dwo;
+                            sequence.OperatorID = operatorID;
+                            sequence.AddtionalInformation1 = additionalInfo1;
+                            sequence.AddtionalInformation2 = additionalInfo2;
+                            return true;
+                        }
+                        else
+                        {
+                            MessageBox.Show(remarks, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private void StartTest(ETestSequence sequenceType)
+        {
+            this.TestManager.TestStopped += new EventHandler(HandleTestStopped);
+            this.TestManager.InformationRequest += new EventHandler<EventArgs<string>>(HandleInformationRequest);
+            TestSequence currSequence = this.TestManager.CreateTest(sequenceType);
+            if (currSequence != null)
+            {
+                if (InitSequence(currSequence))
+                {
+                    this.TestManager.StartTest();
+                }
+            }
+        }
+
+        private void HandleTestStopped(object sender, EventArgs e)
+        {
+            this.TestManager.TestStopped -= new EventHandler(HandleTestStopped);
+            this.TestManager.InformationRequest -= new EventHandler<EventArgs<string>>(HandleInformationRequest);
+        }
+
+        private void HandleInformationRequest(object sender, EventArgs<string> e)
+        {
+            string input;
+            this.BeginInvoke((Action)(() =>
+            {
+                if (InputDialog.GetInput(this.ParentForm, "Measurement Request", e.Value, out input) && !string.IsNullOrWhiteSpace(input))
+                {
+                    new Task(() =>
+                    {
+                        this.TestManager.CurrentTestStep.InputReceived(input);
+                    }).Start();
+                }
+            }));
+        }
+
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            var sequence = new Demcon.ProductionTool.Model.ReportGeneratorTestSequence(this.TestManager);
+            if (InitSequence(sequence))
+            {
+                try
+                {
+                    string pdf = sequence.Save(null);
+                    if (MessageBox.Show("Report save as " + pdf + "\n\nDo you want to open it now?", "PDF report", MessageBoxButtons.YesNo, MessageBoxIcon.Information, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start(pdf);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Fault in processing the report: " + ex.Message, "PDF report", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnCalibrate_Click(object sender, EventArgs e)
+        {
+            this.StartTest(ETestSequence.Calibration);
+        }
+    }
+}

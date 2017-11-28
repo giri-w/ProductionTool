@@ -13,15 +13,18 @@ import sys
 # plt.close('all')
 
 # debug
-a = "C:\\Users\\GWA\\Documents\\GitHub\\Demcon\\ProductionToolFramework\\ProductionToolFramework\\bin\\Debug\\Python\\figure"
+a = "C:\\Users\\GWA\\Documents\\GitHub\\Demcon\\ProductionToolFramework\\ProductionToolFramework\\bin\\Debug\\Python\\figure\\FAT4SpatialAccuracy"
+if not os.path.exists(a):
+	os.makedirs(a)
 b = r"C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\Spatial accuracy\Measurements"
 
 ## from argument
 # # path location of output
 # a0 = str(sys.argv[1]) 
 # a1 = a0.rsplit("\\",1)
-# a = a1[0] + "\\figure";
-
+# a = a1[0] + "\\figure\\FAT4SpatialAccuracy";
+# if not os.path.exists(a):
+	# os.makedirs(a)
 # # location of image source
 # b = str(sys.argv[2]) 
 # b = b.replace("\\","\\\\")

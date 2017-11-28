@@ -11,10 +11,6 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 {
     public class LUTTestStep05 : TestStep
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTest05"/> class.
-        /// DO NOT USE! Only for Serializabililty!
-        /// </summary>
         [Obsolete]
         public LUTTestStep05()
             : this(null)
@@ -24,20 +20,20 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         private string Grid4Location = string.Empty;
 
         private const string InstructionText =
-                                " Locate GRID4 folder location in the computer \n" +
-                                " GRID4 Directory : {0}\n\n" +
-                                " Press Browse  to set Grid4  Measurement Location\n" +
-                                "\nWhen finished, press Next";
+												" Locate GRID4 folder location in the computer \n" +
+												" GRID4 Directory : {0}\n\n" +
+												" Press Browse  to set Grid4  Measurement Location\n" +
+												"\nWhen finished, press Next";
 
 
         public LUTTestStep05(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "GRID4 Location";
-            this.Instructions = string.Empty;
-            this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Browse;
-            this.Results = new List<Result>();
+            this.Name 				= "GRID4 Location";
+            this.Instructions 		= string.Empty;
+            this.SupportingImage 	= string.Empty;
+            this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Browse;
+            this.Results 			= new List<Result>();
             this.OnTestUpdated(false);
             this.OnTestCanceled(false);
         }
@@ -58,7 +54,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             this.Results.Clear();
             if (userAction == EButtonOptions.Next)
             {
-                // Check or do something (with the hardware?) for the test
+                // Continue to the next step
                 bool check = string.IsNullOrEmpty(Grid4Location);
                 this.Results.Add(new BooleanResult("GRID4 Location", Grid4Location, !check));
                 this.OnTestUpdated(true);
@@ -66,7 +62,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 
             if (userAction == EButtonOptions.Back)
             {
-                // Check or do something (with the hardware?) for the test
+                // Back to previous st4ep
                 this.OnTestCanceled(true);
             }
 

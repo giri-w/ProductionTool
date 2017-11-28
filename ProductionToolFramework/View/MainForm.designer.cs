@@ -28,16 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabFatTests = new System.Windows.Forms.TabPage();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.statusText = new System.Windows.Forms.Label();
             this.tabFatTests1 = new Demcon.ProductionTool.View.TabFatTests();
             this.testPage1 = new Demcon.ProductionTool.View.FatTestPages.TestPage();
-            this.tabControl = new System.Windows.Forms.TabControl();
+            this.linkStatus = new System.Windows.Forms.LinkLabel();
+            this.infoPanel = new System.Windows.Forms.Panel();
             this.tabFatTests.SuspendLayout();
             this.tabControl.SuspendLayout();
+            this.infoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabFatTests
             // 
+            this.tabFatTests.Controls.Add(this.infoPanel);
             this.tabFatTests.Controls.Add(this.tabFatTests1);
             this.tabFatTests.Controls.Add(this.testPage1);
             this.tabFatTests.Location = new System.Drawing.Point(4, 22);
@@ -47,30 +53,6 @@
             this.tabFatTests.TabIndex = 0;
             this.tabFatTests.Text = "FAT tests";
             this.tabFatTests.UseVisualStyleBackColor = true;
-            // 
-            // tabFatTests1
-            // 
-            this.tabFatTests1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabFatTests1.Location = new System.Drawing.Point(0, 0);
-            this.tabFatTests1.Margin = new System.Windows.Forms.Padding(4);
-            this.tabFatTests1.Name = "tabFatTests1";
-            this.tabFatTests1.Size = new System.Drawing.Size(1342, 704);
-            this.tabFatTests1.TabIndex = 1;
-            this.tabFatTests1.TestManager = null;
-            // 
-            // testPage1
-            // 
-            this.testPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.testPage1.Location = new System.Drawing.Point(0, 0);
-            this.testPage1.Margin = new System.Windows.Forms.Padding(4);
-            this.testPage1.Name = "testPage1";
-            this.testPage1.Size = new System.Drawing.Size(1342, 704);
-            this.testPage1.TabIndex = 0;
-            this.testPage1.TestManager = null;
             // 
             // tabControl
             // 
@@ -82,12 +64,73 @@
             this.tabControl.Size = new System.Drawing.Size(1350, 730);
             this.tabControl.TabIndex = 0;
             // 
+            // statusText
+            // 
+            this.statusText.AutoSize = true;
+            this.statusText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusText.Location = new System.Drawing.Point(1247, 10);
+            this.statusText.Name = "statusText";
+            this.statusText.Size = new System.Drawing.Size(75, 15);
+            this.statusText.TabIndex = 2;
+            this.statusText.Text = "Not checked";
+            this.statusText.Click += new System.EventHandler(this.statusText_Click);
+            // 
+            // tabFatTests1
+            // 
+            this.tabFatTests1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabFatTests1.BackColor = System.Drawing.Color.Transparent;
+            this.tabFatTests1.Location = new System.Drawing.Point(0, 0);
+            this.tabFatTests1.Margin = new System.Windows.Forms.Padding(4);
+            this.tabFatTests1.Name = "tabFatTests1";
+            this.tabFatTests1.Size = new System.Drawing.Size(1342, 669);
+            this.tabFatTests1.TabIndex = 1;
+            this.tabFatTests1.TestManager = null;
+            this.tabFatTests1.Load += new System.EventHandler(this.tabFatTests1_Load);
+            // 
+            // testPage1
+            // 
+            this.testPage1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.testPage1.Location = new System.Drawing.Point(0, 0);
+            this.testPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.testPage1.Name = "testPage1";
+            this.testPage1.Size = new System.Drawing.Size(1342, 669);
+            this.testPage1.TabIndex = 0;
+            this.testPage1.TestManager = null;
+            // 
+            // linkStatus
+            // 
+            this.linkStatus.AutoSize = true;
+            this.linkStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkStatus.Location = new System.Drawing.Point(1140, 10);
+            this.linkStatus.Name = "linkStatus";
+            this.linkStatus.Size = new System.Drawing.Size(112, 15);
+            this.linkStatus.TabIndex = 3;
+            this.linkStatus.TabStop = true;
+            this.linkStatus.Text = "Connection Status: ";
+            this.linkStatus.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkStatus_LinkClicked);
+            // 
+            // infoPanel
+            // 
+            this.infoPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.infoPanel.Controls.Add(this.statusText);
+            this.infoPanel.Controls.Add(this.linkStatus);
+            this.infoPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.infoPanel.Location = new System.Drawing.Point(3, 668);
+            this.infoPanel.Name = "infoPanel";
+            this.infoPanel.Size = new System.Drawing.Size(1336, 33);
+            this.infoPanel.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 730);
             this.Controls.Add(this.tabControl);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "HandScan Test Tool (V1.0.0, 14-11-2017)";
@@ -96,6 +139,8 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.tabFatTests.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
+            this.infoPanel.ResumeLayout(false);
+            this.infoPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -106,7 +151,9 @@
         private TabFatTests tabFatTests1;
         private FatTestPages.TestPage testPage1;
         private System.Windows.Forms.TabControl tabControl;
-
+        private System.Windows.Forms.Label statusText;
+        private System.Windows.Forms.LinkLabel linkStatus;
+        private System.Windows.Forms.Panel infoPanel;
     }
 }
 

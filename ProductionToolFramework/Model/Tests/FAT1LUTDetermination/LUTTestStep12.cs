@@ -10,46 +10,33 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 {
     public class LUTTestStep12 : TestStep
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep12"/> class.
-        /// DO NOT USE! Only for Serializabililty!
-        /// </summary>
         [Obsolete]
         public LUTTestStep12()
             : this(null)
         { }
 
-        string hostName = "172.17.5.108";
-        string fingerprint = "ea:11:8b:78:c3:85:8b:25:3b:a3:7a:38:4e:68:81:d7:07:3d:d6:4f";
-        
-        string localFile1 = @"C:\TestFolder\Measurement_test.xml";
-        string localFile2 = @"C:\TestFolder\Measurement_test.xml";
-        string hostPath = "/Settings/system/CameraSettings/";
+        string localFile1 		 = @"Python\figure\FAT1LUTDetermination\PyLeft-MotorMatrix-Low.xml";
+		string localFile2 		 = @"Python\figure\FAT1LUTDetermination\PyRight-MotorMatrix-Low.xml";
+        string hostPath			 = "/Settings/system/CameraSettings/";
 
-        private const string InstructionText =
-                                "Motor Matrix configurations are ready\n" +
-                                "Press Update to upload files to the system\n:" +
-                                "Press Next to continue to the next step\n";
+		private const string InstructionText =
+											"Motor Matrix configurations are ready\n" +
+											"Press Update to upload files to the system\n:" +
+											"Press Next to continue to the next step\n";
 
         public LUTTestStep12(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Motor Matrix Configuration";
-            this.Instructions = string.Empty;
+            this.Name 			 = "Motor Matrix Configuration";
+            this.Instructions 	 = 
+									"Motor Matrix configurations are ready\n" +
+									"Press Update to upload files to the system\n:" +
+									"Press Next to continue to the next step\n";
             this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
-            this.Results = new List<Result>();
+            this.ButtonOptions	 = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
+            this.Results		 = new List<Result>();
+			// forward and backward handler
             this.OnTestUpdated(false);
-        }
-
-        public override void Start()
-        {
-            this.Results.Clear();
-            new Task(() =>
-            {
-                this.Instructions = string.Format(LUTTestStep12.InstructionText);
-
-            }).Start();
         }
 
         public override void Execute(EButtonOptions userAction, string info)
@@ -58,7 +45,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             string remark = string.Empty;
             if (userAction == EButtonOptions.Next)
             {
-                // Check or do something (with the hardware?) for the test
+                // Continue to the next step
                 remark = "Motor Matrix Configuration: SKIPPED";
                 this.Results.Add(new BooleanResult("Motor Matrix Configuration", remark, true));
                 this.OnTestUpdated(true);
@@ -66,7 +53,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 
             if (userAction == EButtonOptions.Back)
             {
-                // back to previous step
+                // Back to previous step
                 this.OnTestCanceled(true);
             }
 
@@ -76,8 +63,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
                 XmlDocument doc = new XmlDocument();
 
                 // upload measurement.xml to server
-                bool resultUpload1 = ftp.Upload(hostName, fingerprint, localFile1, hostPath);
-                bool resultUpload2 = ftp.Upload(hostName, fingerprint, localFile2, hostPath);
+                bool resultUpload1 = ftp.Upload(localFile1, hostPath);
+                bool resultUpload2 = ftp.Upload(localFile2, hostPath);
 
                 // write result to log window
                 remark = "Motor Matrix Configuration : UPLOADED";

@@ -1,3 +1,8 @@
+
+import sys
+import os
+import os.path
+
 # Debug
 a = "C:\\Users\\GWA\\Documents\\GitHub\\Demcon\\ProductionToolFramework\\ProductionToolFramework\\bin\\Debug\\Python"
 b = "C:\\Users\\GWA\\Desktop\\Internship DEMCON\\1. Matlab to Python Project\\20161205_094405_297_grid4"
@@ -34,8 +39,6 @@ g = "YES"
 
 
 ## Setting Work Directory
-import sys
-import os.path
 os.chdir(a)
 
 ## Import library
@@ -47,7 +50,11 @@ from library.lut_file_organizer import *
 # np.savetxt('row_dim.csv',np.array(row_ind,dtype='int'),delimiter=",")
 
 ## Path Variable
-output_path    = a + "\\figure"
+output_path    = a + "\\figure\\FAT1LUTDetermination"
+
+if not os.path.exists(output_path):
+	os.makedirs(output_path)
+	
 data4_path     = b
 data_path      = c
 

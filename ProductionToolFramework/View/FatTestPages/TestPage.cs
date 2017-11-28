@@ -29,6 +29,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         public static extern bool HideCaret(IntPtr hWnd);
 
+        
 
         public TestPage()
         {
@@ -205,6 +206,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
                     this.NextButton.Visible          = currStep.ButtonOptions.HasFlag(EButtonOptions.Next);
                     this.CancelButton.Visible        = !currStep.ButtonOptions.HasFlag(EButtonOptions.Finish);
                     this.FinishedButton.Visible      = currStep.ButtonOptions.HasFlag(EButtonOptions.Finish);
+                    this.DownloadButton.Visible = currStep.ButtonOptions.HasFlag(EButtonOptions.Download);
                     this.progressBar1.Visible = false;
                     this.progressLabel.Visible = false;
 
@@ -227,7 +229,8 @@ namespace Demcon.ProductionTool.View.FatTestPages
                     this.stepDescriptionText.GotFocus += TextBoxGotFocus;
 
                     this.SupportingImageBox.ImageLocation = string.Empty;
-                    
+
+                    this.DownloadButton.Visible  = false;
                     this.NoButton.Visible        = false;
                     this.NextButton.Visible      = false;
                     this.BackButton.Visible      = false;
@@ -343,9 +346,13 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private void FinishedButton_Click(object sender, EventArgs e)
         {
             this.DisableButtons();
+            
+            MessageBox.Show("Test Finished", "FAT results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string savedPath = this.TestManager.StopTest();
+
             try
             {
-                string savedPath = this.TestManager.StopTest();
+                //string savedPath = this.TestManager.StopTest();
                 if (string.IsNullOrWhiteSpace(savedPath))
                 {
                     MessageBox.Show("Could not save the results!", "Test results", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -359,10 +366,12 @@ namespace Demcon.ProductionTool.View.FatTestPages
             {
                 MessageBox.Show("Error while saving results: " + ex.Message, "Test results", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
         private void DisableButtons()
         {
+            this.CancelButton.Enabled = false;
             this.OKButton.Enabled = false;
             this.YesButton.Enabled = false;
             this.NoButton.Enabled = false;
@@ -671,6 +680,12 @@ namespace Demcon.ProductionTool.View.FatTestPages
                 progressBar1.Visible    = false;
                 
             }
+        }
+
+        private void DownloadButton_Click(object sender, EventArgs e)
+        {
+            // execute Yes Button at child
+            this.TestManager.Execute(EButtonOptions.Yes, "Yes");
         }
 
 

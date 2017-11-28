@@ -16,6 +16,7 @@ from scipy.ndimage import label
 from skimage.feature import peak_local_max
 
 ## import argument
+import os
 import sys
 import time
 
@@ -23,6 +24,10 @@ import time
 a0 = str(sys.argv[1]) 
 a1 = a0.rsplit("\\",1)
 a = a1[0] + "\\figure\\FAT1FieldMaskGeneration";
+
+if not os.path.exists(a):
+	os.makedirs(a)
+
 
 # location of image source
 b = str(sys.argv[2]) 
@@ -34,8 +39,12 @@ c = float(sys.argv[3])
 # choosen hand
 d = str(sys.argv[4]) 
 
-# ## debug
+## debug
 # a = r'C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\bin\Debug\Python\figure\FAT1FieldMaskGeneration'
+
+# if not os.path.exists(a):
+	# os.makedirs(a)
+		
 # b = r'C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\1. Test Source\20170629_090733_297 Fieldmask'
 # c = 40
 # d = 'left'

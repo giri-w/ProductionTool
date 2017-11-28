@@ -14,31 +14,23 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
     public class FMGTestStep10 : TestStep
     {
         
-        string checkFiles = string.Empty;
-        string localFile1 = @"/Python/figure/left_mask.png";
-        string localFile2 = @"/Python/figure/right_mask.png";
-        string localFile3 = @"/Python/figure/left_mask_high.png";
-        string localFile4 = @"/Python/figure/right_mask_high.png";
+        string checkFiles 						= string.Empty;
+        string localFile1 						= @"/Python/figure/left_mask.png";
+        string localFile2 						= @"/Python/figure/right_mask.png";
+        string localFile3 						= @"/Python/figure/left_mask_high.png";
+        string localFile4 						= @"/Python/figure/right_mask_high.png";
+				
+        string hostPath 						= "/Settings/system/testFolder/CameraSettings";
 
-        string hostName = "172.17.5.108";
-        string fingerprint = "ea:11:8b:78:c3:85:8b:25:3b:a3:7a:38:4e:68:81:d7:07:3d:d6:4f";
-        string hostPath = "/Settings/system/testFolder/CameraSettings";
-
-        private const string InstructionText =
-                                "Copy generated images to the machine\n" +
-                                "- left_mask.png\n" +
-                                "- right_mask.png\n" +
-                                "- left_mask_high.png\n" +
-                                "- right_mask_high.png\n\n" +
-                                "INFO :\n{0}";
-                                
-
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep10"/> class.
-        /// DO NOT USE! Only for Serializabililty!
-        /// </summary>
-        [Obsolete]
+        private const string InstructionText 	=
+												  "Copy generated images to the machine\n" +
+												  "- left_mask.png\n" +
+												  "- right_mask.png\n" +
+												  "- left_mask_high.png\n" +
+												  "- right_mask_high.png\n\n" +
+												  "INFO :\n{0}";
+        
+		[Obsolete]
         public FMGTestStep10()
             : this(null)
         { }
@@ -53,10 +45,6 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             else
                 checkFiles = "Some files are missing\nPress Back to regenerate the images";
 
-            // initial setup | download measurement.xml document
-            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back;
-            this.Results = new List<Result>();
-
             // form setup
             this.Name = "Update Field Mask";
             this.Instructions = "Copy generated images to the machine\n" +
@@ -67,7 +55,9 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                                 "INFO :\n" + 
                                 checkFiles;
             this.SupportingImage = string.Empty;
-            
+            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
+            this.Results = new List<Result>();
+			// forward and backward handler
             this.OnTestUpdated(false);
             
         }
@@ -86,25 +76,19 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                  
             }).Start();
         }
-
-        public override void Stop()
-        {
-            base.Stop();
-            
-        }
-        
-        public override void Execute(EButtonOptions userAction, string info)
+		
+		public override void Execute(EButtonOptions userAction, string info)
         {
             
             this.Results.Clear();
-            if (userAction == EButtonOptions.Next)
+            if (userAction == EButtonOptions.Analyze)
             {
                 // upload generated images to server
                 FtpTransfer ftp = new FtpTransfer();
-                bool resultUpload1 = ftp.Upload(hostName, fingerprint, localFile1, hostPath);
-                bool resultUpload2 = ftp.Upload(hostName, fingerprint, localFile2, hostPath);
-                bool resultUpload3 = ftp.Upload(hostName, fingerprint, localFile3, hostPath);
-                bool resultUpload4 = ftp.Upload(hostName, fingerprint, localFile4, hostPath);
+                bool resultUpload1 = ftp.Upload(localFile1, hostPath);
+                bool resultUpload2 = ftp.Upload(localFile2, hostPath);
+                bool resultUpload3 = ftp.Upload(localFile3, hostPath);
+                bool resultUpload4 = ftp.Upload(localFile4, hostPath);
 
                 bool finalResult = resultUpload1 && resultUpload2 && resultUpload3 && resultUpload4;
 
@@ -119,6 +103,13 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                 this.OnTestUpdated(true);
             }
 
+            if (userAction == EButtonOptions.Next)
+            {
+                // continue to next step
+                this.Results.Add(new BooleanResult(this.Name, "SKIPPED", true));
+                this.OnTestUpdated(true);
+            }
+
             if (userAction == EButtonOptions.Back)
             {
                 // back to previous step
@@ -127,11 +118,6 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 
 
         }
-
-
-     
-
-
 
     }
 }

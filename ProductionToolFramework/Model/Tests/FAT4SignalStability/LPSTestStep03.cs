@@ -25,6 +25,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
             this.SupportingImage = string.Empty;
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back;
             this.Results = new List<Result>();
+			// forward and backward handler
             this.OnTestUpdated(false);
         }
 

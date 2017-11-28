@@ -10,7 +10,8 @@ namespace Demcon.ProductionTool.Model
         var4 = 8,
         Measurements = 16,
         Threshold = 32,
-            LED=64
+        LED=64,
+        MeasurementID = 128
 
     }
 }

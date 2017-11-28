@@ -14,7 +14,8 @@ namespace Demcon.ProductionTool.Model
         Analyze = 64,
         Back = 128,
         Next = 256,
-        Finish = 512
+        Finish = 512,
+        Download = 1024
 
     }
 }

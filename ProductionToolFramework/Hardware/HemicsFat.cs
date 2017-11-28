@@ -333,7 +333,82 @@ namespace HemicsFat
 
         public class FtpTransfer
         {
-            public bool Upload(string _hostName, string fingerprint, string localFile, string hostPath)
+
+        private string _hostname;
+        private string _fingerprint;
+        private string _username;
+        private string _password;
+        private string ftpSetting = @"Setting\profile.xml";
+
+        public FtpTransfer()
+        {
+            XmlDocument doc = new XmlDocument();
+
+            // update setting from profile.xml
+            doc.Load(ftpSetting);
+            XmlNode __hostname = doc.SelectSingleNode("/Profile/IPAddress");
+            XmlNode __fingerprint = doc.SelectSingleNode("/Profile/Fingerprint");
+            XmlNode __username = doc.SelectSingleNode("/Profile/UserName");
+            XmlNode __password = doc.SelectSingleNode("/Profile/Password");
+            _hostname = __hostname.InnerText;
+            _fingerprint = __fingerprint.InnerText;
+            _username = __username.InnerText;
+            _password = __password.InnerText;
+            doc.Save(ftpSetting);
+
+        }
+
+        public SessionOptions createConnection()
+        {
+            SessionOptions xSession = new SessionOptions
+            {
+                Protocol = Protocol.Ftp,
+                HostName = _hostname, //Ip adress 
+                PortNumber = 21,
+                UserName = _username,
+                Password = _password,
+                TlsHostCertificateFingerprint = _fingerprint,
+                FtpSecure = FtpSecure.Explicit,
+            };
+            return xSession;
+        }
+
+        public bool checkConnection()
+        {
+            try
+            {
+                // Set up session options
+                SessionOptions sessionOptions = new SessionOptions
+                {
+                    Protocol = Protocol.Ftp,
+                    HostName = _hostname, //Ip adress 
+                    PortNumber = 21,
+                    UserName = _username,
+                    Password = _password,
+                    TlsHostCertificateFingerprint = _fingerprint,
+                    FtpSecure = FtpSecure.Explicit,
+                };
+                bool checkStatus = false;
+                using (Session session = new Session())
+                {
+                    // Connect
+                    session.Open(sessionOptions);
+
+                    if (session.Opened)
+                        checkStatus = true;
+                }
+
+                return checkStatus;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e);
+                return false;
+            }
+        }
+
+        public bool Upload(string localFile, string hostPath)
             {
                 try
                 {
@@ -341,11 +416,11 @@ namespace HemicsFat
                     SessionOptions sessionOptions = new SessionOptions
                     {
                         Protocol = Protocol.Ftp,
-                        HostName = _hostName, //Ip adress 
+                        HostName = _hostname, //Ip adress 
                         PortNumber = 21,
-                        UserName = "Service Engineer",
-                        Password = "192+SERV.HEMI",
-                        TlsHostCertificateFingerprint = fingerprint,
+                        UserName = _username,
+                        Password = _password,
+                        TlsHostCertificateFingerprint = _fingerprint,
                         FtpSecure = FtpSecure.Explicit,
                     };
 
@@ -376,20 +451,20 @@ namespace HemicsFat
                 }
             }
 
-            public bool Download(string _hostName, string fingerprint, string localPath, string ftpFile)
+            public bool Download(string localPath, string ftpFile)
             {
                 try
                 {
                     // Set up session options
                     SessionOptions sessionOptions = new SessionOptions
                     {
-                        Protocol = Protocol.Ftp,
-                        HostName = _hostName,
-                        PortNumber = 21,
-                        UserName = "Service Engineer",
-                        Password = "192+SERV.HEMI",
-                        TlsHostCertificateFingerprint = fingerprint,
-                        FtpSecure = FtpSecure.Explicit,
+                        Protocol                        = Protocol.Ftp,
+                        HostName                        = _hostname,
+                        PortNumber                      = 21,
+                        UserName                        = _username,
+                        Password                        = _password,
+                        TlsHostCertificateFingerprint   = _fingerprint,
+                        FtpSecure                       = FtpSecure.Explicit,
                     };
 
                     using (Session session = new Session())

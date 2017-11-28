@@ -26,7 +26,8 @@ ms = '20170911_101149_297 jesse new settings'
 # xml = p2.files('rois.xml')[0]
 
 # a = int(sys.argv[1])
-for i in range(a): #Process all measurements. Insert number of measurements manually.
+for i in range(a): #Process all 
+    . Insert number of measurements manually.
     
     # Uncomment when using multiple measurements
     p1 = path.Path(dr+'\\')

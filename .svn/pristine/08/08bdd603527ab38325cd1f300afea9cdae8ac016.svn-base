@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A539444C-5BB3-409C-95E7-2BC1FC0DC081}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TestToolFramework</RootNamespace>
+    <AssemblyName>TestToolFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WinSCPnet, Version=1.4.0.7781, Culture=neutral, PublicKeyToken=2271ec4a3c56d0bf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\WinSCP\WinSCPnet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gereral\EventArgs.cs" />
+    <Compile Include="Hardware\HemicsFat.cs" />
+    <Compile Include="Hardware\HwManager.cs" />
+    <Compile Include="Model\ETestConclusion.cs" />
+    <Compile Include="Model\ETestSequence.cs" />
+    <Compile Include="Model\IConclusionItem.cs" />
+    <Compile Include="Model\SpecificTestStep.cs" />
+    <Compile Include="Model\Results\BooleanResult.cs" />
+    <Compile Include="Model\Results\ErrorResult.cs" />
+    <Compile Include="Model\Results\Result.cs" />
+    <Compile Include="Model\Results\ValueResult.cs" />
+    <Compile Include="Model\Test.cs" />
+    <Compile Include="Model\TestConfig.cs" />
+    <Compile Include="Model\TestManager.cs" />
+    <Compile Include="Model\TestSequence.cs" />
+    <Compile Include="Model\TestStep.cs" />
+    <Compile Include="Model\Tests\CalibrationTestSequence.cs" />
+    <Compile Include="Model\Tests\CalibrationTest\CalibrationTest.cs" />
+    <Compile Include="Model\Tests\CalibrationTest\CalibrationTestStep001.cs" />
+    <Compile Include="Model\Tests\CalibrationTest\CalibrationTestStep002.cs" />
+    <Compile Include="Model\Tests\CalibrationTest\CalibrationTestStep003.cs" />
+    <Compile Include="Model\Tests\EVarOptions.cs" />
+    <Compile Include="Model\Tests\EButtonOptions.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTest.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep08.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep10.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep11.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep06.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep05.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep04.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep03.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep02.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep01.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep12.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep09.cs" />
+    <Compile Include="Model\Tests\FAT1FieldMaskGeneration\FMGTestStep07.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep13.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep12.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep11.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep10.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep02.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep09.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep08.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep07.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep06.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep05.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep04.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep03.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep01.cs" />
+    <Compile Include="Model\Tests\Fat1TestSequence.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep03.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep04.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep05.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep06.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep07.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep08.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep02.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep01.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\LPSTest.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep004.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep003.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\SSTest.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep001.cs" />
+    <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep002.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep07a.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep09.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep10.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep04.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep05.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep12b.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep13.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep12a.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep11.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep08.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep07b.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep06.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep03.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep02.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep01.cs" />
+    <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTest.cs" />
+    <Compile Include="Model\Tests\Fat4TestSequence.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTest.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep0021.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep0023.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep0031.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep004.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep001.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep0022.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep006.cs" />
+    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep005.cs" />
+    <Compile Include="Model\Tests\FAT4VolunteerScan\VSCTest.cs" />
+    <Compile Include="Model\Tests\FAT4VolunteerScan\VSCTestStep03.cs" />
+    <Compile Include="Model\Tests\FAT4VolunteerScan\VSCTestStep04.cs" />
+    <Compile Include="Model\Tests\FAT4VolunteerScan\VSCTestStep01.cs" />
+    <Compile Include="Model\Tests\FAT4VolunteerScan\VSCTestStep02.cs" />
+    <Compile Include="Model\Tests\GenericTestSequence.cs" />
+    <Compile Include="Model\Tests\GenericTest\GenericTestStep004.cs" />
+    <Compile Include="Model\Tests\GenericTest\GenericTest.cs" />
+    <Compile Include="Model\Tests\GenericTest\GenericTestStep001.cs" />
+    <Compile Include="Model\Tests\GenericTest\GenericTestStep002.cs" />
+    <Compile Include="Model\Tests\GenericTest\GenericTestStep003.cs" />
+    <Compile Include="Model\Tests\ReportGeneratorTestSequence.cs" />
+    <Compile Include="Model\Tests\SelfTest\SelfTestStep005.cs" />
+    <Compile Include="Model\Tests\SelfTest\SelfTestStep000.cs" />
+    <Compile Include="Model\Tests\SelfTest\SelfTest.cs" />
+    <Compile Include="Model\Tests\SelfTest\SelfTestStep001.cs" />
+    <Compile Include="Model\Tests\SelfTest\SelfTestStep002.cs" />
+    <Compile Include="Model\Tests\SelfTest\SelfTestStep003.cs" />
+    <Compile Include="Model\Tests\SelfTest\SelfTestStep004.cs" />
+    <Compile Include="Model\Tests\VolunteerScan\VolunteerScan.cs" />
+    <Compile Include="Model\Tests\VolunteerScan\VolunteerScanStep001.cs" />
+    <Compile Include="Model\Tests\VolunteerScan\VolunteerScanStep002.cs" />
+    <Compile Include="Model\Tests\VolunteerScan\VolunteerScanStep003.cs" />
+    <Compile Include="Model\Tests\VolunteerScan\VolunteerScanStep004.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="SvnInformation.cs" />
+    <Compile Include="View\FatTestPages\PageMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\FatTestPages\PageMain.Designer.cs">
+      <DependentUpon>PageMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FatTestPages\TabFatTests.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\FatTestPages\TabFatTests.Designer.cs">
+      <DependentUpon>TabFatTests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FatTestPages\TestPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\FatTestPages\TestPage.Designer.cs">
+      <DependentUpon>TestPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\InputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\InputDialog.Designer.cs">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\MultiInputDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MultiInputDialog.Designer.cs">
+      <DependentUpon>MultiInputDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestStepListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\TestStepListItem.Designer.cs">
+      <DependentUpon>TestStepListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TestTimeoutDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TestTimeoutDialog.Designer.cs">
+      <DependentUpon>TestTimeoutDialog.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="View\FatTestPages\PageMain.resx">
+      <DependentUpon>PageMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FatTestPages\TestPage.resx">
+      <DependentUpon>TestPage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FatTestPages\TabFatTests.resx">
+      <DependentUpon>TabFatTests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TestStepListItem.resx">
+      <DependentUpon>TestStepListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TestTimeoutDialog.resx">
+      <DependentUpon>TestTimeoutDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bin\Debug\Python\1. LUTDetermination.py" />
+    <None Include="bin\Debug\Python\2. FieldMaskGeneration.py" />
+    <None Include="bin\Debug\Python\3. SignalStability.py" />
+    <None Include="bin\Debug\Python\4. IntesityAnalyzer [FR0111].py" />
+    <None Include="bin\Debug\Python\5. IntesityRatio [FR0113].py" />
+    <None Include="bin\Debug\Python\6. IntesityAccuracy [FR0114].py" />
+    <None Include="bin\Debug\Python\checkVolunteerScan_1_9_0.py" />
+    <None Include="bin\Debug\TestToolFramework.exe.config" />
+    <None Include="bin\Debug\TestToolFramework.vshost.exe.config" />
+    <None Include="bin\Debug\TestToolFramework.vshost.exe.manifest" />
+    <None Include="Model\TestSequence.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Python\checkVolunteerScan_1_9_0.py" />
+    <None Include="Python\library\grid_processing\__pycache__\compose_mask_grid4.cpython-34.pyc" />
+    <None Include="Python\library\grid_processing\__pycache__\__init__.cpython-34.pyc" />
+    <None Include="Python\library\table_compilation\__pycache__\lut_table_compilation.cpython-34.pyc" />
+    <None Include="Python\library\table_compilation\__pycache__\__init__.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\calculate_table.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\compose_mask_grid.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\compose_mask_grid4.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\data_builder.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\detect_photo_grid.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\detect_photo_grid4.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\display_grid.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\extrapolate_photo_grid.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\finish_photo_gridL.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\finish_photo_gridR.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\lut_photo_processing.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\lut_table_compilation.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\predict_photo_grid.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\test3.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\write_xml.cpython-34.pyc" />
+    <None Include="Python\library\__pycache__\__init__.cpython-34.pyc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ReportGenerator\ReportGeneratorLibrary\ReportGeneratorLibrary.csproj">
+      <Project>{5bcc1040-3c3e-415a-a5ca-8cad3a9b3353}</Project>
+      <Name>ReportGeneratorLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\dep\wkhtmltopdf.exe" />
+    <Resource Include="bin\Debug\Images\Arrow-24.png" />
+    <Resource Include="bin\Debug\Images\Arrow-256.png" />
+    <Resource Include="bin\Debug\Images\CalibrationFigure2.jpg" />
+    <Resource Include="bin\Debug\Images\CalibrationFigure3.jpg" />
+    <Resource Include="bin\Debug\Images\Check-24.png" />
+    <Resource Include="bin\Debug\Images\Check-256.png" />
+    <Resource Include="bin\Debug\Images\Cross-24.png" />
+    <Resource Include="bin\Debug\Images\Cross-256.png" />
+    <Resource Include="bin\Debug\Images\Folder-24.png" />
+    <Resource Include="bin\Debug\Images\Folder-256.png" />
+    <Resource Include="bin\Debug\Images\Foto10.jpg" />
+    <Resource Include="bin\Debug\Images\Inconclusive-24.png" />
+    <Resource Include="bin\Debug\Images\Inconclusive-256.png" />
+    <Resource Include="bin\Debug\Images\list-24.png" />
+    <Resource Include="bin\Debug\Images\list-256.png" />
+    <Resource Include="bin\Debug\Images\listCheck-24.png" />
+    <Resource Include="bin\Debug\Images\listCheck-256.png" />
+    <Resource Include="bin\Debug\Images\listCross-24.png" />
+    <Resource Include="bin\Debug\Images\listCross-256.png" />
+    <Resource Include="bin\Debug\Images\listInconclusive-24.png" />
+    <Resource Include="bin\Debug\Images\listInconclusive-256.png" />
+    <Resource Include="bin\Debug\Images\Nothing-24.png" />
+    <Resource Include="bin\Debug\Images\Nothing-256.png" />
+    <Content Include="bin\Debug\ReportGeneratorLibrary.dll" />
+    <Content Include="bin\Debug\ReportGeneratorLibrary.pdb" />
+    <Resource Include="bin\Debug\Report\Logo.png" />
+    <Content Include="bin\Debug\Report\Report.css" />
+    <Resource Include="bin\Debug\Report\Report.xslt" />
+    <Content Include="bin\Debug\Report\ReportHeader.html" />
+    <Content Include="bin\Debug\TestToolFramework.exe" />
+    <Content Include="bin\Debug\TestToolFramework.pdb" />
+    <Content Include="bin\Debug\TestToolFramework.vshost.exe" />
+    <Content Include="bin\Debug\WinSCPnet.dll" />
+    <Content Include="Images\Arrow-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Arrow-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\CalibrationFigure2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\CalibrationFigure3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Check-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Check-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Cross-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Cross-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Folder-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Folder-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Foto10.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Inconclusive-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Inconclusive-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\list-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\list-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\listCheck-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\listCheck-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\listCross-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\listCross-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\listInconclusive-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\listInconclusive-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Nothing-24.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Nothing-256.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Python\1. LUTDetermination.py" />
+    <Content Include="Python\2. FieldMaskGeneration.py" />
+    <Content Include="Python\3. SignalStability.py" />
+    <Content Include="Python\4. IntesityAnalyzer [FR0111].py" />
+    <Content Include="Python\5. IntesityRatio [FR0113].py" />
+    <Content Include="Python\6. IntesityAccuracy [FR0114].py" />
+    <Resource Include="Python\figure\FieldMask.png" />
+    <Content Include="Python\library\display_grid.py" />
+    <Content Include="Python\library\grid_processing\compose_mask_grid.py" />
+    <Content Include="Python\library\grid_processing\compose_mask_grid4.py" />
+    <Content Include="Python\library\grid_processing\detect_photo_grid.py" />
+    <Content Include="Python\library\grid_processing\detect_photo_grid4.py" />
+    <Content Include="Python\library\grid_processing\extrapolate_photo_grid.py" />
+    <Content Include="Python\library\grid_processing\finish_photo_gridL.py" />
+    <Content Include="Python\library\grid_processing\finish_photo_gridR.py" />
+    <Content Include="Python\library\grid_processing\lut_photo_processing.py" />
+    <Content Include="Python\library\grid_processing\path_completion.py" />
+    <Content Include="Python\library\grid_processing\predict_photo_grid.py" />
+    <Content Include="Python\library\grid_processing\test3.py" />
+    <Content Include="Python\library\grid_processing\[old] display_grid.py" />
+    <Content Include="Python\library\grid_processing\__init__.py" />
+    <Content Include="Python\library\lut_photo_processing.py" />
+    <Content Include="Python\library\lut_table_compilation.py" />
+    <Resource Include="Python\library\note.txt" />
+    <Content Include="Python\library\table_compilation\calculate_table.py" />
+    <Content Include="Python\library\table_compilation\data_builder.py" />
+    <Content Include="Python\library\table_compilation\lut_table_compilation.py" />
+    <Content Include="Python\library\table_compilation\showing_res.py" />
+    <Content Include="Python\library\table_compilation\write_xml.py" />
+    <Content Include="Python\library\table_compilation\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\Python\figure\" />
+    <Folder Include="bin\Debug\Python\library\grid_processing\__pycache__\" />
+    <Folder Include="bin\Debug\Python\library\table_compilation\__pycache__\" />
+    <Folder Include="bin\Debug\Python\library\__pycache__\" />
+    <Folder Include="bin\Debug\TestFolder\P50_20170926_03\" />
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

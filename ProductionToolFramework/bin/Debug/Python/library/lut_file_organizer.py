@@ -31,6 +31,10 @@ def lut_file_organizer(sourcepath,destinationpath):
     # show image
     # plt.show()  
     
+	# create a new folder
+    if not os.path.exists(destinationpath):
+        os.makedirs(destinationpath)
+
     source = os.listdir(sourcepath)
     for files in source:
         if files.endswith('.png'):

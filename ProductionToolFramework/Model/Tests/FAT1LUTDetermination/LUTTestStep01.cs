@@ -9,10 +9,6 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 {
     public class LUTTestStep01 : TestStep
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GenericTestStep01"/> class.
-        /// DO NOT USE! Only for Serializabililty!
-        /// </summary>
         [Obsolete]
         public LUTTestStep01()
             : this(null)
@@ -35,11 +31,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             this.Results.Clear();
             if (userAction == EButtonOptions.Next)
             {
-                // Check or do something (with the hardware?) for the test
+                // Continue to the next step
                 this.Results.Add(new BooleanResult("Machine Preparation", "Checked", true));
+                this.OnTestUpdated(true);
             }
 
-            this.OnTestUpdated(true);
+            
         }
     }
 }

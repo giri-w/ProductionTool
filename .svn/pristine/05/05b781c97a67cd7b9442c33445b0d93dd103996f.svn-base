@@ -1,0 +1,16 @@
+﻿using System;
+namespace Demcon.ProductionTool.Model
+{
+    [Flags]
+    public enum EVarOptions
+    {
+        Intensity = 1,
+        Mass = 2,
+        Distance = 4,
+        var4 = 8,
+        Measurements = 16,
+        Threshold = 32,
+            LED=64
+
+    }
+}

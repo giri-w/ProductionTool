@@ -23,7 +23,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                                 "- Ensure the variatios are within specification\n" +
                                 "  (If Green OK is displayed in all region, test is PASS)\n" +
                                 "- Write the result in the assignment";
-            this.SupportingImage = @"Python\figure\SignalStability.png";
+            
+            this.SupportingImage = @"Python\figure\FAT4SignalStablity\SignalStability.png";
             this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

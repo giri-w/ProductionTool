@@ -5,6 +5,8 @@ using Demcon.ProductionTool.General;
 using Demcon.ProductionTool.Hardware;
 using Demcon.ProductionTool.Model;
 using Demcon.ProductionTool.View.FatTestPages;
+using HemicsFat;
+using System.Threading;
 
 namespace Demcon.ProductionTool.View
 {
@@ -14,10 +16,11 @@ namespace Demcon.ProductionTool.View
 
         public MainForm()
         {
+
             try
             {
                 this.HwManager = new HwManager();
-                string versionString = "Nano Core Tool; " + GetSvnRevision();
+                string versionString = "HandScanner Tool; " + GetSvnRevision();
                 this.TestManager = new TestManager(versionString);
                 InitializeComponent();
                 this.Text = versionString;
@@ -102,11 +105,67 @@ namespace Demcon.ProductionTool.View
             if (this.TestManager.CurrentSequence == null)
             {
                 this.tabFatTests1.BringToFront();
+                this.testPage1.SendToBack();
+                
             }
             else
             {
                 this.testPage1.BringToFront();
+                this.tabFatTests1.SendToBack();
+               
             }
+        }
+
+        private void tabFatTests1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        delegate void SetTextCallback(string text, int color);
+
+        private void SetText(string text, int color)
+        {
+            if (this.statusText.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(SetText);
+                this.Invoke(d, new object[] { text,color });
+            }
+            else
+            {
+                this.statusText.Text = text;
+                if (color == 1)
+                    this.statusText.ForeColor = System.Drawing.Color.Green;
+                else if (color == 2)
+                    this.statusText.ForeColor = System.Drawing.Color.Red;
+            }
+        }
+
+
+        private void linkStatus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Console.WriteLine("Hello, world");
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                FtpTransfer ftp = new FtpTransfer();
+                while (true)
+                {
+                    bool check = ftp.checkConnection();
+                    if (check)
+                        SetText("Connected", 1);
+                    else
+                        SetText("Disconnected", 2);
+
+                    Thread.Sleep(20000);
+                }
+                
+            }).Start();
+
+        }
+
+        private void statusText_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
