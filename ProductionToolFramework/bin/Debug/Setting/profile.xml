@@ -8,4 +8,5 @@
   <Fingerprint>ee:57:89:1e:b2:5c:9f:fd:38:b0:76:d5:25:5f:10:ad:fb:12:a3:73</Fingerprint>
   <UserName>operator</UserName>
   <Password>operator</Password>
+  <FTPDir>/Settings/Measurement/</FTPDir>
 </Profile>

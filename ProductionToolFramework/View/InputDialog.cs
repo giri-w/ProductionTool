@@ -12,13 +12,16 @@ namespace Demcon.ProductionTool.View
             this.InputTextBox.Select();
         }
 
-        public static bool GetInput(Form parent, string title, string text, out string input)
+        public static bool GetInput(string title, string text, string info, out string input)
         {
             bool acceptInput = false;
-            input = string.Empty;
+            
+            
             InputDialog dialog = new InputDialog(title, text);
+            dialog.InputTextBox.Text = info;
+            input = string.Empty;
             // Show testDialog as a modal dialog and determine if DialogResult = OK.
-            if (dialog.ShowDialog(parent) == DialogResult.OK)
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 // Read the contents of testDialog's TextBox.
                 input = dialog.InputTextBox.Text.Trim();

@@ -1,4 +1,5 @@
-﻿using HemicsFat;
+﻿using Demcon.ProductionTool.View;
+using HemicsFat;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,15 +19,16 @@ namespace TestToolFramework.View
         string[] folderName;
         string downloadPath = @"C:\TestFolder";
         string configPath = @"Setting\measurement.xml";
+        string profilePath = @"Setting\profile.xml";
+        string ftpDirectory;
 
         public MeasurementForm()
         {
             InitializeComponent();
-            //sourceList.Items.Add(@"C:\Users");
-            //sourceList.Items.Add(@"C:\Users\GWA");
+
+            // loading source directory
             sourceList.Items.Add("FTP Directory");
-            
-                        XmlDocument doc = new XmlDocument();
+            XmlDocument doc = new XmlDocument();
             doc.Load(configPath);
             XmlNodeList elemList = doc.GetElementsByTagName("dir");
             for (int i = 0; i < elemList.Count; i++)
@@ -34,6 +36,13 @@ namespace TestToolFramework.View
                 Console.WriteLine(elemList[i].InnerXml);
                 sourceList.Items.Add(elemList[i].InnerXml);
             }
+            doc.Save(configPath);
+
+            // loading FTP directory
+            doc.Load(profilePath);
+            XmlNode dirFTP = doc.SelectSingleNode("/Profile/FTPDir");
+            ftpDirectory = dirFTP.InnerText;
+            doc.Save(profilePath);
 
 
         }
@@ -43,8 +52,16 @@ namespace TestToolFramework.View
 
             // Create array of source list
             List<string> sourcefolder = new List<string>();
+            int counter = 0;
             foreach (string s in sourceList.Items)
-                sourcefolder.Add(s);
+            {
+                // list will be saved from the second list
+                if (counter > 0)
+                    sourcefolder.Add(s);
+
+                counter++;
+            }
+               
 
             string[] sourceArray = sourcefolder.ToArray();
 
@@ -70,7 +87,10 @@ namespace TestToolFramework.View
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
-            sourceList.Items.Remove(sourceList.SelectedItem);
+            if(sourceList.SelectedIndex != 0)
+              sourceList.Items.Remove(sourceList.SelectedItem);
+            else
+               MessageBox.Show("Cannot delete FTP Source", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void downloadButton_Click(object sender, EventArgs e)
@@ -150,33 +170,41 @@ namespace TestToolFramework.View
             folderList.Items.Clear();
             if (sourceList.SelectedIndex == 0)
             {
-                MessageBox.Show("FTP connection", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Establishing connection to FTP Server", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FtpTransfer ftp = new FtpTransfer();
                 SessionOptions cOptions = ftp.createConnection();
                 using (Session session = new Session())
                 {
-                    // Connect
-                    session.Open(cOptions);
-
-                    RemoteDirectoryInfo directory =
-                        session.ListDirectory("/Settings/Measurement/");
-
-                    List<string> sourcefolder = new List<string>();
-                    
-                    foreach (RemoteFileInfo fileInfo in directory.Files)
+                    try
                     {
-                        Console.WriteLine(
-                            "{0} with size {1}, permissions {2} and last modification at {3}",
-                            fileInfo.Name, fileInfo.Length, fileInfo.FilePermissions,
-                            fileInfo.LastWriteTime);
+                        // Connect
+                        session.Open(cOptions);
 
-                        // save full path to array
-                        sourcefolder.Add(fileInfo.FullName);
-                        // display folder name in folder List
-                        folderList.Items.Add(fileInfo.Name);
+                        RemoteDirectoryInfo directory =
+                            session.ListDirectory(ftpDirectory);
+
+                        List<string> sourcefolder = new List<string>();
+
+                        foreach (RemoteFileInfo fileInfo in directory.Files)
+                        {
+                            Console.WriteLine(
+                                "{0} with size {1}, permissions {2} and last modification at {3}",
+                                fileInfo.Name, fileInfo.Length, fileInfo.FilePermissions,
+                                fileInfo.LastWriteTime);
+
+                            // save full path to array
+                            sourcefolder.Add(fileInfo.FullName);
+                            // display folder name in folder List
+                            folderList.Items.Add(fileInfo.Name);
+                        }
+
+                        folderName = sourcefolder.ToArray();
                     }
-
-                    folderName = sourcefolder.ToArray();
+                    catch
+                    {
+                        MessageBox.Show("Fail establishing connection to the server.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
 
                 }
 
@@ -223,12 +251,7 @@ namespace TestToolFramework.View
             sourceText.Text = folderName[folderList.SelectedIndex];
         }
 
-        private void explorerButton_Click(object sender, EventArgs e)
-        {
-            string localPath = folderName[folderList.SelectedIndex];
-            System.Diagnostics.Process.Start("explorer.exe", localPath);
-        }
-
+     
         private void folderList_DoubleClick(object sender, EventArgs e)
         {
             string localPath = folderName[folderList.SelectedIndex];
@@ -238,6 +261,19 @@ namespace TestToolFramework.View
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("explorer.exe", downloadPath);
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (InputDialog.GetInput("FTP Address", "Please input new FTP Address", ftpDirectory, out ftpDirectory) && !string.IsNullOrWhiteSpace(ftpDirectory))
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(profilePath);
+                XmlNode dirFTP = doc.SelectSingleNode("/Profile/FTPDir");
+                dirFTP.InnerText = ftpDirectory;
+                doc.Save(profilePath);
+                
+            }
         }
     }
 }

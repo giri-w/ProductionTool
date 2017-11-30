@@ -7,13 +7,15 @@ using Demcon.ProductionTool.Model;
 using Demcon.ProductionTool.View.FatTestPages;
 using HemicsFat;
 using System.Threading;
+using System.Xml;
+using System.Diagnostics;
 
 namespace Demcon.ProductionTool.View
 {
     public partial class MainForm : Form
     {
         private TestPage testPage;
-
+        string helpDocument = @"Setting\Help.pdf";
         
         public MainForm()
         {
@@ -28,12 +30,23 @@ namespace Demcon.ProductionTool.View
                 this.tabFatTests1.TestManager = this.TestManager;
                 this.testPage1.TestManager = this.TestManager;
 
-               // Set Tooltip for the user control element
+                // info visibility
+                operatorInfo.Visible         = false;
+                workInfo.Visible             = false;
+                serialInfo.Visible           = false;
+
+                // Set Tooltip for the FAT TEST element
                 toolTip1.SetToolTip(tabFatTests1.btnTestSet1,   "Setting and Calibration of the System");
                 toolTip1.SetToolTip(tabFatTests1.btnTestSet2,   "System Safety With Respect to the Lasers");
                 toolTip1.SetToolTip(tabFatTests1.btnTestSet3,   "Grounding, Leakage Current, and High Voltage Tests");
                 toolTip1.SetToolTip(tabFatTests1.btnTestSet4,   "System Validation Test");
                 toolTip1.SetToolTip(tabFatTests1.btnReport,     "Generate Report Based on the Test Results");
+                toolTip1.SetToolTip(tabFatTests1.btnCalibrate,  "Calibrate software configuration");
+
+                // Set Tooltip for the TEST PAGE element
+                toolTip1.SetToolTip(testPage1.SupportingImageBox, "Click to Zoom the Image");
+
+
 
                 toolTip1.SetToolTip(linkStatus1, "Check Connection Status to the Machine");
             }
@@ -112,14 +125,45 @@ namespace Demcon.ProductionTool.View
 
         private void StartTestSequence(object sender, EventArgs<string> e)
         {
+            // read setting from profile.xml
+            string localSetting = @"Setting\profile.xml";
+            XmlDocument doc = new XmlDocument();
+
+            // load variable values
+            doc.Load(localSetting);
+
+            // update test information
+            XmlNode xserial = doc.SelectSingleNode("/Profile/Serial");
+            XmlNode xoperatorID = doc.SelectSingleNode("/Profile/ID");
+            XmlNode xWO = doc.SelectSingleNode("/Profile/WO");
+
+            string serial = string.Format("FNN{0:yy}", DateTime.Now);
+            serial = xserial.InnerText;
+            string dwo = xWO.InnerText;
+            string operatorID = xoperatorID.InnerText;
+
             if (this.TestManager.CurrentSequence == null)
             {
+                // info visibility
+                operatorInfo.Visible    = false;
+                workInfo.Visible        = false;
+                serialInfo.Visible      = false;
                 this.tabFatTests1.BringToFront();
                 this.testPage1.SendToBack();
                 
             }
             else
             {
+                // info visibility
+                operatorInfo.Visible    = true;
+                workInfo.Visible        = true;
+                serialInfo.Visible      = true;
+
+                // info text
+                operatorInfo.Text    = "Operator : " + operatorID;
+                workInfo.Text        = "Work Order : " + dwo;
+                serialInfo.Text      = "Serial Number : " + serial;
+
                 this.testPage1.BringToFront();
                 this.tabFatTests1.SendToBack();
                
@@ -144,16 +188,16 @@ namespace Demcon.ProductionTool.View
             {
                 this.statusText1.Text = text;
                 if (color == 1)
-                    this.statusText1.ForeColor = System.Drawing.Color.Green;
+                    this.statusText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(173)))), ((int)(((byte)(8)))));
                 else if (color == 2)
-                    this.statusText1.ForeColor = System.Drawing.Color.Red;
+                    this.statusText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
             }
         }
 
 
         private void linkStatus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Console.WriteLine("Hello, world");
+            Console.WriteLine("Hello, Start FTP Connection");
             new Thread(() =>
             {
                 Thread.CurrentThread.IsBackground = true;
@@ -173,6 +217,16 @@ namespace Demcon.ProductionTool.View
 
         }
 
-      
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+           
+                Process.Start(helpDocument);
+        }
+
+        public void updateProgress (int pBarValue, string pBarLabel)
+        {
+            progressResult.Text = pBarLabel;
+            progressBarValue.Value = pBarValue;
+        }
     }
 }

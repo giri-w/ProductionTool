@@ -40,7 +40,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
                                     "Press PROCESS to start analysis\n" +
                                     "Press NEXT when analysis process complete";
 
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

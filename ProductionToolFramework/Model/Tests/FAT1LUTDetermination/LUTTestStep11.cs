@@ -18,18 +18,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             : this(null)
         { }
 
-        private const string InstructionText =
-												"Check if every green dots are in white dots\n" +
-												"- Press Next to continue\n" +
-												"- or press Back to change the measurement setting";
-
-
-        private string Grid4Location = string.Empty;
-        private string GridLocation = string.Empty;
-        private double Intensity;
-        private double Mass;
-        private double Distance;
-        private string testSetting = @"Setting\config.xml";
+  
 
         public LUTTestStep11(TestManager testManager)
             : base(testManager)
@@ -46,17 +35,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             this.OnTestUpdated(false);
         }
 
-        public override void Start()
-        {
-            this.Results.Clear();
-            new Task(() =>
-            {
-                this.Instructions = string.Format(LUTTestStep11.InstructionText);
-
-            }).Start();
-        }
-
-
+  
         public override void Execute(EButtonOptions userAction, string info)
         {
             this.Results.Clear();

@@ -32,7 +32,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 									"Motor Matrix configurations are ready\n" +
 									"Press Update to upload files to the system\n:" +
 									"Press Next to continue to the next step\n";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions	 = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
             this.Results		 = new List<Result>();
 			// forward and backward handler

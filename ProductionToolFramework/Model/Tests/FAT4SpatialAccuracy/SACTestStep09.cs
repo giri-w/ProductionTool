@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Demcon.ProductionTool.Hardware;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using TestToolFramework.View;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
 {
@@ -20,10 +18,9 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
             this.Name = "Data Selection : Position Accuracy";
             this.Instructions =
                             "- Select the measurement result from the list\n" +
-                            "- Copy the folder name and paste it in the download box\n" +
-                            "- Press UPDATE to download the measurement to test folder";
-            this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Update;
+                            "- Press DOWNLOAD to download the measurement to test folder";
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
+            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Download;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
@@ -43,6 +40,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
             {
                 // Back to previous step
                 this.OnTestCanceled(true);
+            }
+
+            if (userAction == EButtonOptions.Download)
+            {
+                MeasurementForm browser = new MeasurementForm();
+                Application.Run(browser);
             }
         }
     }

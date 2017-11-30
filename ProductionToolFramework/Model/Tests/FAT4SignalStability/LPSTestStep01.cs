@@ -27,7 +27,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                             "- Place black paper delay target at left and right target\n" +
                             "- Place the flaps in the scanner for armholes\n" +
                             "- Ensure the slider is closed";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

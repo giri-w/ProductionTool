@@ -56,7 +56,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 												"\n\nTo start measurement, press Process" +
 												"To check the result, press Next";
 			
-            this.SupportingImage	= string.Empty;
+            this.SupportingImage	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
             this.VarOptions			= EVarOptions.Intensity | EVarOptions.Mass | EVarOptions.Distance;
             this.VarValue			= Intensity.ToString() + "," + Mass.ToString() + "," + Distance.ToString();

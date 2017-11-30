@@ -22,7 +22,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                                 "1. Start the full measurement\n" +
                                 "2. Record the measurement name in the assignment\n" +
                                 "3. Press NEXT when finished or Press BACK to go to previous step\n";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back;
             this.Results = new List<Result>();
 			// forward and backward handler

@@ -27,7 +27,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
                                 "Press FINISH to go to main menu\n" +
                                 "Press NEXT to continue to the next test, or\n" +
                                 "Press BACK to return to the previous step";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Finish;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

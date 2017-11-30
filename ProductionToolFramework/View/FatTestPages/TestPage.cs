@@ -198,17 +198,16 @@ namespace Demcon.ProductionTool.View.FatTestPages
                     this.SupportingImageBox.ImageLocation = currStep.SupportingImage;
                     this.BrowseButton.Visible        = currStep.ButtonOptions.HasFlag(EButtonOptions.Browse);
                     this.RetryButton.Visible         = currStep.ButtonOptions.HasFlag(EButtonOptions.Update);
-                    this.NoButton.Visible            = currStep.ButtonOptions.HasFlag(EButtonOptions.No);
-                    this.OKButton.Visible            = currStep.ButtonOptions.HasFlag(EButtonOptions.OK);
-                    this.YesButton.Visible           = currStep.ButtonOptions.HasFlag(EButtonOptions.Yes);
                     this.BackButton.Visible          = currStep.ButtonOptions.HasFlag(EButtonOptions.Back);
                     this.AnalyzeButton.Visible       = currStep.ButtonOptions.HasFlag(EButtonOptions.Analyze);
                     this.NextButton.Visible          = currStep.ButtonOptions.HasFlag(EButtonOptions.Next);
                     this.CancelButton.Visible        = !currStep.ButtonOptions.HasFlag(EButtonOptions.Finish);
                     this.FinishedButton.Visible      = currStep.ButtonOptions.HasFlag(EButtonOptions.Finish);
                     this.DownloadButton.Visible = currStep.ButtonOptions.HasFlag(EButtonOptions.Download);
-                    this.progressBar1.Visible = false;
-                    this.progressLabel.Visible = false;
+                   
+                    ((MainForm)ParentForm).progressBarValue.Visible = false;
+                    ((MainForm)ParentForm).progressResult.Visible = false;
+
 
                     this.varBox1.Visible = counter > 0;
                     this.varBox2.Visible = counter > 1;
@@ -218,6 +217,8 @@ namespace Demcon.ProductionTool.View.FatTestPages
                     this.varLabel2.Visible = counter > 1;
                     this.varLabel3.Visible = counter > 2;
                     this.varLabel4.Visible = counter > 3;
+
+
                     
 
                     
@@ -231,16 +232,16 @@ namespace Demcon.ProductionTool.View.FatTestPages
                     this.SupportingImageBox.ImageLocation = string.Empty;
 
                     this.DownloadButton.Visible  = false;
-                    this.NoButton.Visible        = false;
+                   
                     this.NextButton.Visible      = false;
                     this.BackButton.Visible      = false;
                     this.BrowseButton.Visible    = false;
                     this.RetryButton.Visible     = false;
-                    this.OKButton.Visible        = false;
-                    this.YesButton.Visible       = false;
+                    
                     this.AnalyzeButton.Visible   = false;
-                    this.progressBar1.Visible = false;
-                    this.progressLabel.Visible = false;
+                    
+                    ((MainForm)ParentForm).progressBarValue.Visible = false;
+                    ((MainForm)ParentForm).progressResult.Visible = false;
 
                     this.CancelButton.Visible    = false;
                     this.FinishedButton.Visible  = true;
@@ -372,18 +373,16 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private void DisableButtons()
         {
             this.CancelButton.Enabled = false;
-            this.OKButton.Enabled = false;
-            this.YesButton.Enabled = false;
-            this.NoButton.Enabled = false;
+            this.NextButton.Enabled = false;
+            this.BackButton.Enabled = false;
             this.FinishedButton.Enabled = false;
         }
 
         private void EnableButtons()
         {
             this.CancelButton.Enabled = true;
-            this.OKButton.Enabled = true;
-            this.YesButton.Enabled = true;
-            this.NoButton.Enabled = true;
+            this.NextButton.Enabled = true;
+            this.BackButton.Enabled = true;
             this.FinishedButton.Enabled = true;
         }
 
@@ -447,9 +446,12 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.DisableButtons();
             FolderBrowserDialog fbd = new FolderBrowserDialog();
 
-            fbd.RootFolder = Environment.SpecialFolder.Desktop;
-            fbd.Description = " Select Recording Folder";
+            fbd.RootFolder = Environment.SpecialFolder.MyComputer;
+            fbd.SelectedPath = @"C:\TestFolder";
+            fbd.Description = " Select Measurement Folder";
             fbd.ShowNewFolderButton = false;
+            SendKeys.Send("{TAB}{TAB}{RIGHT}{PGDN}");
+
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 info = fbd.SelectedPath;
@@ -480,8 +482,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
                                                         this.varBox4.Text;
 
             this.DisableButtons();
-            progressLabel.Text = " ";
-            progressBar1.Value = 0;
+            
 
 
             // execute Analyze Button at child
@@ -503,8 +504,10 @@ namespace Demcon.ProductionTool.View.FatTestPages
             MessageBox.Show("Script Executed", "Python Script Execution");
             // run backgroundWorker
             finishFlag = false;
-            progressBar1.Visible = true;
-            progressLabel.Visible = true;
+            ((MainForm)ParentForm).progressBarValue.Visible = true;
+            ((MainForm)ParentForm).progressResult.Visible = true;
+            //progressBar1.Visible = true;
+            //progressLabel.Visible = true;
             //backgroundWorker1.DoWork += (obj, f) => backgroundWorker1_DoWork(location, arg);
             backgroundWorker1.RunWorkerAsync();
             this.EnableButtons();
@@ -570,10 +573,14 @@ namespace Demcon.ProductionTool.View.FatTestPages
             // debug to console
             Console.WriteLine("Siap menerima input");
             Console.WriteLine(location);
-            
+
             // run backgroundWorker
-            progressBar1.Visible = true;
-            progressLabel.Visible = true;
+            ((MainForm)ParentForm).progressBarValue.Visible    = true;
+            ((MainForm)ParentForm).progressResult.Visible = true;
+
+            //progressBar1.Visible = true;
+            //progressLabel.Visible = true;
+
             //backgroundWorker1.DoWork += (obj, f) => backgroundWorker1_DoWork(location, arg);
             backgroundWorker1.RunWorkerAsync();
         }
@@ -650,11 +657,17 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             string result = e.UserState.ToString();
+            int barValue = e.ProgressPercentage;
             Console.WriteLine("Update progress");
 
             // set progress Label and progress Bar Value
-            progressLabel.Text = result;
-            progressBar1.Value = e.ProgressPercentage;
+            //((MainForm)ParentForm).progressBarValue.Visible = true;
+            //((MainForm)ParentForm).progressResult.Visible = true;
+            ((MainForm)ParentForm).updateProgress(barValue, result);
+
+
+            //progressLabel.Text = result;
+            //progressBar1.Value = e.ProgressPercentage;
             
         }
 
@@ -673,19 +686,110 @@ namespace Demcon.ProductionTool.View.FatTestPages
                 // use it on the UI thread
                 Thread.Sleep(1000);
                 Console.WriteLine("FINISH PROCESSING");
-                
+
 
                 // set Progress Bar and Progress Label visbility
-                progressLabel.Visible   = true;
-                progressBar1.Visible    = false;
+                ((MainForm)ParentForm).progressBarValue.Visible = false;
+                ((MainForm)ParentForm).progressResult.Visible = true;
+
+               // progressLabel.Visible   = true;
+               // progressBar1.Visible    = false;
                 
             }
         }
 
         private void DownloadButton_Click(object sender, EventArgs e)
         {
-            // execute Yes Button at child
-            this.TestManager.Execute(EButtonOptions.Yes, "Yes");
+            // execute Download Button at child
+            this.TestManager.Execute(EButtonOptions.Download, "Download");
+        }
+
+        // Button Behaviour Button Update
+        private void RetryButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.RetryButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnUpdate;
+        }
+
+        private void RetryButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.RetryButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnUpdateHover;
+        }
+
+        // Button Behaviour Button Browse
+        private void BrowseButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.BrowseButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnBrowse;
+        }
+
+        private void BrowseButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.BrowseButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnBrowseHover;
+        }
+
+        // Button Behaviour Button Process
+        private void AnalyzeButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.AnalyzeButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnProcess;
+        }
+
+        private void AnalyzeButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.AnalyzeButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnProcessHover;
+        }
+
+        // Button Behaviour Button Download
+        private void DownloadButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.DownloadButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnDownload;
+        }
+
+        private void DownloadButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.DownloadButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnDownloadHover;
+        }
+
+        // Button Behaviour Button Next
+        private void NextButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.NextButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bNext;
+        }
+
+        private void NextButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.NextButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bNextHover;
+        }
+
+        // Button Behaviour Button Back
+        private void BackButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.BackButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bBack;
+        }
+
+        private void BackButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.BackButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bBackHover;
+        }
+
+        // Button Behaviour Button Cancel
+        private void CancelButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.CancelButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bCancel;
+        }
+
+        private void CancelButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.CancelButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bCancelHover;
+        }
+
+        // Button Behaviour Button Finish
+        private void FinishedButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.FinishedButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bFinish;
+        }
+
+        private void FinishedButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.FinishedButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bFinishHover;
         }
 
 

@@ -247,6 +247,9 @@
       <DependentUpon>TestPage.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\InputDialog.resx">
+      <DependentUpon>InputDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -320,6 +323,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\dep\wkhtmltopdf.exe" />
+    <None Include="Resources\statusBar.png" />
+    <None Include="Resources\btnUpdateHover.png" />
+    <None Include="Resources\btnUpdate.png" />
+    <None Include="Resources\btnProcessHover.png" />
+    <None Include="Resources\btnProcess.png" />
+    <None Include="Resources\btnDownloadHover.png" />
+    <None Include="Resources\btnDownload.png" />
+    <None Include="Resources\btnBrowseHover.png" />
+    <None Include="Resources\btnBrowse.png" />
     <Resource Include="bin\Debug\Images\Arrow-24.png" />
     <Resource Include="bin\Debug\Images\Arrow-256.png" />
     <Resource Include="bin\Debug\Images\CalibrationFigure2.jpg" />
@@ -387,6 +399,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Images\handScan Brand.png" />
+    <None Include="Images\handScan Brand2.png" />
     <Content Include="Images\Inconclusive-24.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -423,6 +436,47 @@
     <Content Include="Images\Nothing-256.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Images\UI Demcon\btnTest2.png" />
+    <None Include="Images\UI Demcon\btnTest3.png" />
+    <None Include="Images\UI Demcon\btnTest4.png" />
+    <None Include="Images\UI Demcon\btnReport.png" />
+    <None Include="Images\UI Demcon\btnCalibrate.png" />
+    <None Include="Images\UI Demcon\btnTest1L.png" />
+    <None Include="Images\UI Demcon\btnTest2L.png" />
+    <None Include="Images\UI Demcon\btnTest3L.png" />
+    <None Include="Images\UI Demcon\btnTest4L.png" />
+    <None Include="Images\UI Demcon\btnReportL.png" />
+    <None Include="Images\UI Demcon\btnCalibrateL.png" />
+    <None Include="Images\UI Demcon\btnCalibrateClick.png" />
+    <None Include="Images\UI Demcon\btnCalibrateHover.png" />
+    <None Include="Images\UI Demcon\btnReportClick.png" />
+    <None Include="Images\UI Demcon\btnReportHover.png" />
+    <None Include="Images\UI Demcon\btnTest1.png" />
+    <None Include="Images\UI Demcon\btnTest1Click.png" />
+    <None Include="Images\UI Demcon\btnTest1Hover.png" />
+    <None Include="Images\UI Demcon\btnTest2Click.png" />
+    <None Include="Images\UI Demcon\btnTest2Hover.png" />
+    <None Include="Images\UI Demcon\btnTest3Click.png" />
+    <None Include="Images\UI Demcon\btnTest3Hover.png" />
+    <None Include="Images\UI Demcon\btnTest4Click.png" />
+    <None Include="Images\UI Demcon\btnTest4Hover.png" />
+    <None Include="Images\UI Demcon\handScan Brand.png" />
+    <None Include="Images\UI Demcon\handScan Brand2.png" />
+    <None Include="Images\UI Demcon\btnHelp.png" />
+    <None Include="Images\UI Demcon\ImNoAvailable.png" />
+    <None Include="Images\UI Demcon\handScan Brand3.png" />
+    <None Include="Images\UI Demcon\mBtnAddResource.png" />
+    <None Include="Images\UI Demcon\mBtnDelResource.png" />
+    <None Include="Images\UI Demcon\mBtnDownload.png" />
+    <None Include="Images\UI Demcon\mBtnExit.png" />
+    <None Include="Images\UI Demcon\bBack.png" />
+    <None Include="Images\UI Demcon\bBackHover.png" />
+    <None Include="Images\UI Demcon\bCancel.png" />
+    <None Include="Images\UI Demcon\bCancelHover.png" />
+    <None Include="Images\UI Demcon\bFinish.png" />
+    <None Include="Images\UI Demcon\bFinishHover.png" />
+    <None Include="Images\UI Demcon\bNext.png" />
+    <None Include="Images\UI Demcon\bNextHover.png" />
     <Content Include="Python\1. LUTDetermination.py" />
     <Content Include="Python\2. FieldMaskGeneration.py" />
     <Content Include="Python\3. SignalStability.py" />

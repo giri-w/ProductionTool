@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Demcon.ProductionTool.Hardware;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using TestToolFramework.View;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 {
@@ -18,9 +18,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             : base(testManager)
         {
             this.Name			 	= "Data Selection: GRID4";
-            this.Instructions 		= "Write the SVN Number in the work instruction\n";
-            this.SupportingImage	= string.Empty;
-            this.ButtonOptions 		= EButtonOptions.Next|EButtonOptions.Back;
+            this.Instructions 		= 
+                                   "- Select the measurement result from the list\n" +
+                                   "- Press DOWNLOAD to download the measurement to test folder";
+
+            this.SupportingImage	= @"Images\UI Demcon\ImNoAvailable.png";
+            this.ButtonOptions 		= EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Download;
             this.Results 			= new List<Result>();
             this.OnTestUpdated(false);
         }
@@ -39,6 +42,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             {
                 // back to previous step
                 this.OnTestCanceled(true);
+            }
+
+            if (userAction == EButtonOptions.Download)
+            {
+                MeasurementForm browser = new MeasurementForm();
+                Application.Run(browser);
             }
 
         }

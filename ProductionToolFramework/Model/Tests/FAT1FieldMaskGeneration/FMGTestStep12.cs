@@ -19,7 +19,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
         {
             this.Name 				= "Field Mask Generation complete";
             this.Instructions 		= "LUT Test is complete.\nPress Finish to return to main menu or press Back to review the result";
-            this.SupportingImage 	= string.Empty;
+            this.SupportingImage 	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 		= EButtonOptions.Finish|EButtonOptions.Back;
             this.Results 			= new List<Result>();
             this.OnTestUpdated(false);

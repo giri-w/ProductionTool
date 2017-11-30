@@ -50,7 +50,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 									  "Current Value     : " + LEDbrightness.ToString() + "\n" +
 									  "Recommended Value : 150\n" +
 									  "Press Next to reset LED Brightneess\n";
-            this.SupportingImage 	= string.Empty;
+            this.SupportingImage 	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
             this.Results 			= new List<Result>();
 			

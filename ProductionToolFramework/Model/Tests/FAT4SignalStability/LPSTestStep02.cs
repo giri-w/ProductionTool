@@ -32,7 +32,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                             "- Fixed Mask\n" +
                             "- Laser Power\n" +
                             "Press UPDATE to start configuration and continue to the next step";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Update;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

@@ -367,6 +367,7 @@ namespace HemicsFat
                 PortNumber = 21,
                 UserName = _username,
                 Password = _password,
+                //GiveUpSecurityAndAcceptAnySshHostKey = true,
                 TlsHostCertificateFingerprint = _fingerprint,
                 FtpSecure = FtpSecure.Explicit,
             };
@@ -386,6 +387,7 @@ namespace HemicsFat
                     UserName = _username,
                     Password = _password,
                     TlsHostCertificateFingerprint = _fingerprint,
+
                     FtpSecure = FtpSecure.Explicit,
                 };
                 bool checkStatus = false;

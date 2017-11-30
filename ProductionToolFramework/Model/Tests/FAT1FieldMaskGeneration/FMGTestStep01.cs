@@ -21,7 +21,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             this.Instructions 		=   
 										"- Make sure the hand positioning blocks are present\n" +
 										"- Glass plate is clean and free\n";
-            this.SupportingImage 	= string.Empty;
+            this.SupportingImage 	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions		= EButtonOptions.Next;
             this.Results			= new List<Result>();
             this.OnTestUpdated(false);
@@ -36,8 +36,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                 this.Results.Add(new BooleanResult("Machine Preparation", "Checked", true));
 				this.OnTestUpdated(true);
             }
-
-            
+    
         }
     }
 }

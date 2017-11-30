@@ -20,7 +20,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             this.Name = "Machine Preparation";
             this.Instructions = "- Remove targets and hand support blocks from the scanner" +
                                 "- Cover the arm detection";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

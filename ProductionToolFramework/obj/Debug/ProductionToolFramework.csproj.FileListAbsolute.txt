@@ -46,3 +46,4 @@ C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFrame
 C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\obj\Debug\TestToolFramework.g.resources
 C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\obj\Debug\Demcon.ProductionTool.View.MultiInputDialog.resources
 C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\obj\Debug\TestToolFramework.View.MeasurementForm.resources
+C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\obj\Debug\Demcon.ProductionTool.View.InputDialog.resources

@@ -31,7 +31,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
                                 "- MotorMatrixMask_accuracyL.png\n" +
                                 "- MotorMatrixMask_accuracyR.png\n" +
                                 "Press UPDATE to start configuration and continue to the next step\n";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Update;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

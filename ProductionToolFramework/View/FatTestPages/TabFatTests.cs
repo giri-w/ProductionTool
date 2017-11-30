@@ -12,28 +12,35 @@ namespace Demcon.ProductionTool.View
         public TabFatTests()
         {
             InitializeComponent();
+            tableLayoutPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
         }
 
         public TestManager TestManager { get; set; }
 
         private void btnTestSet1_Click(object sender, EventArgs e)
         {
+            this.btnTestSet1.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest1Click;
+
             this.StartTest(ETestSequence.Fat1);
           
         }
 
         private void btnTestSet2_Click(object sender, EventArgs e)
         {
+            this.btnTestSet2.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest2Click;
             //this.StartTest(ETestSequence.Generic);
         }
 
         private void btnTestSet3_Click(object sender, EventArgs e)
         {
+            this.btnTestSet3.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest3Click;
             //this.StartTest(ETestSequence.None);
         }
 
         private void btnTestSet4_Click(object sender, EventArgs e)
         {
+            this.btnTestSet4.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest4Click;
+
             this.StartTest(ETestSequence.Fat4);
         }
 
@@ -105,6 +112,45 @@ namespace Demcon.ProductionTool.View
                             xWO.InnerText = dwo;
                             xoperatorID.InnerText = operatorID;
                             xSVN.InnerText = additionalInfo1;
+
+                            // Check Connection
+                            while (!string.IsNullOrWhiteSpace(remarksCon))
+                            {
+                                remarksCon = string.Empty;
+                                if (MultiInputDialog.GetInput(this.ParentForm, "Connection Information",
+                                    "Machine IP", _ipAddress,
+                                    "FingerPrint", _fingerPrint,
+                                    "Username", _username,
+                                    "Password", _password,
+                                    sequence.AddtionalInformationRequestText2, additionalInfo2,
+                                    hiddenVariable,
+                                    out _ipAddress, out _fingerPrint, out _username, out _password, out additionalInfo2))
+                                {
+                                    remarksCon = sequence.AcceptInputCon(_ipAddress, _fingerPrint, _username, _password, additionalInfo2);
+                                    if (string.IsNullOrWhiteSpace(remarksCon))
+                                    {
+                                        sequence.IPAddress = _ipAddress;
+                                        sequence.Fingerprint = _fingerPrint;
+                                        sequence.Username = _username;
+                                        sequence.Password = _password;
+
+                                        // Save variable values to XML
+                                        xIPAdresss.InnerText = _ipAddress;
+                                        xFingerprint.InnerText = _fingerPrint;
+                                        xUsername.InnerText = _username;
+                                        xPassword.InnerText = _password;
+                                        doc.Save(localSetting);
+
+                                        return true;
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(remarksCon, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
+                                }
+                            }
+
+
                         }
                         else
                         {
@@ -113,42 +159,7 @@ namespace Demcon.ProductionTool.View
                     }
                 }
 
-                // cek connection info
-                while (!string.IsNullOrWhiteSpace(remarksCon))
-                {
-                    remarksCon = string.Empty;
-                    if (MultiInputDialog.GetInput(this.ParentForm, "Connection Information",
-                        "Machine IP", _ipAddress,
-                        "FingerPrint", _fingerPrint,
-                        "Username", _username,
-                        "Password", _password,
-                        sequence.AddtionalInformationRequestText2, additionalInfo2,
-                        hiddenVariable,
-                        out _ipAddress, out _fingerPrint, out _username, out _password, out additionalInfo2))
-                    {
-                        remarksCon = sequence.AcceptInputCon(_ipAddress, _fingerPrint, _username, _password, additionalInfo2);
-                        if (string.IsNullOrWhiteSpace(remarksCon))
-                        {
-                            sequence.IPAddress = _ipAddress;
-                            sequence.Fingerprint = _fingerPrint;
-                            sequence.Username = _username;
-                            sequence.Password = _password;
-                            
-                            // Save variable values to XML
-                            xIPAdresss.InnerText = _ipAddress;
-                            xFingerprint.InnerText = _fingerPrint;
-                            xUsername.InnerText = _username;
-                            xPassword.InnerText = _password;
-                            doc.Save(localSetting);
-
-                            return true;
-                        }
-                        else
-                        {
-                            MessageBox.Show(remarksCon, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
+                
             }
             else
             {
@@ -253,10 +264,10 @@ namespace Demcon.ProductionTool.View
 
         private void HandleInformationRequest(object sender, EventArgs<string> e)
         {
-            string input;
+            string input = string.Empty;
             this.BeginInvoke((Action)(() =>
             {
-                if (InputDialog.GetInput(this.ParentForm, "Measurement Request", e.Value, out input) && !string.IsNullOrWhiteSpace(input))
+                if (InputDialog.GetInput("Measurement Request", e.Value, input, out input) && !string.IsNullOrWhiteSpace(input))
                 {
                     new Task(() =>
                     {
@@ -268,6 +279,8 @@ namespace Demcon.ProductionTool.View
 
         private void btnReport_Click(object sender, EventArgs e)
         {
+            this.btnReport.BackgroundImage = global::TestToolFramework.Properties.Resources.btnReportClick;
+
             var sequence = new Demcon.ProductionTool.Model.ReportGeneratorTestSequence(this.TestManager);
             if (InitSequenceReport(sequence))
             {
@@ -288,9 +301,79 @@ namespace Demcon.ProductionTool.View
 
         private void btnCalibrate_Click(object sender, EventArgs e)
         {
-            this.StartTest(ETestSequence.Calibration);
+            this.btnCalibrate.BackgroundImage = global::TestToolFramework.Properties.Resources.btnCalibrateClick;
+            //this.StartTest(ETestSequence.Calibration);
         }
 
-  
+        private void tableLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        // Button Behaviour Button FAT1
+        private void btnTestSet1_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnTestSet1.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest1L;
+        }
+
+        private void btnTestSet1_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnTestSet1.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest1Hover;
+        }
+
+        // Button Behaviour Button FAT2
+        private void btnTestSet2_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnTestSet2.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest2L;
+        }
+
+        private void btnTestSet2_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnTestSet2.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest2Hover;
+        }
+
+        // Button Behaviour Button FAT3
+        private void btnTestSet3_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnTestSet3.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest3L;
+        }
+
+        private void btnTestSet3_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnTestSet3.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest3Hover;
+        }
+
+        // Button Behaviour Button FAT4
+        private void btnTestSet4_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnTestSet4.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest4L;
+        }
+
+        private void btnTestSet4_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnTestSet4.BackgroundImage = global::TestToolFramework.Properties.Resources.btnTest4Hover;
+        }
+
+        // Button Behaviour Button Report
+        private void btnReport_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnReport.BackgroundImage = global::TestToolFramework.Properties.Resources.btnReportL;
+        }
+
+        private void btnReport_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnReport.BackgroundImage = global::TestToolFramework.Properties.Resources.btnReportHover;
+        }
+
+        // Button Behaviour Button Calibrate
+        private void btnCalibrate_MouseLeave(object sender, EventArgs e)
+        {
+            this.btnCalibrate.BackgroundImage = global::TestToolFramework.Properties.Resources.btnCalibrateL;
+        }
+
+        private void btnCalibrate_MouseEnter(object sender, EventArgs e)
+        {
+            this.btnCalibrate.BackgroundImage = global::TestToolFramework.Properties.Resources.btnCalibrateHover;
+        }
     }
 }

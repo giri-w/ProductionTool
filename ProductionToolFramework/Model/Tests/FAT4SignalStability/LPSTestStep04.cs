@@ -23,10 +23,9 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
             this.Name = "Data Selection";
             this.Instructions =
                             "- Select the measurement result from the list\n" +
-                            "- Copy the folder name and paste it in the download box\n" +
-                            "- Press UPDATE to download the measurement to test folder";
-            this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back|EButtonOptions.Update;
+                            "- Press DOWNLOAD to download the measurement to test folder";
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
+            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back|EButtonOptions.Download;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
@@ -49,24 +48,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                 this.OnTestCanceled(true);
             }
             
-            if (userAction==EButtonOptions.Update)
+            if (userAction==EButtonOptions.Download)
             {
                 
-
                 MeasurementForm browser = new MeasurementForm();
                 Application.Run(browser);
-                //browser.Show();
-                /*
-                FtpTransfer ftp = new FtpTransfer();
-                // retrieve value from textbox
-                string[] textValue = VarValue.Split(',');
-                string measurementPath = textValue[0];
-                
-                // download measurement
-                bool result1 = ftp.Download(localPath, measurementPath);
-                this.Results.Add(new BooleanResult("File transfer", "Downloaded:" + measurementPath, result1));
-                Console.WriteLine("Download Measurement");
-                */
+             
             }
 
         }

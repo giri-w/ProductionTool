@@ -54,7 +54,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                                 "- right_mask_high.png\n\n" +
                                 "INFO :\n" + 
                                 checkFiles;
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
             this.Results = new List<Result>();
 			// forward and backward handler

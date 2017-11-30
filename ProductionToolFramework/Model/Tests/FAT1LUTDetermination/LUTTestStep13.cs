@@ -23,7 +23,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 										"Press FINISH to go to main menu\n"+
 										"Press NEXT to continue to the next test, or\n" +
 										"Press BACK to return to the previous step";  
-            this.SupportingImage	 = string.Empty;
+            this.SupportingImage	 = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions		 = EButtonOptions.Finish | EButtonOptions.Back | EButtonOptions.Next;
             this.Results 			 = new List<Result>();
 			// forward and backward handler

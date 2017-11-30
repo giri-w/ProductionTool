@@ -23,7 +23,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
                                 "3. Record the measurement name in the assignment\n" +
                                 "4. Repeat Process 1-3 twice\n" +
                                 "4. Press NEXT when finished or Press BACK to go to previous step\n"; 
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

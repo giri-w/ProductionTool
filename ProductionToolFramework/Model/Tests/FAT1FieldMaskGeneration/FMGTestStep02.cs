@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HemicsFat;
 using System.Xml;
+using Demcon.ProductionTool.View;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
@@ -16,7 +17,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             : this(null)
         { }
 
-		private int LEDbrightness;
+		private string LEDbrightness;
 
         string localPath 		= @"C:\TestFolder\";
         string localFile1 		= @"C:\TestFolder\Measurement_test.xml";
@@ -36,9 +37,9 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             // form setup
             this.Name 				= "LED Brightness";
             this.Instructions 		= string.Empty;
-            this.SupportingImage 	= string.Empty;
+            this.SupportingImage 	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
-            this.VarOptions 		= EVarOptions.LED;
+            
             this.Results			= new List<Result>();
             this.OnTestUpdated(false);
             
@@ -59,12 +60,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                 // update LED brightness to measurement.xml
                 doc.Load(localFile1);
                 XmlNode LED 			= doc.SelectSingleNode("/MeasurementConfig/CompartmentLedBrightness");
-                LEDbrightness 			= Convert.ToInt16(LED.InnerText);
+                LEDbrightness 			= (LED.InnerText);
 				doc.Save(localFile1);
                 
 				this.Instructions 		= string.Format(FMGTestStep02.InstructionText,LEDbrightness);
 				this.OnTestUpdated(false);
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(10);
 
             }).Start();
         }
@@ -91,28 +92,27 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 
             if (userAction == EButtonOptions.Update)
             {
-                XmlDocument doc 	=	 new XmlDocument();
-				// update value from textBox
-                string[] textValue 	= VarValue.Split(',');
-                LEDbrightness 		= Convert.ToInt16(textValue[0]);
-
-                // update LED brightness to measurement.xml
-                doc.Load(localFile1);
-                XmlNode LED 		= doc.SelectSingleNode("/MeasurementConfig/CompartmentLedBrightness");
-                LED.InnerText 		= LEDbrightness.ToString();
-                doc.Save(localFile1);
-
                 
-                // upload measurement.xml to server
-                FtpTransfer ftp		= new FtpTransfer();
-                bool resultUpload1 	= ftp.Upload(localFile1, hostPath);
-                string remark 		= "LED Brightness : " + LEDbrightness.ToString();
-                this.Results.Add(new BooleanResult("LED Berightness Updated", remark, resultUpload1));
+               if (InputDialog.GetInput("LED Brightness", "Please input new LED Brightness", LEDbrightness, out LEDbrightness) && !string.IsNullOrWhiteSpace(LEDbrightness))
+               {
+                   XmlDocument doc = new XmlDocument();
+                   // update LED brightness to measurement.xml
+                   doc.Load(localFile1);
+                   XmlNode LED = doc.SelectSingleNode("/MeasurementConfig/CompartmentLedBrightness");
+                   LED.InnerText = LEDbrightness.ToString();
+                   doc.Save(localFile1);
 
-                // write result to debug console
-                Console.WriteLine(LEDbrightness.ToString());
-                this.OnTestUpdated(true);
+                   // upload measurement.xml to server
+                   FtpTransfer ftp = new FtpTransfer();
+                   bool resultUpload1 = ftp.Upload(localFile1, hostPath);
+                   string remark = "LED Brightness : " + LEDbrightness.ToString();
+                   this.Results.Add(new BooleanResult("LED Berightness Updated", remark, resultUpload1));
 
+                   // write result to debug console
+                   Console.WriteLine(LEDbrightness.ToString());
+                   this.OnTestUpdated(true);
+               }
+               
             }
 
         }

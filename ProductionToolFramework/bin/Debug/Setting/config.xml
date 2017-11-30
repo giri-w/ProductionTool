@@ -10,7 +10,7 @@
       <Distance>50</Distance>
     </LUT>
     <FMG>
-      <Source>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\1. Test Source\20170629_090733_297 Fieldmask</Source>
+      <Source>C:\TestFolder\P50_20170926_02</Source>
       <Threshold>40</Threshold>
     </FMG>
   </FAT1>
@@ -23,7 +23,7 @@
   <FAT4>
     <id>4</id>
     <LPS>
-      <Source>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\1. Test Source\20170703_113239_297 SignalStability</Source>
+      <Source>C:\TestFolder\20170703_113239_297 SignalStability</Source>
     </LPS>
     <SAC>
       <SourcePS>C:\Users\GWA\Desktop\Internship DEMCON\2. Hemics production tools\Spatial accuracy\Measurements</SourcePS>

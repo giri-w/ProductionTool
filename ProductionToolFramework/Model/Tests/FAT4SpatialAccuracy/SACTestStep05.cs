@@ -34,7 +34,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
                                 "Locate measurement folder for position stability test\n\n" +
                                 "Measurement directory : " + SourceLocation + "\n\n" +
                                 "Press Browse to set new measurement location";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Browse;
             this.Results = new List<Result>();
 

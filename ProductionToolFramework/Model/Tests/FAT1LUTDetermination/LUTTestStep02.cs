@@ -35,7 +35,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         {
             this.Name 				= "Fixed Mask Setting Grid4";
             this.Instructions 		= string.Empty;
-            this.SupportingImage	= string.Empty;
+            this.SupportingImage	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
             this.Results 			= new List<Result>();
             this.OnTestUpdated(false);

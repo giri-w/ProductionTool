@@ -35,13 +35,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.DescriptionPanel = new System.Windows.Forms.Panel();
             this.ButtonsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.OKButton = new System.Windows.Forms.Button();
-            this.YesButton = new System.Windows.Forms.Button();
-            this.NoButton = new System.Windows.Forms.Button();
-            this.FinishedButton = new System.Windows.Forms.Button();
-            this.NextButton = new System.Windows.Forms.Button();
-            this.BackButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.stepDescriptionText = new System.Windows.Forms.RichTextBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,10 +48,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.varLabel4 = new System.Windows.Forms.Label();
             this.varBox4 = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.BrowseButton = new System.Windows.Forms.Button();
-            this.AnalyzeButton = new System.Windows.Forms.Button();
-            this.RetryButton = new System.Windows.Forms.Button();
-            this.DownloadButton = new System.Windows.Forms.Button();
             this.TestNameLabel = new System.Windows.Forms.Label();
             this.TestListPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,15 +57,21 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.TestListBox = new System.Windows.Forms.FlowLayoutPanel();
             this.SequenceNameLabel = new System.Windows.Forms.Label();
             this.ImagePanel = new System.Windows.Forms.Panel();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.progressLabel = new System.Windows.Forms.Label();
-            this.SupportingImageBox = new System.Windows.Forms.PictureBox();
             this.ResultsPanel = new System.Windows.Forms.Panel();
             this.ResultsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.NextButton = new System.Windows.Forms.Button();
+            this.BackButton = new System.Windows.Forms.Button();
+            this.FinishedButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.BrowseButton = new System.Windows.Forms.Button();
+            this.AnalyzeButton = new System.Windows.Forms.Button();
+            this.RetryButton = new System.Windows.Forms.Button();
+            this.DownloadButton = new System.Windows.Forms.Button();
+            this.SupportingImageBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.DescriptionPanel.SuspendLayout();
             this.ButtonsFlowLayoutPanel.SuspendLayout();
@@ -85,9 +80,9 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.flowLayoutPanel1.SuspendLayout();
             this.TestListPanel.SuspendLayout();
             this.ImagePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SupportingImageBox)).BeginInit();
             this.ResultsPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SupportingImageBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -106,9 +101,9 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1133, 824);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 65F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 563);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // DescriptionPanel
@@ -125,7 +120,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.DescriptionPanel.Controls.Add(this.TestNameLabel);
             this.DescriptionPanel.Location = new System.Drawing.Point(603, 3);
             this.DescriptionPanel.Name = "DescriptionPanel";
-            this.DescriptionPanel.Size = new System.Drawing.Size(527, 406);
+            this.DescriptionPanel.Size = new System.Drawing.Size(740, 359);
             this.DescriptionPanel.TabIndex = 0;
             // 
             // ButtonsFlowLayoutPanel
@@ -133,87 +128,14 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.ButtonsFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonsFlowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.ButtonsFlowLayoutPanel.Controls.Add(this.OKButton);
-            this.ButtonsFlowLayoutPanel.Controls.Add(this.YesButton);
-            this.ButtonsFlowLayoutPanel.Controls.Add(this.NoButton);
-            this.ButtonsFlowLayoutPanel.Controls.Add(this.FinishedButton);
             this.ButtonsFlowLayoutPanel.Controls.Add(this.NextButton);
             this.ButtonsFlowLayoutPanel.Controls.Add(this.BackButton);
+            this.ButtonsFlowLayoutPanel.Controls.Add(this.FinishedButton);
             this.ButtonsFlowLayoutPanel.Controls.Add(this.CancelButton);
-            this.ButtonsFlowLayoutPanel.Location = new System.Drawing.Point(3, 350);
+            this.ButtonsFlowLayoutPanel.Location = new System.Drawing.Point(3, 303);
             this.ButtonsFlowLayoutPanel.Name = "ButtonsFlowLayoutPanel";
-            this.ButtonsFlowLayoutPanel.Size = new System.Drawing.Size(524, 53);
+            this.ButtonsFlowLayoutPanel.Size = new System.Drawing.Size(737, 53);
             this.ButtonsFlowLayoutPanel.TabIndex = 0;
-            // 
-            // OKButton
-            // 
-            this.OKButton.Location = new System.Drawing.Point(3, 3);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(120, 46);
-            this.OKButton.TabIndex = 0;
-            this.OKButton.Text = "OK";
-            this.OKButton.UseVisualStyleBackColor = true;
-            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
-            // 
-            // YesButton
-            // 
-            this.YesButton.Location = new System.Drawing.Point(129, 3);
-            this.YesButton.Name = "YesButton";
-            this.YesButton.Size = new System.Drawing.Size(120, 46);
-            this.YesButton.TabIndex = 1;
-            this.YesButton.Text = "Yes";
-            this.YesButton.UseVisualStyleBackColor = true;
-            this.YesButton.Click += new System.EventHandler(this.YesButton_Click);
-            // 
-            // NoButton
-            // 
-            this.NoButton.Location = new System.Drawing.Point(255, 3);
-            this.NoButton.Name = "NoButton";
-            this.NoButton.Size = new System.Drawing.Size(120, 46);
-            this.NoButton.TabIndex = 2;
-            this.NoButton.Text = "No";
-            this.NoButton.UseVisualStyleBackColor = true;
-            this.NoButton.Click += new System.EventHandler(this.NoButton_Click);
-            // 
-            // FinishedButton
-            // 
-            this.FinishedButton.Location = new System.Drawing.Point(381, 3);
-            this.FinishedButton.Name = "FinishedButton";
-            this.FinishedButton.Size = new System.Drawing.Size(120, 46);
-            this.FinishedButton.TabIndex = 4;
-            this.FinishedButton.Text = "Finished";
-            this.FinishedButton.UseVisualStyleBackColor = true;
-            this.FinishedButton.Click += new System.EventHandler(this.FinishedButton_Click);
-            // 
-            // NextButton
-            // 
-            this.NextButton.Location = new System.Drawing.Point(3, 55);
-            this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(120, 46);
-            this.NextButton.TabIndex = 6;
-            this.NextButton.Text = "Next";
-            this.NextButton.UseVisualStyleBackColor = true;
-            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
-            // 
-            // BackButton
-            // 
-            this.BackButton.Location = new System.Drawing.Point(129, 55);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(120, 46);
-            this.BackButton.TabIndex = 5;
-            this.BackButton.Text = "Back";
-            this.BackButton.UseVisualStyleBackColor = true;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
-            // 
-            // CancelButton
-            // 
-            this.CancelButton.Location = new System.Drawing.Point(255, 55);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(120, 46);
-            this.CancelButton.TabIndex = 9;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click_1);
             // 
             // panel1
             // 
@@ -224,7 +146,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.panel1.Controls.Add(this.stepDescriptionText);
             this.panel1.Location = new System.Drawing.Point(3, 50);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(527, 197);
+            this.panel1.Size = new System.Drawing.Size(740, 150);
             this.panel1.TabIndex = 7;
             // 
             // stepDescriptionText
@@ -237,7 +159,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.stepDescriptionText.Name = "stepDescriptionText";
             this.stepDescriptionText.ReadOnly = true;
             this.stepDescriptionText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.stepDescriptionText.Size = new System.Drawing.Size(527, 197);
+            this.stepDescriptionText.Size = new System.Drawing.Size(740, 150);
             this.stepDescriptionText.TabIndex = 0;
             this.stepDescriptionText.Text = "Step Description";
             // 
@@ -263,9 +185,9 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.flowLayoutPanel2.Controls.Add(this.varBox3);
             this.flowLayoutPanel2.Controls.Add(this.varLabel4);
             this.flowLayoutPanel2.Controls.Add(this.varBox4);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 266);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 219);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(522, 28);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(735, 28);
             this.flowLayoutPanel2.TabIndex = 5;
             // 
             // varLabel1
@@ -328,7 +250,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             // 
             // varBox4
             // 
-            this.varBox4.Location = new System.Drawing.Point(3, 29);
+            this.varBox4.Location = new System.Drawing.Point(457, 3);
             this.varBox4.Name = "varBox4";
             this.varBox4.Size = new System.Drawing.Size(100, 20);
             this.varBox4.TabIndex = 15;
@@ -342,55 +264,10 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.flowLayoutPanel1.Controls.Add(this.AnalyzeButton);
             this.flowLayoutPanel1.Controls.Add(this.RetryButton);
             this.flowLayoutPanel1.Controls.Add(this.DownloadButton);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 295);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 248);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(522, 50);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(735, 50);
             this.flowLayoutPanel1.TabIndex = 4;
-            // 
-            // BrowseButton
-            // 
-            this.BrowseButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.BrowseButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BrowseButton.Location = new System.Drawing.Point(3, 3);
-            this.BrowseButton.Name = "BrowseButton";
-            this.BrowseButton.Size = new System.Drawing.Size(120, 46);
-            this.BrowseButton.TabIndex = 0;
-            this.BrowseButton.Text = "Browse";
-            this.BrowseButton.UseVisualStyleBackColor = false;
-            this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
-            // 
-            // AnalyzeButton
-            // 
-            this.AnalyzeButton.BackColor = System.Drawing.Color.DarkSeaGreen;
-            this.AnalyzeButton.Location = new System.Drawing.Point(129, 3);
-            this.AnalyzeButton.Name = "AnalyzeButton";
-            this.AnalyzeButton.Size = new System.Drawing.Size(120, 46);
-            this.AnalyzeButton.TabIndex = 16;
-            this.AnalyzeButton.Text = "Process";
-            this.AnalyzeButton.UseVisualStyleBackColor = false;
-            this.AnalyzeButton.Click += new System.EventHandler(this.AnalyzeButton_Click);
-            // 
-            // RetryButton
-            // 
-            this.RetryButton.BackColor = System.Drawing.Color.Goldenrod;
-            this.RetryButton.Location = new System.Drawing.Point(255, 3);
-            this.RetryButton.Name = "RetryButton";
-            this.RetryButton.Size = new System.Drawing.Size(120, 46);
-            this.RetryButton.TabIndex = 1;
-            this.RetryButton.Text = "Update";
-            this.RetryButton.UseVisualStyleBackColor = false;
-            this.RetryButton.Click += new System.EventHandler(this.RetryButton_Click);
-            // 
-            // DownloadButton
-            // 
-            this.DownloadButton.BackColor = System.Drawing.Color.Lime;
-            this.DownloadButton.Location = new System.Drawing.Point(381, 3);
-            this.DownloadButton.Name = "DownloadButton";
-            this.DownloadButton.Size = new System.Drawing.Size(120, 46);
-            this.DownloadButton.TabIndex = 17;
-            this.DownloadButton.Text = "Download";
-            this.DownloadButton.UseVisualStyleBackColor = false;
-            this.DownloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
             // 
             // TestNameLabel
             // 
@@ -399,7 +276,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.TestNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TestNameLabel.Location = new System.Drawing.Point(3, 3);
             this.TestNameLabel.Name = "TestNameLabel";
-            this.TestNameLabel.Size = new System.Drawing.Size(521, 29);
+            this.TestNameLabel.Size = new System.Drawing.Size(734, 29);
             this.TestNameLabel.TabIndex = 1;
             this.TestNameLabel.Text = "Test Name";
             // 
@@ -417,7 +294,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.TestListPanel.Controls.Add(this.SequenceNameLabel);
             this.TestListPanel.Location = new System.Drawing.Point(3, 3);
             this.TestListPanel.Name = "TestListPanel";
-            this.TestListPanel.Size = new System.Drawing.Size(594, 406);
+            this.TestListPanel.Size = new System.Drawing.Size(594, 359);
             this.TestListPanel.TabIndex = 1;
             // 
             // label2
@@ -465,7 +342,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.TestStepListBox.Location = new System.Drawing.Point(218, 75);
             this.TestStepListBox.Margin = new System.Windows.Forms.Padding(0);
             this.TestStepListBox.Name = "TestStepListBox";
-            this.TestStepListBox.Size = new System.Drawing.Size(373, 323);
+            this.TestStepListBox.Size = new System.Drawing.Size(373, 276);
             this.TestStepListBox.TabIndex = 6;
             // 
             // TestListBox
@@ -478,7 +355,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.TestListBox.Location = new System.Drawing.Point(8, 75);
             this.TestListBox.Margin = new System.Windows.Forms.Padding(0);
             this.TestListBox.Name = "TestListBox";
-            this.TestListBox.Size = new System.Drawing.Size(200, 323);
+            this.TestListBox.Size = new System.Drawing.Size(200, 276);
             this.TestListBox.TabIndex = 5;
             // 
             // SequenceNameLabel
@@ -498,45 +375,11 @@ namespace Demcon.ProductionTool.View.FatTestPages
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ImagePanel.BackColor = System.Drawing.SystemColors.Control;
-            this.ImagePanel.Controls.Add(this.progressBar1);
-            this.ImagePanel.Controls.Add(this.progressLabel);
             this.ImagePanel.Controls.Add(this.SupportingImageBox);
-            this.ImagePanel.Location = new System.Drawing.Point(603, 415);
+            this.ImagePanel.Location = new System.Drawing.Point(603, 368);
             this.ImagePanel.Name = "ImagePanel";
-            this.ImagePanel.Size = new System.Drawing.Size(527, 406);
+            this.ImagePanel.Size = new System.Drawing.Size(740, 192);
             this.ImagePanel.TabIndex = 1;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(3, 380);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(518, 23);
-            this.progressBar1.TabIndex = 2;
-            // 
-            // progressLabel
-            // 
-            this.progressLabel.AutoSize = true;
-            this.progressLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.progressLabel.Location = new System.Drawing.Point(4, 13);
-            this.progressLabel.Name = "progressLabel";
-            this.progressLabel.Size = new System.Drawing.Size(13, 20);
-            this.progressLabel.TabIndex = 1;
-            this.progressLabel.Text = " ";
-            // 
-            // SupportingImageBox
-            // 
-            this.SupportingImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SupportingImageBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SupportingImageBox.Location = new System.Drawing.Point(3, 36);
-            this.SupportingImageBox.Name = "SupportingImageBox";
-            this.SupportingImageBox.Size = new System.Drawing.Size(521, 338);
-            this.SupportingImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.SupportingImageBox.TabIndex = 0;
-            this.SupportingImageBox.TabStop = false;
-            this.SupportingImageBox.Click += new System.EventHandler(this.SupportingImageBox_Click);
             // 
             // ResultsPanel
             // 
@@ -546,9 +389,9 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.ResultsPanel.BackColor = System.Drawing.SystemColors.Control;
             this.ResultsPanel.Controls.Add(this.ResultsFlowLayoutPanel);
             this.ResultsPanel.Controls.Add(this.label3);
-            this.ResultsPanel.Location = new System.Drawing.Point(3, 415);
+            this.ResultsPanel.Location = new System.Drawing.Point(3, 368);
             this.ResultsPanel.Name = "ResultsPanel";
-            this.ResultsPanel.Size = new System.Drawing.Size(594, 406);
+            this.ResultsPanel.Size = new System.Drawing.Size(594, 192);
             this.ResultsPanel.TabIndex = 1;
             // 
             // ResultsFlowLayoutPanel
@@ -560,7 +403,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.ResultsFlowLayoutPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResultsFlowLayoutPanel.Location = new System.Drawing.Point(8, 22);
             this.ResultsFlowLayoutPanel.Name = "ResultsFlowLayoutPanel";
-            this.ResultsFlowLayoutPanel.Size = new System.Drawing.Size(583, 381);
+            this.ResultsFlowLayoutPanel.Size = new System.Drawing.Size(583, 167);
             this.ResultsFlowLayoutPanel.TabIndex = 9;
             // 
             // label3
@@ -584,13 +427,164 @@ namespace Demcon.ProductionTool.View.FatTestPages
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // NextButton
+            // 
+            this.NextButton.BackColor = System.Drawing.Color.Transparent;
+            this.NextButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bNext;
+            this.NextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.NextButton.FlatAppearance.BorderSize = 0;
+            this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NextButton.Location = new System.Drawing.Point(3, 3);
+            this.NextButton.Name = "NextButton";
+            this.NextButton.Size = new System.Drawing.Size(120, 46);
+            this.NextButton.TabIndex = 6;
+            this.NextButton.UseVisualStyleBackColor = false;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
+            this.NextButton.MouseEnter += new System.EventHandler(this.NextButton_MouseEnter);
+            this.NextButton.MouseLeave += new System.EventHandler(this.NextButton_MouseLeave);
+            // 
+            // BackButton
+            // 
+            this.BackButton.BackColor = System.Drawing.Color.Transparent;
+            this.BackButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bBack;
+            this.BackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BackButton.FlatAppearance.BorderSize = 0;
+            this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackButton.Location = new System.Drawing.Point(129, 3);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(120, 46);
+            this.BackButton.TabIndex = 5;
+            this.BackButton.UseVisualStyleBackColor = false;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            this.BackButton.MouseEnter += new System.EventHandler(this.BackButton_MouseEnter);
+            this.BackButton.MouseLeave += new System.EventHandler(this.BackButton_MouseLeave);
+            // 
+            // FinishedButton
+            // 
+            this.FinishedButton.BackColor = System.Drawing.Color.Transparent;
+            this.FinishedButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bFinish;
+            this.FinishedButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FinishedButton.FlatAppearance.BorderSize = 0;
+            this.FinishedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FinishedButton.Location = new System.Drawing.Point(255, 3);
+            this.FinishedButton.Name = "FinishedButton";
+            this.FinishedButton.Size = new System.Drawing.Size(120, 46);
+            this.FinishedButton.TabIndex = 4;
+            this.FinishedButton.UseVisualStyleBackColor = false;
+            this.FinishedButton.Click += new System.EventHandler(this.FinishedButton_Click);
+            this.FinishedButton.MouseEnter += new System.EventHandler(this.FinishedButton_MouseEnter);
+            this.FinishedButton.MouseLeave += new System.EventHandler(this.FinishedButton_MouseLeave);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.BackColor = System.Drawing.Color.Transparent;
+            this.CancelButton.BackgroundImage = global::TestToolFramework.Properties.Resources.bCancel;
+            this.CancelButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CancelButton.FlatAppearance.BorderSize = 0;
+            this.CancelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CancelButton.Location = new System.Drawing.Point(381, 3);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(120, 46);
+            this.CancelButton.TabIndex = 9;
+            this.CancelButton.UseVisualStyleBackColor = false;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click_1);
+            this.CancelButton.MouseEnter += new System.EventHandler(this.CancelButton_MouseEnter);
+            this.CancelButton.MouseLeave += new System.EventHandler(this.CancelButton_MouseLeave);
+            // 
+            // BrowseButton
+            // 
+            this.BrowseButton.BackColor = System.Drawing.Color.Transparent;
+            this.BrowseButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnBrowse;
+            this.BrowseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BrowseButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BrowseButton.FlatAppearance.BorderSize = 0;
+            this.BrowseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.BrowseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.BrowseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BrowseButton.Location = new System.Drawing.Point(3, 3);
+            this.BrowseButton.Name = "BrowseButton";
+            this.BrowseButton.Size = new System.Drawing.Size(173, 46);
+            this.BrowseButton.TabIndex = 0;
+            this.BrowseButton.UseVisualStyleBackColor = false;
+            this.BrowseButton.Click += new System.EventHandler(this.BrowseButton_Click);
+            this.BrowseButton.MouseEnter += new System.EventHandler(this.BrowseButton_MouseEnter);
+            this.BrowseButton.MouseLeave += new System.EventHandler(this.BrowseButton_MouseLeave);
+            // 
+            // AnalyzeButton
+            // 
+            this.AnalyzeButton.BackColor = System.Drawing.Color.Transparent;
+            this.AnalyzeButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnProcess;
+            this.AnalyzeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AnalyzeButton.FlatAppearance.BorderSize = 0;
+            this.AnalyzeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.AnalyzeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.AnalyzeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AnalyzeButton.Location = new System.Drawing.Point(182, 3);
+            this.AnalyzeButton.Name = "AnalyzeButton";
+            this.AnalyzeButton.Size = new System.Drawing.Size(173, 46);
+            this.AnalyzeButton.TabIndex = 16;
+            this.AnalyzeButton.UseVisualStyleBackColor = false;
+            this.AnalyzeButton.Click += new System.EventHandler(this.AnalyzeButton_Click);
+            this.AnalyzeButton.MouseEnter += new System.EventHandler(this.AnalyzeButton_MouseEnter);
+            this.AnalyzeButton.MouseLeave += new System.EventHandler(this.AnalyzeButton_MouseLeave);
+            // 
+            // RetryButton
+            // 
+            this.RetryButton.BackColor = System.Drawing.Color.Transparent;
+            this.RetryButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnUpdate;
+            this.RetryButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RetryButton.FlatAppearance.BorderSize = 0;
+            this.RetryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.RetryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.RetryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RetryButton.Location = new System.Drawing.Point(361, 3);
+            this.RetryButton.Name = "RetryButton";
+            this.RetryButton.Size = new System.Drawing.Size(173, 46);
+            this.RetryButton.TabIndex = 1;
+            this.RetryButton.UseVisualStyleBackColor = false;
+            this.RetryButton.Click += new System.EventHandler(this.RetryButton_Click);
+            this.RetryButton.MouseEnter += new System.EventHandler(this.RetryButton_MouseEnter);
+            this.RetryButton.MouseLeave += new System.EventHandler(this.RetryButton_MouseLeave);
+            // 
+            // DownloadButton
+            // 
+            this.DownloadButton.BackColor = System.Drawing.Color.Transparent;
+            this.DownloadButton.BackgroundImage = global::TestToolFramework.Properties.Resources.btnDownload;
+            this.DownloadButton.FlatAppearance.BorderSize = 0;
+            this.DownloadButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.DownloadButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.DownloadButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DownloadButton.Location = new System.Drawing.Point(540, 3);
+            this.DownloadButton.Name = "DownloadButton";
+            this.DownloadButton.Size = new System.Drawing.Size(173, 46);
+            this.DownloadButton.TabIndex = 17;
+            this.DownloadButton.UseVisualStyleBackColor = false;
+            this.DownloadButton.Click += new System.EventHandler(this.DownloadButton_Click);
+            this.DownloadButton.MouseEnter += new System.EventHandler(this.DownloadButton_MouseEnter);
+            this.DownloadButton.MouseLeave += new System.EventHandler(this.DownloadButton_MouseLeave);
+            // 
+            // SupportingImageBox
+            // 
+            this.SupportingImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SupportingImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SupportingImageBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SupportingImageBox.InitialImage = global::TestToolFramework.Properties.Resources.ImNoAvailable;
+            this.SupportingImageBox.Location = new System.Drawing.Point(3, 36);
+            this.SupportingImageBox.Name = "SupportingImageBox";
+            this.SupportingImageBox.Size = new System.Drawing.Size(734, 124);
+            this.SupportingImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SupportingImageBox.TabIndex = 0;
+            this.SupportingImageBox.TabStop = false;
+            this.SupportingImageBox.Click += new System.EventHandler(this.SupportingImageBox_Click);
+            // 
             // TestPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "TestPage";
-            this.Size = new System.Drawing.Size(1136, 830);
+            this.Size = new System.Drawing.Size(1349, 569);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.DescriptionPanel.ResumeLayout(false);
             this.DescriptionPanel.PerformLayout();
@@ -602,11 +596,10 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.TestListPanel.ResumeLayout(false);
             this.TestListPanel.PerformLayout();
             this.ImagePanel.ResumeLayout(false);
-            this.ImagePanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SupportingImageBox)).EndInit();
             this.ResultsPanel.ResumeLayout(false);
             this.ResultsPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SupportingImageBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -621,12 +614,9 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private System.Windows.Forms.Panel ImagePanel;
         private System.Windows.Forms.Panel DescriptionPanel;
         private System.Windows.Forms.FlowLayoutPanel ButtonsFlowLayoutPanel;
-        private System.Windows.Forms.PictureBox SupportingImageBox;
-        private System.Windows.Forms.Button OKButton;
+        public System.Windows.Forms.PictureBox SupportingImageBox;
         private System.Windows.Forms.Label TestNameLabel;
         private System.Windows.Forms.Label SequenceNameLabel;
-        private System.Windows.Forms.Button YesButton;
-        private System.Windows.Forms.Button NoButton;
         private System.Windows.Forms.FlowLayoutPanel TestListBox;
         private System.Windows.Forms.FlowLayoutPanel TestStepListBox;
         private System.Windows.Forms.Button FinishedButton;
@@ -656,8 +646,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private System.Windows.Forms.RichTextBox stepDescriptionText;
         private System.Windows.Forms.Panel panel1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label progressLabel;
-        private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button DownloadButton;
     }

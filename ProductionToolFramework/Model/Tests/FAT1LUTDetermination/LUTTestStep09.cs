@@ -30,7 +30,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         {
             this.Name 						 = "GRID Location";
             this.Instructions				 = string.Empty;
-            this.SupportingImage			 = string.Empty;
+            this.SupportingImage			 = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions				 = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Browse;
             this.Results					 = new List<Result>();
 			// forward and backward handler

@@ -38,7 +38,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 												  "Source directory : " + SourceLocation + "\n" +
 												  "Press Browse to set the measurement location";
                                  
-            this.SupportingImage				= string.Empty;
+            this.SupportingImage				= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 					= EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Browse;
             this.Results 						= new List<Result>();
 

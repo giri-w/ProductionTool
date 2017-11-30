@@ -19,7 +19,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         {
             this.Name = "Machine Preparation";
             this.Instructions = "Remove targets and POM plates from the hand rests";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

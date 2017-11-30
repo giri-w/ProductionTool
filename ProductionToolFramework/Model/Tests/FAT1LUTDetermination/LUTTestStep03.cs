@@ -22,7 +22,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 								   "2. Break measurement when sequence has started\n" +
 								   "3. Record the measurement name in the assignment\n" +
 								   "4. Press Next when finished or Press Back to go to previous step\n";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions   = EButtonOptions.Next|EButtonOptions.Back;
             this.Results		 = new List<Result>();
             this.OnTestUpdated(false);
