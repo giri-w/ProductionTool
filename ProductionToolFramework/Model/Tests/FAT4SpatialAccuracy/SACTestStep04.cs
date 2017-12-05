@@ -30,7 +30,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public override void Execute(EButtonOptions userAction, string info)
         {
             this.Results.Clear();
-            string remark = string.Empty;
+
             if (userAction == EButtonOptions.Next)
             {
                 // Continue to the next step

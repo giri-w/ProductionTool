@@ -34,13 +34,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
         public override void Execute(EButtonOptions userAction, string info)
         {
             this.Results.Clear();
-            if (userAction == EButtonOptions.OK)
-            {
-                this.Results.Add(new BooleanResult("", "", true));
-            }
-
-            this.OnTestUpdated(true);
-
+           
             if (userAction == EButtonOptions.Finish)
             {
                 // Back to HomeScreen
@@ -51,7 +45,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
 
             if (userAction == EButtonOptions.Back)
             {
-                // Check or do something (with the hardware?) for the test
+                // Back to previous step
                 this.OnTestCanceled(true);
             }
         }
