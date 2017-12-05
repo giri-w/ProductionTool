@@ -513,9 +513,29 @@ namespace TestToolFramework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mBtnAddResourceHover {
+            get {
+                object obj = ResourceManager.GetObject("mBtnAddResourceHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mBtnDelResource {
             get {
                 object obj = ResourceManager.GetObject("mBtnDelResource", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mBtnDelResourceHover {
+            get {
+                object obj = ResourceManager.GetObject("mBtnDelResourceHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,9 +553,29 @@ namespace TestToolFramework.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mBtnDownloadHover {
+            get {
+                object obj = ResourceManager.GetObject("mBtnDownloadHover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mBtnExit {
             get {
                 object obj = ResourceManager.GetObject("mBtnExit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mBtnExitHover {
+            get {
+                object obj = ResourceManager.GetObject("mBtnExitHover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

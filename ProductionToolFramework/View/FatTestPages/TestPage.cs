@@ -189,6 +189,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
                 
                 if (currStep != null)
                 {
+
                     this.EnableVarLabel();
 
                     this.TestNameLabel.Text += " - " + currStep.Name;
@@ -226,7 +227,7 @@ namespace Demcon.ProductionTool.View.FatTestPages
                 else
                 {
                     //this.StepDescriptionLabel.Text = string.Empty;
-                    this.stepDescriptionText.Text = "Test Cancelled \n\n Press Finished to return to Main Menu";
+                    this.stepDescriptionText.Text = "Returning to main menu";
                     this.stepDescriptionText.GotFocus += TextBoxGotFocus;
 
                     this.SupportingImageBox.ImageLocation = string.Empty;
@@ -347,8 +348,8 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private void FinishedButton_Click(object sender, EventArgs e)
         {
             this.DisableButtons();
-            
-            MessageBox.Show("Test Finished", "FAT results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.TestManager.Execute(EButtonOptions.Finish, "Finish");
+
             string savedPath = this.TestManager.StopTest();
 
             try
@@ -393,50 +394,55 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private void EnableVarLabel()
         {
             TestStep currStep = this.testManager.CurrentTestStep;
-            for (int i = 0;i<4;i++)
+
+            if (currStep != null)
             {
-                varLabel[i] = "var";
-                varValue[i] = "0";
-            }
-            
 
-
-            // check if variable is needed
-            string text = currStep.VarOptions.ToString();
-            string textValue = currStep.VarValue;
-
-
-            bool result = text.Equals("0", StringComparison.Ordinal);
-
-            if (!result)
-            {
-                string[] words = text.Split(',');
-                string[] value = textValue.Split(',');
-
-                for (int i = 0; i<words.Length;i++)
+                for (int i = 0; i < 4; i++)
                 {
-                    varLabel[i] = words[i];
-                    varValue[i] = value[i];
+                    varLabel[i] = "var";
+                    varValue[i] = "0";
                 }
 
-            }
 
-            counter = 0;
-            for (int p = 0; p < 4;p++)
-            {
-                if (varLabel[p] != "var")
-                    counter++;
 
-            }
+                // check if variable is needed
+                string text = currStep.VarOptions.ToString();
+                string textValue = currStep.VarValue;
+
+
+                bool result = text.Equals("0", StringComparison.Ordinal);
+
+                if (!result)
+                {
+                    string[] words = text.Split(',');
+                    string[] value = textValue.Split(',');
+
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        varLabel[i] = words[i];
+                        varValue[i] = value[i];
+                    }
+
+                }
+
+                counter = 0;
+                for (int p = 0; p < 4; p++)
+                {
+                    if (varLabel[p] != "var")
+                        counter++;
+
+                }
                 this.varLabel1.Text = varLabel[0];
-            this.varLabel2.Text = varLabel[1];
-            this.varLabel3.Text = varLabel[2];
-            this.varLabel4.Text = varLabel[3];
+                this.varLabel2.Text = varLabel[1];
+                this.varLabel3.Text = varLabel[2];
+                this.varLabel4.Text = varLabel[3];
 
-            this.varBox1.Text = varValue[0];
-            this.varBox2.Text = varValue[1];
-            this.varBox3.Text = varValue[2];
-            this.varBox4.Text = varValue[3];
+                this.varBox1.Text = varValue[0];
+                this.varBox2.Text = varValue[1];
+                this.varBox3.Text = varValue[2];
+                this.varBox4.Text = varValue[3];
+            }
 
         }
 
@@ -534,13 +540,14 @@ namespace Demcon.ProductionTool.View.FatTestPages
 
         private void SupportingImageBox_Click(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(this.SupportingImageBox.ImageLocation))
+            if (!String.IsNullOrEmpty(this.SupportingImageBox.ImageLocation) & (this.SupportingImageBox.ImageLocation != @"Images\UI Demcon\ImNoAvailable.png"))
                 Process.Start(this.SupportingImageBox.ImageLocation);
         }
 
         private void CancelButton_Click_1(object sender, EventArgs e)
         {
             this.DisableButtons();
+            MessageBox.Show("Test Cancelled", "FAT results", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.TestManager.SetCurrentTest(null);
         }
 

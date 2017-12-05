@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Demcon.ProductionTool.Hardware;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 {
@@ -17,8 +13,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         public LUTTestStep01(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Machine Preparation";
-            this.Instructions = "- Remove targets and hand support blocks from the scanner" +
+            this.Name = "1. Machine Preparation";
+            this.Instructions = "- Remove targets and hand support blocks from the scanner\n" +
                                 "- Cover the arm detection";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next;

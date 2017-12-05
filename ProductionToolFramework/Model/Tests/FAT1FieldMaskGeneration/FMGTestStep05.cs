@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Demcon.ProductionTool.Hardware;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HemicsFat;
-using System.IO;
 using System.Xml.Linq;
-using System.Xml;
-using System.Linq;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
@@ -21,23 +17,17 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
         private string testSetting 				= @"Setting\config.xml";
         private string SourceLocation 			= string.Empty;
         private const string InstructionText 	=
-													"Locate measurement folder in the computer\n" +
-													"as a source for Field Mask Generation\n" +
-													"Source directory : {0}\n" +
-													"Press Browse to set the measurement location";
+													"Locate measurement folder for Field Mask Generation test\n\n" +
+													"Source directory : {0}\n\n" +
+													"Press \"Browse\" to set new measurement location";
+
 
 		public FMGTestStep05(TestManager testManager)
             : base(testManager)
         {
-            ChangeXml chg						= new ChangeXml();
-            SourceLocation						= chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Source");
-            this.Name 							= "Source location";
-            this.Instructions 					= 
-												  "Locate measurement folder in the computer\n" +
-												  "as a Source for Field Mask Generation\n" +
-												  "Source directory : " + SourceLocation + "\n" +
-												  "Press Browse to set the measurement location";
-                                 
+            this.Name 							= "5. Source location";
+            this.Instructions 					= "Loading ...";
+
             this.SupportingImage				= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 					= EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Browse;
             this.Results 						= new List<Result>();
@@ -50,11 +40,13 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
         public override void Start()
         {
             this.Results.Clear();
-            ChangeXml chg = new ChangeXml();
             new Task(() =>
             {
+                ChangeXml chg = new ChangeXml();
                 SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT1", "FMG", "Source");
                 this.Instructions = string.Format(FMGTestStep05.InstructionText, SourceLocation);
+                this.OnTestUpdated(false);
+                System.Threading.Thread.Sleep(10);
             }).Start();
         }
 
@@ -81,28 +73,16 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 				
                 // save folder location 
                 testResult = info;
-				
-				// check if config.xml exist
-                if (File.Exists(testSetting)) 
-                {
 
-                    var xml = XDocument.Load(testSetting);
-                    bool isLUTConfigExist = xml.Element("Test").Elements("FAT1").Elements("FMG").Any();
+                // update source setting in config.xml
+                var xml = XDocument.Load(testSetting);
+                chg.modifyElement(testSetting, "Test", "FAT1", "FMG", "Source", testResult);
+                MessageBox.Show("Setting saved");
 
-                    if (isLUTConfigExist)
-                    {
-                        chg.modifyElement(testSetting, "Test", "FAT1", "FMG", "Source", testResult);
-                        MessageBox.Show("Setting saved");
-                    }
-                    else
-                        MessageBox.Show("Ada yang salah dengan XML");
-
-
-                }
-				
 				// write result to windows log
                 bool check = string.IsNullOrEmpty(testResult);
                 this.Results.Add(new BooleanResult("Source Location", testResult, !check));
+                this.Instructions = "Loading ...";
                 this.OnTestUpdated(true);
 
             }

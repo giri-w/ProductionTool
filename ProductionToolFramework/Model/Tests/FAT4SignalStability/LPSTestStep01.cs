@@ -21,7 +21,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         public LPSTestStep01(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Machine Preparation";
+            this.Name = "1. Machine Preparation";
             this.Instructions = 
                             "- Place POM plate on the glass plate\n" +
                             "- Place black paper delay target at left and right target\n" +

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Demcon.ProductionTool.Hardware;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
@@ -17,7 +13,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
         public FMGTestStep01(TestManager testManager)
             : base(testManager)
         {
-            this.Name 				= "Machine Preparation";
+            this.Name 				= "1. Machine Preparation";
             this.Instructions 		=   
 										"- Make sure the hand positioning blocks are present\n" +
 										"- Glass plate is clean and free\n";

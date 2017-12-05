@@ -101,6 +101,7 @@
             // includeDir
             // 
             this.includeDir.AutoSize = true;
+            this.includeDir.Checked = true;
             this.includeDir.Location = new System.Drawing.Point(413, 79);
             this.includeDir.Name = "includeDir";
             this.includeDir.Size = new System.Drawing.Size(170, 17);
@@ -135,6 +136,8 @@
             this.DeleteButton.TabIndex = 10;
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            this.DeleteButton.MouseEnter += new System.EventHandler(this.DeleteButton_MouseEnter);
+            this.DeleteButton.MouseLeave += new System.EventHandler(this.DeleteButton_MouseLeave);
             // 
             // addButton
             // 
@@ -150,6 +153,8 @@
             this.addButton.TabIndex = 9;
             this.addButton.UseVisualStyleBackColor = false;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            this.addButton.MouseEnter += new System.EventHandler(this.addButton_MouseEnter);
+            this.addButton.MouseLeave += new System.EventHandler(this.addButton_MouseLeave);
             // 
             // exitButton
             // 
@@ -165,6 +170,8 @@
             this.exitButton.TabIndex = 3;
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.exitButton.MouseEnter += new System.EventHandler(this.exitButton_MouseEnter);
+            this.exitButton.MouseLeave += new System.EventHandler(this.exitButton_MouseLeave);
             // 
             // downloadButton
             // 
@@ -180,6 +187,8 @@
             this.downloadButton.TabIndex = 2;
             this.downloadButton.UseVisualStyleBackColor = false;
             this.downloadButton.Click += new System.EventHandler(this.downloadButton_Click);
+            this.downloadButton.MouseEnter += new System.EventHandler(this.downloadButton_MouseEnter);
+            this.downloadButton.MouseLeave += new System.EventHandler(this.downloadButton_MouseLeave);
             // 
             // linkLabel2
             // 

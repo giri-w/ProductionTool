@@ -14,7 +14,6 @@ namespace Demcon.ProductionTool.View
 {
     public partial class MainForm : Form
     {
-        private TestPage testPage;
         string helpDocument = @"Setting\Help.pdf";
         
         public MainForm()
@@ -25,6 +24,7 @@ namespace Demcon.ProductionTool.View
                 this.HwManager = new HwManager();
                 string versionString = "HandScanner Tool; " + GetSvnRevision();
                 this.TestManager = new TestManager(versionString);
+                checkConnection();
                 InitializeComponent();
                 this.Text = versionString;
                 this.tabFatTests1.TestManager = this.TestManager;
@@ -197,6 +197,12 @@ namespace Demcon.ProductionTool.View
 
         private void linkStatus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            checkConnection();
+
+        }
+
+        private void checkConnection()
+        {
             Console.WriteLine("Hello, Start FTP Connection");
             new Thread(() =>
             {
@@ -210,9 +216,9 @@ namespace Demcon.ProductionTool.View
                     else
                         SetText("Disconnected", 2);
 
-                    Thread.Sleep(20000);
+                    Thread.Sleep(10000);
                 }
-                
+
             }).Start();
 
         }

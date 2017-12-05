@@ -17,14 +17,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public SACTestStep07b(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Position Stability Analysis: Longitudinal";
-            this.Instructions =
-                            "- Verify position stability within 2mm (Longitudinal)";
-
-            string[] theFiles = System.IO.Directory.GetFiles(@"Python\figure\FAT4SpatialAccuracy", "*_resultLongitudinal.png");
-            this.SupportingImage = theFiles[0];
-            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back;
-            this.Results = new List<Result>();
+            this.Name               = "7b. Position Stability Analysis: Longitudinal";
+            this.Instructions       = "- Verify position stability within 2mm (Longitudinal)";
+            string[] theFiles       = System.IO.Directory.GetFiles(@"Python\figure\FAT4SpatialAccuracy", "*_resultLongitudinal.png");
+            this.SupportingImage    = theFiles[0];
+            this.ButtonOptions      = EButtonOptions.Next|EButtonOptions.Back;
+            this.Results            = new List<Result>();
             this.OnTestUpdated(false);
         }
 

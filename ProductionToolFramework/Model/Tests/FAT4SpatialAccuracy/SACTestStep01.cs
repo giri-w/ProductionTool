@@ -17,7 +17,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public SACTestStep01(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Machine Preparation";
+            this.Name = "1. Machine Preparation";
             this.Instructions = "Remove targets and POM plates from the hand rests";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next;

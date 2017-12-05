@@ -16,9 +16,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         private string SourceLocation = string.Empty;
         private const string InstructionText =
                                     " Measurement configuration:\n" +
-                                    " - Source Location  :  {0}\n\n\n" +
-                                    "Press PROCESS to start analysis\n" +
-                                    "Press NEXT when analysis process complete";
+                                    " - Source Location  :  {0}\n\n" +
+                                    "Press \"Process\" to start analysis\n";
         [Obsolete]
         public SACTestStep11()
             : this(null)
@@ -31,12 +30,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
             ChangeXml chg = new ChangeXml();
             SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "SAC", "SourcePA");
 
-            this.Name = "Position Accuracy Processing";
-            this.Instructions =
-                                    " Measurement configuration:\n" +
-                                    " - Source Location  :  " + SourceLocation + "\n\n" +
-                                    "Press PROCESS to start analysis\n" +
-                                    "Press NEXT when analysis process complete";
+            this.Name = "11. Position Accuracy Processing";
+            this.Instructions = "Loading...";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
             this.Results = new List<Result>();

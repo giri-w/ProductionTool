@@ -21,10 +21,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
         public VSCTestStep04(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "SVN Number Information";
-            this.Instructions = "Write the SVN Number in the work instruction\n";
+            this.Name = "4. Workinstruction";
+            this.Instructions = "- You can also do a visual check of the results\n" +
+                                "- The images are located in the folder shown at the results\n" +
+                                "- Summarize the result in the system validation document";
             this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next;
+            this.ButtonOptions = EButtonOptions.Finish|EButtonOptions.Back;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
@@ -32,10 +34,18 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
         public override void Execute(EButtonOptions userAction, string info)
         {
             this.Results.Clear();
-            if (userAction == EButtonOptions.Next)
+            if (userAction == EButtonOptions.OK)
             {
-                // Check or do something (with the hardware?) for the test
-                this.Results.Add(new BooleanResult("SVN Number", "Checked", true));
+                this.Results.Add(new BooleanResult("", "", true));
+            }
+
+            this.OnTestUpdated(true);
+
+            if (userAction == EButtonOptions.Finish)
+            {
+                // Back to HomeScreen
+                //MessageBox.Show("Test Finished", "FAT results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Results.Add(new BooleanResult("", "", true));
                 this.OnTestUpdated(true);
             }
 

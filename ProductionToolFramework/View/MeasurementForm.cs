@@ -75,14 +75,21 @@ namespace TestToolFramework.View
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            string localPath = sourceList.GetItemText(sourceList.SelectedItem);
 
-            if (!String.IsNullOrEmpty(sourceText.Text))
-                sourceList.Items.Add(sourceText.Text);
-            else if (!String.IsNullOrEmpty(localPath))
-                sourceList.Items.Add(localPath);
+
+            if (sourceList.SelectedIndex != 0)
+            {
+                string localPath = sourceList.GetItemText(sourceList.SelectedItem);
+
+                if (!String.IsNullOrEmpty(sourceText.Text))
+                    sourceList.Items.Add(sourceText.Text);
+                else if (!String.IsNullOrEmpty(localPath))
+                    sourceList.Items.Add(localPath);
+                else
+                    MessageBox.Show("Please input source address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             else
-                MessageBox.Show("Please input source address", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot add FTP Source", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -165,32 +172,46 @@ namespace TestToolFramework.View
             
         }
 
-        private void sourceList_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void ftpExplorer(string ftpAddress)
         {
-            folderList.Items.Clear();
-            if (sourceList.SelectedIndex == 0)
+            FtpTransfer ftp = new FtpTransfer();
+            SessionOptions cOptions = ftp.createConnection();
+            using (Session session = new Session())
             {
-                MessageBox.Show("Establishing connection to FTP Server", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FtpTransfer ftp = new FtpTransfer();
-                SessionOptions cOptions = ftp.createConnection();
-                using (Session session = new Session())
+                try
                 {
-                    try
+                    // Connect
+                    // session.SessionLogPath = @"C:\";
+                    session.Open(cOptions);
+
+
+                    RemoteDirectoryInfo directory =
+                        session.ListDirectory(ftpAddress);
+
+                    // sort by the latest time
+                    IEnumerable<RemoteFileInfo> latest =
+                                                        directory.Files
+                                                       .Where(file => file.IsDirectory)
+                                                       .OrderByDescending(file => file.FullName);
+
+
+
+                    // initialize the list
+                    List<string> sourcefolder = new List<string>();
+                    sourcefolder.Add("...");
+                    folderList.Items.Add("...");
+
+                    int track = 0;
+
+                    foreach (RemoteFileInfo fileInfo in latest)
                     {
-                        // Connect
-                        session.Open(cOptions);
-
-                        RemoteDirectoryInfo directory =
-                            session.ListDirectory(ftpDirectory);
-
-                        List<string> sourcefolder = new List<string>();
-
-                        foreach (RemoteFileInfo fileInfo in directory.Files)
+                        track++;
+                        if (track != latest.Count())
                         {
                             Console.WriteLine(
-                                "{0} with size {1}, permissions {2} and last modification at {3}",
-                                fileInfo.Name, fileInfo.Length, fileInfo.FilePermissions,
-                                fileInfo.LastWriteTime);
+                            "{0} with size {1}, permissions {2} and last modification at {3}",
+                            fileInfo.Name, fileInfo.Length, fileInfo.FilePermissions,
+                            fileInfo.LastWriteTime);
 
                             // save full path to array
                             sourcefolder.Add(fileInfo.FullName);
@@ -198,18 +219,31 @@ namespace TestToolFramework.View
                             folderList.Items.Add(fileInfo.Name);
                         }
 
-                        folderName = sourcefolder.ToArray();
                     }
-                    catch
-                    {
-                        MessageBox.Show("Fail establishing connection to the server.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    
 
+                    folderName = sourcefolder.ToArray();
                 }
 
 
 
+                catch (Exception f)
+                {
+                    MessageBox.Show("Fail establishing connection to the server.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine("Error: {0}", f);
+                }
+
+
+            }
+
+        }
+
+        private void sourceList_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            folderList.Items.Clear();
+            if (sourceList.SelectedIndex == 0)
+            {
+                MessageBox.Show("Establishing connection to FTP Server", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ftpExplorer(ftpDirectory);
             }
 
             else
@@ -248,14 +282,34 @@ namespace TestToolFramework.View
 
         private void folderList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            sourceText.Text = folderName[folderList.SelectedIndex];
+            if (sourceList.SelectedIndex == 0 & folderList.SelectedIndex == 0)
+                sourceText.Text = ftpDirectory;
+            else
+                sourceText.Text = folderName[folderList.SelectedIndex];
         }
 
      
         private void folderList_DoubleClick(object sender, EventArgs e)
         {
             string localPath = folderName[folderList.SelectedIndex];
-            System.Diagnostics.Process.Start("explorer.exe", localPath);
+            if (sourceList.SelectedIndex == 0 & folderList.SelectedIndex == 0)
+            {
+                folderList.Items.Clear();
+                ftpExplorer(ftpDirectory);
+
+            }
+            else if (sourceList.SelectedIndex == 0 & folderList.SelectedIndex != 0)
+            {
+                folderList.Items.Clear();
+                ftpExplorer(localPath);
+            }
+
+            else
+            {
+                System.Diagnostics.Process.Start("explorer.exe", localPath);
+            }
+
+                
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -275,5 +329,52 @@ namespace TestToolFramework.View
                 
             }
         }
+
+        // Button Behaviour Button Add
+        private void addButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.addButton.BackgroundImage = global::TestToolFramework.Properties.Resources.mBtnAddResource;
+        }
+
+        private void addButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.addButton.BackgroundImage = global::TestToolFramework.Properties.Resources.mBtnAddResourceHover;
+        }
+
+        // Button Behaviour Button Delete
+        private void DeleteButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.DeleteButton.BackgroundImage = global::TestToolFramework.Properties.Resources.mBtnDelResource;
+        }
+
+        private void DeleteButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.DeleteButton.BackgroundImage = global::TestToolFramework.Properties.Resources.mBtnDelResourceHover;
+        }
+
+        // Button Behaviour Button Download
+        private void downloadButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.downloadButton.BackgroundImage = global::TestToolFramework.Properties.Resources.mBtnDownload;
+        }
+
+        private void downloadButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.downloadButton.BackgroundImage = global::TestToolFramework.Properties.Resources.mBtnDownloadHover;
+        }
+
+        // Button Behaviour Button Exit
+        private void exitButton_MouseLeave(object sender, EventArgs e)
+        {
+            this.exitButton.BackgroundImage = global::TestToolFramework.Properties.Resources.mBtnExit;
+        }
+
+        private void exitButton_MouseEnter(object sender, EventArgs e)
+        {
+            this.exitButton.BackgroundImage = global::TestToolFramework.Properties.Resources.mBtnExitHover;
+        }
+
+
+
     }
 }

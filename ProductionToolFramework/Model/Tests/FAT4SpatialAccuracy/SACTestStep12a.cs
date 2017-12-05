@@ -21,7 +21,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public SACTestStep12a(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Position Accuracy Analysis";
+            this.Name = "12a. Position Accuracy Analysis: Tangential";
             this.Instructions =
                         "- Verify accuracy and reproducibility is within 2mm (Tangential)";
 

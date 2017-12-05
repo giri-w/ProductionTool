@@ -17,14 +17,13 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         public LUTTestStep13(TestManager testManager)
             : base(testManager)
         {
-            this.Name				 = "Look Up Table Determination complete";
+            this.Name				 = "13. Look Up Table Determination complete";
             this.Instructions		 = 
-										"Look Up Table Determination  Test is complete.\n"+
-										"Press FINISH to go to main menu\n"+
-										"Press NEXT to continue to the next test, or\n" +
-										"Press BACK to return to the previous step";  
+										"Look Up Table Determination test is complete.\n"+
+										"Press \"Finish\" to go to main menu\n"+
+                                        "Press \"Back\" to return to the previous step";  
             this.SupportingImage	 = @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions		 = EButtonOptions.Finish | EButtonOptions.Back | EButtonOptions.Next;
+            this.ButtonOptions		 = EButtonOptions.Finish | EButtonOptions.Back;
             this.Results 			 = new List<Result>();
 			// forward and backward handler
             this.OnTestUpdated(false);
@@ -33,12 +32,14 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         public override void Execute(EButtonOptions userAction, string info)
         {
             this.Results.Clear();
-            if (userAction == EButtonOptions.Next)
+            if (userAction == EButtonOptions.Finish)
             {
-                // Continue to the next step
+                // Back to HomeScreen
+                //MessageBox.Show("Test Finished", "FAT results", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Results.Add(new BooleanResult("Look Up Table Determination", "LUT Test is finished", true));
                 this.OnTestUpdated(true);
             }
+            
 
             if (userAction == EButtonOptions.Back)
             {

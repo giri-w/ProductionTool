@@ -15,10 +15,9 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         private string testSetting = @"Setting\config.xml";
         private string SourceLocation = string.Empty;
         private const string InstructionText =
-                                    " Measurement configuration:\n" +
-                                    " - Source Location  :  {0}\n\n\n" +
-                                    "Press PROCESS to start analysis\n" +
-                                    "Press NEXT when analysis process complete";
+                                    " Measurement configuration:\n\n" +
+                                    " - Source Location  :  {0}\n\n" +
+                                    "Press \"Process\" to start analysis\n";
 
 
         [Obsolete]
@@ -34,15 +33,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
             ChangeXml chg = new ChangeXml();
             SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "LPS", "Source");
 
-            this.Name = "Data Processing";
-            this.Instructions =
-                                    " Measurement configuration:\n" +
-                                    " - Source Location  :  "+SourceLocation+"\n\n" +
-                                    "Press PROCESS to start analysis\n" +
-                                    "Press NEXT when analysis process complete";
-            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Analyze;
-            this.Results = new List<Result>();
+            this.Name               = "6. Data Processing";
+            this.Instructions       = "Loading ...";
+            this.SupportingImage    = @"Images\UI Demcon\ImNoAvailable.png";
+            this.ButtonOptions      = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Analyze;
+            this.Results            = new List<Result>();
             this.OnTestUpdated(false);
         }
 
@@ -55,6 +50,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                 ChangeXml chg = new ChangeXml();
                 SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "LPS", "Source");
                 this.Instructions = string.Format(LPSTestStep06.InstructionText, SourceLocation);
+                this.OnTestUpdated(false);
+                System.Threading.Thread.Sleep(10);
 
             }).Start();
         }

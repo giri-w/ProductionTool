@@ -33,22 +33,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
         {
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.DescriptionPanel = new System.Windows.Forms.Panel();
-            this.ButtonsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.stepDescriptionText = new System.Windows.Forms.RichTextBox();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.varLabel1 = new System.Windows.Forms.Label();
-            this.varBox1 = new System.Windows.Forms.TextBox();
-            this.varLabel2 = new System.Windows.Forms.Label();
-            this.varBox2 = new System.Windows.Forms.TextBox();
-            this.varLabel3 = new System.Windows.Forms.Label();
-            this.varBox3 = new System.Windows.Forms.TextBox();
-            this.varLabel4 = new System.Windows.Forms.Label();
-            this.varBox4 = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.TestNameLabel = new System.Windows.Forms.Label();
             this.TestListPanel = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.IDLabel = new System.Windows.Forms.Label();
@@ -57,32 +41,48 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.TestListBox = new System.Windows.Forms.FlowLayoutPanel();
             this.SequenceNameLabel = new System.Windows.Forms.Label();
             this.ImagePanel = new System.Windows.Forms.Panel();
+            this.SupportingImageBox = new System.Windows.Forms.PictureBox();
             this.ResultsPanel = new System.Windows.Forms.Panel();
             this.ResultsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.DescriptionPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.varBox4 = new System.Windows.Forms.TextBox();
+            this.varLabel4 = new System.Windows.Forms.Label();
+            this.varBox3 = new System.Windows.Forms.TextBox();
+            this.varLabel3 = new System.Windows.Forms.Label();
+            this.varBox2 = new System.Windows.Forms.TextBox();
+            this.varLabel2 = new System.Windows.Forms.Label();
+            this.varLabel1 = new System.Windows.Forms.Label();
+            this.varBox1 = new System.Windows.Forms.TextBox();
+            this.ButtonsFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.NextButton = new System.Windows.Forms.Button();
             this.BackButton = new System.Windows.Forms.Button();
             this.FinishedButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.stepDescriptionText = new System.Windows.Forms.RichTextBox();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.BrowseButton = new System.Windows.Forms.Button();
             this.AnalyzeButton = new System.Windows.Forms.Button();
             this.RetryButton = new System.Windows.Forms.Button();
             this.DownloadButton = new System.Windows.Forms.Button();
-            this.SupportingImageBox = new System.Windows.Forms.PictureBox();
+            this.TestNameLabel = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
-            this.DescriptionPanel.SuspendLayout();
-            this.ButtonsFlowLayoutPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.TestListPanel.SuspendLayout();
             this.ImagePanel.SuspendLayout();
-            this.ResultsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SupportingImageBox)).BeginInit();
+            this.ResultsPanel.SuspendLayout();
+            this.DescriptionPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.ButtonsFlowLayoutPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -94,10 +94,10 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 600F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.DescriptionPanel, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.TestListPanel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.ImagePanel, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.ResultsPanel, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.DescriptionPanel, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
@@ -105,180 +105,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1346, 563);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // DescriptionPanel
-            // 
-            this.DescriptionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DescriptionPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.DescriptionPanel.Controls.Add(this.ButtonsFlowLayoutPanel);
-            this.DescriptionPanel.Controls.Add(this.panel1);
-            this.DescriptionPanel.Controls.Add(this.flowLayoutPanel3);
-            this.DescriptionPanel.Controls.Add(this.flowLayoutPanel2);
-            this.DescriptionPanel.Controls.Add(this.flowLayoutPanel1);
-            this.DescriptionPanel.Controls.Add(this.TestNameLabel);
-            this.DescriptionPanel.Location = new System.Drawing.Point(603, 3);
-            this.DescriptionPanel.Name = "DescriptionPanel";
-            this.DescriptionPanel.Size = new System.Drawing.Size(740, 359);
-            this.DescriptionPanel.TabIndex = 0;
-            // 
-            // ButtonsFlowLayoutPanel
-            // 
-            this.ButtonsFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonsFlowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.ButtonsFlowLayoutPanel.Controls.Add(this.NextButton);
-            this.ButtonsFlowLayoutPanel.Controls.Add(this.BackButton);
-            this.ButtonsFlowLayoutPanel.Controls.Add(this.FinishedButton);
-            this.ButtonsFlowLayoutPanel.Controls.Add(this.CancelButton);
-            this.ButtonsFlowLayoutPanel.Location = new System.Drawing.Point(3, 303);
-            this.ButtonsFlowLayoutPanel.Name = "ButtonsFlowLayoutPanel";
-            this.ButtonsFlowLayoutPanel.Size = new System.Drawing.Size(737, 53);
-            this.ButtonsFlowLayoutPanel.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.stepDescriptionText);
-            this.panel1.Location = new System.Drawing.Point(3, 50);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(740, 150);
-            this.panel1.TabIndex = 7;
-            // 
-            // stepDescriptionText
-            // 
-            this.stepDescriptionText.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.stepDescriptionText.Cursor = System.Windows.Forms.Cursors.Default;
-            this.stepDescriptionText.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stepDescriptionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stepDescriptionText.Location = new System.Drawing.Point(0, 0);
-            this.stepDescriptionText.Name = "stepDescriptionText";
-            this.stepDescriptionText.ReadOnly = true;
-            this.stepDescriptionText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.stepDescriptionText.Size = new System.Drawing.Size(740, 150);
-            this.stepDescriptionText.TabIndex = 0;
-            this.stepDescriptionText.Text = "Step Description";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 34);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(0, 0);
-            this.flowLayoutPanel3.TabIndex = 6;
-            // 
-            // flowLayoutPanel2
-            // 
-            this.flowLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel2.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel2.Controls.Add(this.varLabel1);
-            this.flowLayoutPanel2.Controls.Add(this.varBox1);
-            this.flowLayoutPanel2.Controls.Add(this.varLabel2);
-            this.flowLayoutPanel2.Controls.Add(this.varBox2);
-            this.flowLayoutPanel2.Controls.Add(this.varLabel3);
-            this.flowLayoutPanel2.Controls.Add(this.varBox3);
-            this.flowLayoutPanel2.Controls.Add(this.varLabel4);
-            this.flowLayoutPanel2.Controls.Add(this.varBox4);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 219);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(735, 28);
-            this.flowLayoutPanel2.TabIndex = 5;
-            // 
-            // varLabel1
-            // 
-            this.varLabel1.AutoSize = true;
-            this.varLabel1.Location = new System.Drawing.Point(3, 0);
-            this.varLabel1.Name = "varLabel1";
-            this.varLabel1.Size = new System.Drawing.Size(28, 13);
-            this.varLabel1.TabIndex = 8;
-            this.varLabel1.Text = "var1";
-            this.varLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // varBox1
-            // 
-            this.varBox1.Location = new System.Drawing.Point(37, 3);
-            this.varBox1.Name = "varBox1";
-            this.varBox1.Size = new System.Drawing.Size(100, 20);
-            this.varBox1.TabIndex = 9;
-            // 
-            // varLabel2
-            // 
-            this.varLabel2.AutoSize = true;
-            this.varLabel2.Location = new System.Drawing.Point(143, 0);
-            this.varLabel2.Name = "varLabel2";
-            this.varLabel2.Size = new System.Drawing.Size(28, 13);
-            this.varLabel2.TabIndex = 10;
-            this.varLabel2.Text = "var2";
-            // 
-            // varBox2
-            // 
-            this.varBox2.Location = new System.Drawing.Point(177, 3);
-            this.varBox2.Name = "varBox2";
-            this.varBox2.Size = new System.Drawing.Size(100, 20);
-            this.varBox2.TabIndex = 11;
-            // 
-            // varLabel3
-            // 
-            this.varLabel3.AutoSize = true;
-            this.varLabel3.Location = new System.Drawing.Point(283, 0);
-            this.varLabel3.Name = "varLabel3";
-            this.varLabel3.Size = new System.Drawing.Size(28, 13);
-            this.varLabel3.TabIndex = 12;
-            this.varLabel3.Text = "var3";
-            // 
-            // varBox3
-            // 
-            this.varBox3.Location = new System.Drawing.Point(317, 3);
-            this.varBox3.Name = "varBox3";
-            this.varBox3.Size = new System.Drawing.Size(100, 20);
-            this.varBox3.TabIndex = 13;
-            // 
-            // varLabel4
-            // 
-            this.varLabel4.AutoSize = true;
-            this.varLabel4.Location = new System.Drawing.Point(423, 0);
-            this.varLabel4.Name = "varLabel4";
-            this.varLabel4.Size = new System.Drawing.Size(28, 13);
-            this.varLabel4.TabIndex = 14;
-            this.varLabel4.Text = "var4";
-            // 
-            // varBox4
-            // 
-            this.varBox4.Location = new System.Drawing.Point(457, 3);
-            this.varBox4.Name = "varBox4";
-            this.varBox4.Size = new System.Drawing.Size(100, 20);
-            this.varBox4.TabIndex = 15;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
-            this.flowLayoutPanel1.Controls.Add(this.BrowseButton);
-            this.flowLayoutPanel1.Controls.Add(this.AnalyzeButton);
-            this.flowLayoutPanel1.Controls.Add(this.RetryButton);
-            this.flowLayoutPanel1.Controls.Add(this.DownloadButton);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 248);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(735, 50);
-            this.flowLayoutPanel1.TabIndex = 4;
-            // 
-            // TestNameLabel
-            // 
-            this.TestNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TestNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TestNameLabel.Location = new System.Drawing.Point(3, 3);
-            this.TestNameLabel.Name = "TestNameLabel";
-            this.TestNameLabel.Size = new System.Drawing.Size(734, 29);
-            this.TestNameLabel.TabIndex = 1;
-            this.TestNameLabel.Text = "Test Name";
             // 
             // TestListPanel
             // 
@@ -381,6 +207,21 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.ImagePanel.Size = new System.Drawing.Size(740, 192);
             this.ImagePanel.TabIndex = 1;
             // 
+            // SupportingImageBox
+            // 
+            this.SupportingImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SupportingImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.SupportingImageBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SupportingImageBox.InitialImage = global::TestToolFramework.Properties.Resources.ImNoAvailable;
+            this.SupportingImageBox.Location = new System.Drawing.Point(3, 36);
+            this.SupportingImageBox.Name = "SupportingImageBox";
+            this.SupportingImageBox.Size = new System.Drawing.Size(734, 124);
+            this.SupportingImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.SupportingImageBox.TabIndex = 0;
+            this.SupportingImageBox.TabStop = false;
+            this.SupportingImageBox.Click += new System.EventHandler(this.SupportingImageBox_Click);
+            // 
             // ResultsPanel
             // 
             this.ResultsPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -416,16 +257,121 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.label3.TabIndex = 8;
             this.label3.Text = "Results";
             // 
-            // backgroundWorker1
+            // DescriptionPanel
             // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            this.DescriptionPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DescriptionPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.DescriptionPanel.Controls.Add(this.panel2);
+            this.DescriptionPanel.Controls.Add(this.ButtonsFlowLayoutPanel);
+            this.DescriptionPanel.Controls.Add(this.panel1);
+            this.DescriptionPanel.Controls.Add(this.flowLayoutPanel3);
+            this.DescriptionPanel.Controls.Add(this.flowLayoutPanel1);
+            this.DescriptionPanel.Controls.Add(this.TestNameLabel);
+            this.DescriptionPanel.Location = new System.Drawing.Point(603, 3);
+            this.DescriptionPanel.Name = "DescriptionPanel";
+            this.DescriptionPanel.Size = new System.Drawing.Size(740, 359);
+            this.DescriptionPanel.TabIndex = 0;
             // 
-            // errorProvider1
+            // panel2
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(160)))), ((int)(((byte)(160)))));
+            this.panel2.Controls.Add(this.varBox4);
+            this.panel2.Controls.Add(this.varLabel4);
+            this.panel2.Controls.Add(this.varBox3);
+            this.panel2.Controls.Add(this.varLabel3);
+            this.panel2.Controls.Add(this.varBox2);
+            this.panel2.Controls.Add(this.varLabel2);
+            this.panel2.Controls.Add(this.varLabel1);
+            this.panel2.Controls.Add(this.varBox1);
+            this.panel2.Location = new System.Drawing.Point(3, 212);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(733, 35);
+            this.panel2.TabIndex = 8;
+            // 
+            // varBox4
+            // 
+            this.varBox4.Location = new System.Drawing.Point(626, 8);
+            this.varBox4.Name = "varBox4";
+            this.varBox4.Size = new System.Drawing.Size(100, 20);
+            this.varBox4.TabIndex = 15;
+            // 
+            // varLabel4
+            // 
+            this.varLabel4.AutoSize = true;
+            this.varLabel4.ForeColor = System.Drawing.Color.White;
+            this.varLabel4.Location = new System.Drawing.Point(559, 10);
+            this.varLabel4.Name = "varLabel4";
+            this.varLabel4.Size = new System.Drawing.Size(28, 13);
+            this.varLabel4.TabIndex = 14;
+            this.varLabel4.Text = "var4";
+            // 
+            // varBox3
+            // 
+            this.varBox3.Location = new System.Drawing.Point(449, 8);
+            this.varBox3.Name = "varBox3";
+            this.varBox3.Size = new System.Drawing.Size(100, 20);
+            this.varBox3.TabIndex = 13;
+            // 
+            // varLabel3
+            // 
+            this.varLabel3.AutoSize = true;
+            this.varLabel3.ForeColor = System.Drawing.Color.White;
+            this.varLabel3.Location = new System.Drawing.Point(382, 10);
+            this.varLabel3.Name = "varLabel3";
+            this.varLabel3.Size = new System.Drawing.Size(28, 13);
+            this.varLabel3.TabIndex = 12;
+            this.varLabel3.Text = "var3";
+            // 
+            // varBox2
+            // 
+            this.varBox2.Location = new System.Drawing.Point(268, 8);
+            this.varBox2.Name = "varBox2";
+            this.varBox2.Size = new System.Drawing.Size(100, 20);
+            this.varBox2.TabIndex = 11;
+            // 
+            // varLabel2
+            // 
+            this.varLabel2.AutoSize = true;
+            this.varLabel2.ForeColor = System.Drawing.Color.White;
+            this.varLabel2.Location = new System.Drawing.Point(199, 10);
+            this.varLabel2.Name = "varLabel2";
+            this.varLabel2.Size = new System.Drawing.Size(28, 13);
+            this.varLabel2.TabIndex = 10;
+            this.varLabel2.Text = "var2";
+            // 
+            // varLabel1
+            // 
+            this.varLabel1.AutoSize = true;
+            this.varLabel1.ForeColor = System.Drawing.Color.White;
+            this.varLabel1.Location = new System.Drawing.Point(15, 10);
+            this.varLabel1.Name = "varLabel1";
+            this.varLabel1.Size = new System.Drawing.Size(28, 13);
+            this.varLabel1.TabIndex = 8;
+            this.varLabel1.Text = "var1";
+            this.varLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // varBox1
+            // 
+            this.varBox1.Location = new System.Drawing.Point(81, 8);
+            this.varBox1.Name = "varBox1";
+            this.varBox1.Size = new System.Drawing.Size(100, 20);
+            this.varBox1.TabIndex = 9;
+            // 
+            // ButtonsFlowLayoutPanel
+            // 
+            this.ButtonsFlowLayoutPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonsFlowLayoutPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.ButtonsFlowLayoutPanel.Controls.Add(this.NextButton);
+            this.ButtonsFlowLayoutPanel.Controls.Add(this.BackButton);
+            this.ButtonsFlowLayoutPanel.Controls.Add(this.FinishedButton);
+            this.ButtonsFlowLayoutPanel.Controls.Add(this.CancelButton);
+            this.ButtonsFlowLayoutPanel.Location = new System.Drawing.Point(3, 303);
+            this.ButtonsFlowLayoutPanel.Name = "ButtonsFlowLayoutPanel";
+            this.ButtonsFlowLayoutPanel.Size = new System.Drawing.Size(737, 53);
+            this.ButtonsFlowLayoutPanel.TabIndex = 0;
             // 
             // NextButton
             // 
@@ -490,6 +436,55 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click_1);
             this.CancelButton.MouseEnter += new System.EventHandler(this.CancelButton_MouseEnter);
             this.CancelButton.MouseLeave += new System.EventHandler(this.CancelButton_MouseLeave);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.stepDescriptionText);
+            this.panel1.Location = new System.Drawing.Point(3, 50);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(740, 150);
+            this.panel1.TabIndex = 7;
+            // 
+            // stepDescriptionText
+            // 
+            this.stepDescriptionText.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.stepDescriptionText.Cursor = System.Windows.Forms.Cursors.Default;
+            this.stepDescriptionText.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stepDescriptionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stepDescriptionText.Location = new System.Drawing.Point(0, 0);
+            this.stepDescriptionText.Name = "stepDescriptionText";
+            this.stepDescriptionText.ReadOnly = true;
+            this.stepDescriptionText.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.stepDescriptionText.Size = new System.Drawing.Size(740, 150);
+            this.stepDescriptionText.TabIndex = 0;
+            this.stepDescriptionText.Text = "Step Description";
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(0, 34);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(0, 0);
+            this.flowLayoutPanel3.TabIndex = 6;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
+            this.flowLayoutPanel1.Controls.Add(this.BrowseButton);
+            this.flowLayoutPanel1.Controls.Add(this.AnalyzeButton);
+            this.flowLayoutPanel1.Controls.Add(this.RetryButton);
+            this.flowLayoutPanel1.Controls.Add(this.DownloadButton);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 248);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(735, 50);
+            this.flowLayoutPanel1.TabIndex = 4;
             // 
             // BrowseButton
             // 
@@ -563,20 +558,27 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.DownloadButton.MouseEnter += new System.EventHandler(this.DownloadButton_MouseEnter);
             this.DownloadButton.MouseLeave += new System.EventHandler(this.DownloadButton_MouseLeave);
             // 
-            // SupportingImageBox
+            // TestNameLabel
             // 
-            this.SupportingImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.TestNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SupportingImageBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.SupportingImageBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SupportingImageBox.InitialImage = global::TestToolFramework.Properties.Resources.ImNoAvailable;
-            this.SupportingImageBox.Location = new System.Drawing.Point(3, 36);
-            this.SupportingImageBox.Name = "SupportingImageBox";
-            this.SupportingImageBox.Size = new System.Drawing.Size(734, 124);
-            this.SupportingImageBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.SupportingImageBox.TabIndex = 0;
-            this.SupportingImageBox.TabStop = false;
-            this.SupportingImageBox.Click += new System.EventHandler(this.SupportingImageBox_Click);
+            this.TestNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TestNameLabel.Location = new System.Drawing.Point(3, 3);
+            this.TestNameLabel.Name = "TestNameLabel";
+            this.TestNameLabel.Size = new System.Drawing.Size(734, 29);
+            this.TestNameLabel.TabIndex = 1;
+            this.TestNameLabel.Text = "Test Name";
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // TestPage
             // 
@@ -586,20 +588,20 @@ namespace Demcon.ProductionTool.View.FatTestPages
             this.Name = "TestPage";
             this.Size = new System.Drawing.Size(1349, 569);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.DescriptionPanel.ResumeLayout(false);
-            this.DescriptionPanel.PerformLayout();
-            this.ButtonsFlowLayoutPanel.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.TestListPanel.ResumeLayout(false);
             this.TestListPanel.PerformLayout();
             this.ImagePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SupportingImageBox)).EndInit();
             this.ResultsPanel.ResumeLayout(false);
             this.ResultsPanel.PerformLayout();
+            this.DescriptionPanel.ResumeLayout(false);
+            this.DescriptionPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.ButtonsFlowLayoutPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SupportingImageBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -631,7 +633,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button AnalyzeButton;
         private System.Windows.Forms.Button BackButton;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Label varLabel1;
         private System.Windows.Forms.TextBox varBox1;
         private System.Windows.Forms.Label varLabel2;
@@ -648,5 +649,6 @@ namespace Demcon.ProductionTool.View.FatTestPages
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.Button DownloadButton;
+        private System.Windows.Forms.Panel panel2;
     }
 }

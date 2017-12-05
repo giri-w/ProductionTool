@@ -21,8 +21,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
         public VSCTestStep01(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "SVN Number Information";
-            this.Instructions = "Write the SVN Number in the work instruction\n";
+            this.Name = "1. Choose volunteers";
+            this.Instructions = "- Choose 3 volunteers with different hand sizes\n" +
+                                "- Preferably 1x small, 1x medium, 1x large\n" +
+                                "- Perform 2 measurements with each volunteer\n" +
+                                "- Write down the name of the measurements";
             this.SupportingImage = string.Empty;
             this.ButtonOptions = EButtonOptions.Next;
             this.Results = new List<Result>();
@@ -34,11 +37,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
             this.Results.Clear();
             if (userAction == EButtonOptions.Next)
             {
-                // Check or do something (with the hardware?) for the test
-                this.Results.Add(new BooleanResult("SVN Number", "Checked", true));
+                this.Results.Add(new BooleanResult("", "", true));
+                this.OnTestUpdated(true);
             }
 
-            this.OnTestUpdated(true);
+            
         }
     }
 }

@@ -12,17 +12,17 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
 {
     public class FMGTestStep11 : TestStep
     {
-        private int LEDbrightness;
+        private string LEDbrightness;
         string localPath 						= @"C:\TestFolder\";
         string localFile1 						= @"C:\TestFolder\Measurement_test.xml";
         string ftpFile1 						= "/Settings/system/testFolder/Measurement_test.xml";
         string hostPath 						= "/Settings/system/testFolder/";
        
         private const string InstructionText	=
-												  "LED Brightness during measurement\n\n" +
-												  "Current Value     : {0} \n" +
-												  "Recommended Value : 150\n" +
-												  "Press Next to reset LED Brightneess\n";
+                                                  "LED Brightness setting for measurement\n\n" +
+												  "Current Value\t\t: {0} \n" +
+												  "Recommended Value\t: 150\n" +
+												  "Press \"Update\" to reset LED Brightneess\n";
 		
 		[Obsolete]
         public FMGTestStep11()
@@ -33,25 +33,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             : base(testManager)
         {
 
-            FtpTransfer ftp 		= new FtpTransfer();
-            XmlDocument doc 		= new XmlDocument();
-            bool resultDownload1 	= ftp.Download(localPath, ftpFile1);
-            
-            // Find the nodes LED Brightness
-            doc.Load(localFile1);
-            XmlNode LED 			= doc.SelectSingleNode("/MeasurementConfig/CompartmentLedBrightness");
-            LEDbrightness 			= Convert.ToInt16(LED.InnerText);
-            doc.Save(localFile1);
-            
             // form setup
-            this.Name 				= "Reset LED Brightness";
-            this.Instructions 		= 
-									  "LED Brightness during measurement\n\n" +
-									  "Current Value     : " + LEDbrightness.ToString() + "\n" +
-									  "Recommended Value : 150\n" +
-									  "Press Next to reset LED Brightneess\n";
+            this.Name 				= "11. Reset LED Brightness";
+            this.Instructions       = "Loading...";
             this.SupportingImage 	= @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
+            this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
             this.Results 			= new List<Result>();
 			
 			// forward and backward handler
@@ -64,8 +50,30 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             this.Results.Clear();
             new Task(() =>
             {
-               this.Instructions = string.Format(FMGTestStep11.InstructionText, LEDbrightness);
-                 
+                FtpTransfer ftp = new FtpTransfer();
+                XmlDocument doc = new XmlDocument();
+                Console.WriteLine("Connect FTP to reset LED Brightness");
+
+                if (ftp.checkConnection())
+                {
+                    // download measurement.xml
+                    bool resultDownload1 = ftp.Download(localPath, ftpFile1);
+
+                    // update LED brightness to measurement.xml
+                    doc.Load(localFile1);
+                    XmlNode LED = doc.SelectSingleNode("/MeasurementConfig/CompartmentLedBrightness");
+                    LEDbrightness = (LED.InnerText);
+                    doc.Save(localFile1);
+
+                    this.Instructions = string.Format(FMGTestStep11.InstructionText, LEDbrightness);
+                    this.OnTestUpdated(false);
+                    System.Threading.Thread.Sleep(10);
+                }
+                else
+                {
+                    this.Instructions = "Machine is not connected\n" +
+                                         "Please check if internet connection is available";
+                }
             }).Start();
         }
     
@@ -86,17 +94,17 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                 this.OnTestCanceled(true);
             }
 			
-            if (userAction == EButtonOptions.Analyze)
+            if (userAction == EButtonOptions.Update)
             {
                 XmlDocument doc = new XmlDocument();
 				// update value from textBox
-                LEDbrightness = 150;
+                LEDbrightness = "150";
 
                 // update LED brightness to measurement.xml
                 
                 doc.Load(localFile1);
                 XmlNode LED 		= doc.SelectSingleNode("/MeasurementConfig/CompartmentLedBrightness");
-                LED.InnerText 		= LEDbrightness.ToString();
+                LED.InnerText 		= LEDbrightness;
                 doc.Save(localFile1);
 
                 // upload measurement.xml to server
@@ -104,7 +112,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                 bool resultUpload1 	= ftp.Upload(localFile1, hostPath);
                 
                 // write result to debug console
-                Console.WriteLine(LEDbrightness.ToString());
+                Console.WriteLine(LEDbrightness);
                 this.OnTestUpdated(true);
 
                 // update status

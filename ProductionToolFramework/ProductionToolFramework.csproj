@@ -113,11 +113,6 @@
     <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep02.cs" />
     <Compile Include="Model\Tests\FAT4SignalStability\LPSTestStep01.cs" />
     <Compile Include="Model\Tests\FAT4SignalStability\LPSTest.cs" />
-    <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep004.cs" />
-    <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep003.cs" />
-    <Compile Include="Model\Tests\FAT4SignalStability\SSTest.cs" />
-    <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep001.cs" />
-    <Compile Include="Model\Tests\FAT4SignalStability\SSTestStep002.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep07a.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep09.cs" />
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTestStep10.cs" />
@@ -136,14 +131,6 @@
     <Compile Include="Model\Tests\FAT4SpatialAccuracy\SACTest.cs" />
     <Compile Include="Model\Tests\Fat4TestSequence.cs" />
     <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTest.cs" />
-    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep0021.cs" />
-    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep0023.cs" />
-    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep0031.cs" />
-    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep004.cs" />
-    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep001.cs" />
-    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep0022.cs" />
-    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep006.cs" />
-    <Compile Include="Model\Tests\FAT1LUTDetermination\LUTTestStep005.cs" />
     <Compile Include="Model\Tests\FAT4VolunteerScan\VSCTest.cs" />
     <Compile Include="Model\Tests\FAT4VolunteerScan\VSCTestStep03.cs" />
     <Compile Include="Model\Tests\FAT4VolunteerScan\VSCTestStep04.cs" />
@@ -477,6 +464,10 @@
     <None Include="Images\UI Demcon\bFinishHover.png" />
     <None Include="Images\UI Demcon\bNext.png" />
     <None Include="Images\UI Demcon\bNextHover.png" />
+    <None Include="Images\UI Demcon\mBtnAddResourceHover.png" />
+    <None Include="Images\UI Demcon\mBtnDelResourceHover.png" />
+    <None Include="Images\UI Demcon\mBtnDownloadHover.png" />
+    <None Include="Images\UI Demcon\mBtnExitHover.png" />
     <Content Include="Python\1. LUTDetermination.py" />
     <Content Include="Python\2. FieldMaskGeneration.py" />
     <Content Include="Python\3. SignalStability.py" />

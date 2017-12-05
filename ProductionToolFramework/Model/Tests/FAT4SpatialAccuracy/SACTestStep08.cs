@@ -17,15 +17,15 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public SACTestStep08(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Half Measurement : 3 times";
-            this.Instructions = "1. Start the measurement\n" +
-                                "2. Break measurement when sequence has started\n" +
-                                "3. Record the measurement name in the assignment\n" +
-                                "4. Repeat Process 1-3 twice\n" +
-                                "4. Press NEXT when finished or Press BACK to go to previous step\n"; 
-            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back;
-            this.Results = new List<Result>();
+            this.Name                = "8. Half Measurement : 3 times";
+            this.Instructions        =  "1. Start the measurement\n" +
+                                        "2. Break measurement when sequence has started\n" +
+                                        "3. Record the measurement name in the assignment\n" +
+                                        "4. Repeat Process 1-3 twice\n";
+
+            this.SupportingImage    = @"Images\UI Demcon\ImNoAvailable.png";
+            this.ButtonOptions      = EButtonOptions.Next|EButtonOptions.Back;
+            this.Results            = new List<Result>();
             this.OnTestUpdated(false);
         }
 

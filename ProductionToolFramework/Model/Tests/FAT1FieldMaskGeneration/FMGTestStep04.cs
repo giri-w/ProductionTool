@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Demcon.ProductionTool.Hardware;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using HemicsFat;
-using System.Xml;
-using WinSCP;
-using System.Linq;
 using TestToolFramework.View;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
@@ -23,10 +17,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             : base(testManager)
         {
             // form setup
-            this.Name				= "Data Selection";
+            this.Name				= "4. Data Selection";
             this.Instructions 		= 
-										"- Select the measurement result from the list\n" +
-										"- Press DOWNLOAD to download the measurement to test folder";
+									  "Select the measurement result from the list\n" +
+									  "Press \"Download\" to download the measurement to local computer";
+
             this.SupportingImage 	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Download;
             this.Results 			= new List<Result>();

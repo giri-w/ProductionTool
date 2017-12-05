@@ -205,8 +205,8 @@
             this.ClientSize = new System.Drawing.Size(1350, 689);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.infoPanel);
-            this.Controls.Add(this.testPage1);
             this.Controls.Add(this.tabFatTests1);
+            this.Controls.Add(this.testPage1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -222,7 +222,7 @@
 
         #endregion
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Label statusText1;
+        public System.Windows.Forms.Label statusText1;
         private System.Windows.Forms.LinkLabel linkStatus1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel infoPanel;

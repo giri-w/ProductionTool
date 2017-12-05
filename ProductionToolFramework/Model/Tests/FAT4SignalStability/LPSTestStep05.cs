@@ -15,7 +15,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         private const string InstructionText =
                                         "Locate measurement folder for laser power stability test\n\n" +
                                         "Measurement directory : {0}\n\n" +
-                                        "Press Browse to set new measurement location";
+                                        "Press \"Browse\" to set new measurement location";
         [Obsolete]
         public LPSTestStep05()
             : this(null)
@@ -25,14 +25,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
             : base(testManager)
         {
             // obtain location from setting
-            ChangeXml chg = new ChangeXml();
-            SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "LPS", "Source");
-
-            this.Name = "Source Location";
-            this.Instructions =
-                                "Locate measurement folder for laser power stability test\n\n" +
-                                "Measurement directory : "+SourceLocation+"\n\n" +
-                                "Press Browse to set new measurement location"; 
+            this.Name = "5. Source Location";
+            this.Instructions = "Loading ...";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Browse;
             this.Results = new List<Result>();
@@ -52,6 +46,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                 ChangeXml chg = new ChangeXml();
                 SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "LPS", "Source");
                 this.Instructions = string.Format(LPSTestStep05.InstructionText, SourceLocation);
+                this.OnTestUpdated(false);
+                System.Threading.Thread.Sleep(10);
             }).Start();
         }
 

@@ -17,7 +17,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public SACTestStep07a(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Position Stability Analysis: Tangential";
+            this.Name = "7a. Position Stability Analysis: Tangential";
             this.Instructions =
                             "- Verify position stability within 1mm (Tangential)";
 

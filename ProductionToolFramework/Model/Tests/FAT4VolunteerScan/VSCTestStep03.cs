@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Demcon.ProductionTool.Hardware;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using HemicsFat;
+using System.IO;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
 {
@@ -18,13 +19,15 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
             : this(null)
         { }
 
+        bool resultBool = false;
+
         public VSCTestStep03(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "SVN Number Information";
-            this.Instructions = "Write the SVN Number in the work instruction\n";
+            this.Name = "3. Volunteerscan Check";
+            this.Instructions = "Press 'Ok' to run the Python script checking the volunteerscan";
             this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next;
+            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Analyze;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
@@ -32,18 +35,39 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
         public override void Execute(EButtonOptions userAction, string info)
         {
             this.Results.Clear();
+            
+
             if (userAction == EButtonOptions.Next)
             {
-                // Check or do something (with the hardware?) for the test
-                this.Results.Add(new BooleanResult("SVN Number", "Checked", true));
+                if (testResult.Contains("PASS"))
+                    resultBool = true;
+                else
+                    resultBool = false;
+
+                // Continue to the next step
+                this.Results.Add(new BooleanResult(this.Name, "Python Script executed", resultBool));
                 this.OnTestUpdated(true);
             }
-
+            
             if (userAction == EButtonOptions.Back)
             {
                 // Check or do something (with the hardware?) for the test
                 this.OnTestCanceled(true);
             }
+
+            if (userAction == EButtonOptions.Analyze)
+            {
+                // Processing using background worker
+                string pythonLocation = @"Python/checkVolunteerScan_1_9_0.py";
+                string fullPath = Path.GetFullPath(pythonLocation);
+                string[] pythonArgument = { fullPath, "2" };
+
+                // variable for python script
+                Python py = new Python();
+                this.pyFullPath = fullPath;
+                this.pyArgument = py.compArray(pythonArgument);
+            }
+
         }
     }
 }

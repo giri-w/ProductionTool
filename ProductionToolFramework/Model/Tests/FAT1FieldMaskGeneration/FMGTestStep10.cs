@@ -15,19 +15,15 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
     {
         
         string checkFiles 						= string.Empty;
-        string localFile1 						= @"/Python/figure/left_mask.png";
-        string localFile2 						= @"/Python/figure/right_mask.png";
-        string localFile3 						= @"/Python/figure/left_mask_high.png";
-        string localFile4 						= @"/Python/figure/right_mask_high.png";
+        string localFile1 						= @"Python/figure/FAT1FieldMaskGeneration/left_mask.png";
+        string localFile2 						= @"Python/figure/FAT1FieldMaskGeneration/right_mask.png";
+        string localFile3 						= @"Python/figure/FAT1FieldMaskGeneration/left_mask_high.png";
+        string localFile4 						= @"Python/figure/FAT1FieldMaskGeneration/right_mask_high.png";
 				
         string hostPath 						= "/Settings/system/testFolder/CameraSettings";
 
         private const string InstructionText 	=
-												  "Copy generated images to the machine\n" +
-												  "- left_mask.png\n" +
-												  "- right_mask.png\n" +
-												  "- left_mask_high.png\n" +
-												  "- right_mask_high.png\n\n" +
+												  "Copy Field Mask images to the machine\n\n" +
 												  "INFO :\n{0}";
         
 		[Obsolete]
@@ -40,23 +36,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             : base(testManager)
         {
 
-            if (File.Exists(localFile1) && File.Exists(localFile2) && File.Exists(localFile3) && File.Exists(localFile4))
-                checkFiles = "All files available\nPress Next to start uploading";
-            else
-                checkFiles = "Some files are missing\nPress Back to regenerate the images";
-
-            // form setup
-            this.Name = "Update Field Mask";
-            this.Instructions = "Copy generated images to the machine\n" +
-                                "- left_mask.png\n" +
-                                "- right_mask.png\n" +
-                                "- left_mask_high.png\n" +
-                                "- right_mask_high.png\n\n" +
-                                "INFO :\n" + 
-                                checkFiles;
+            this.Name = "10. Update Field Mask";
+            this.Instructions = "Loading ...";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
+            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
             this.Results = new List<Result>();
+
 			// forward and backward handler
             this.OnTestUpdated(false);
             
@@ -68,12 +53,14 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             new Task(() =>
             {
                 if (File.Exists(localFile1) && File.Exists(localFile2) && File.Exists(localFile3) && File.Exists(localFile4))
-                    checkFiles = "All files available\nPress Next to start uploading";
+                    checkFiles = "All files are available\nPress \"Update\" to start uploading";
                 else
-                    checkFiles = "Some files are missing\nPress Back to regenerate the images";
+                    checkFiles = "Some files are missing\nPress \"Back\" to regenerate the images";
 
                 this.Instructions = string.Format(FMGTestStep10.InstructionText, checkFiles);
-                 
+                this.OnTestUpdated(false);
+                System.Threading.Thread.Sleep(10);
+
             }).Start();
         }
 		
@@ -81,7 +68,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
         {
             
             this.Results.Clear();
-            if (userAction == EButtonOptions.Analyze)
+            if (userAction == EButtonOptions.Update)
             {
                 // upload generated images to server
                 FtpTransfer ftp = new FtpTransfer();
@@ -100,6 +87,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
                     remark = "Updating field mask : FAILED";
 
                 this.Results.Add(new BooleanResult("Data Selection Test", remark, finalResult));
+                this.Instructions = "Loading ...";
                 this.OnTestUpdated(true);
             }
 
@@ -107,12 +95,14 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             {
                 // continue to next step
                 this.Results.Add(new BooleanResult(this.Name, "SKIPPED", true));
+                this.Instructions = "Loading ...";
                 this.OnTestUpdated(true);
             }
 
             if (userAction == EButtonOptions.Back)
             {
                 // back to previous step
+                this.Instructions = "Loading ...";
                 this.OnTestCanceled(true);
             }
 

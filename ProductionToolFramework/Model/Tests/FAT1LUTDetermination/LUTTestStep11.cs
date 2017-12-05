@@ -23,11 +23,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         public LUTTestStep11(TestManager testManager)
             : base(testManager)
         {
-            this.Name						= "Analyze the measurement";
-            this.Instructions 				= 
-												"Check if every green dots are in white dots\n" +
-												"- Press Next to continue\n" +
-												"- or press Back to change the measurement setting";
+            this.Name						= "11. Analyze the measurement";
+            this.Instructions =
+                                                "Ensure that every green dots are in white dots\n" +
+                                                "If not, change the variable and redo the process analysation";
+												
 
             this.SupportingImage = @"Python\figure\FAT1LUTDetermination\LUTDetermination.png";
             this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back;
@@ -42,7 +42,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             if (userAction == EButtonOptions.Next)
             {
                 // Continue to the next step
-                this.Results.Add(new BooleanResult(this.Name, "Mask has been set up properly", true));
+                this.Results.Add(new BooleanResult(this.Name, "LookUp Table has been set up properly", true));
                 this.OnTestUpdated(true);
             }
 

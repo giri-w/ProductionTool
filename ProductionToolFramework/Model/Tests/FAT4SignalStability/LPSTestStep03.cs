@@ -17,11 +17,10 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         public LPSTestStep03(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Full Measurement";
+            this.Name = "3. Full Measurement";
             this.Instructions =
                                 "1. Start the full measurement\n" +
-                                "2. Record the measurement name in the assignment\n" +
-                                "3. Press NEXT when finished or Press BACK to go to previous step\n";
+                                "2. Record the measurement name in the assignment\n";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back;
             this.Results = new List<Result>();

@@ -17,9 +17,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         public LPSTestStep07(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Measurement Analysis";
+            this.Name = "7. Measurement Analysis";
             this.Instructions = "- Inspect left and right hand region\n" +
-                                "  (Click image to Zoom)\n" +
                                 "- Ensure the variatios are within specification\n" +
                                 "  (If Green OK is displayed in all region, test is PASS)\n" +
                                 "- Write the result in the assignment";

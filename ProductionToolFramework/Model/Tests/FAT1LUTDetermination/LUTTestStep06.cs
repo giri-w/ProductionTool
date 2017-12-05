@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Demcon.ProductionTool.Hardware;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using HemicsFat;
 using System.Xml;
 
@@ -15,26 +14,23 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             : this(null)
         { }
 
+        string leftFixedMask = @"D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_gridL.png";
+        string rightFixedMask = @"D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_gridR.png";
+
         string localPath 		= @"C:\TestFolder\";
         string localFile1 		= @"C:\TestFolder\Measurement_test.xml";
         string ftpFile1			= "/Settings/system/testFolder/Measurement_test.xml";
         string hostPath			= "/Settings/system/testFolder/";
 
-        private const string InstructionText =
-                                "Config fixed mask for Grid Measurement\n" +
-                                "Update to:\n" +
-                                "- MotorMatrixMask_LUT_gridL.png\n" +
-                                "- MotorMatrixMask_LUT_gridR.png\n\n" +
-                                "Press Next to continue to the next step\n";
-
-        string leftFixedMask 	= @"D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_gridL.png";
-        string rightFixedMask 	= @"D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_gridR.png";
 
         public LUTTestStep06(TestManager testManager)
             : base(testManager)
         {
-            this.Name 				= "Fixed Mask Setting Grid";
-            this.Instructions 		= string.Empty;
+            this.Name 				= "6. Fixed Mask Setting Grid";
+            this.Instructions       =   "Config fixed mask for Grid Measurement\n\n" +
+                                        "Update to:\n" +
+                                        "- MotorMatrixMask_LUT_gridL.png\n" +
+                                        "- MotorMatrixMask_LUT_gridR.png\n\n";
             this.SupportingImage 	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
             this.Results 			= new List<Result>();
@@ -43,17 +39,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             this.OnTestUpdated(false);
             this.OnTestCanceled(false);
         }
-
-        public override void Start()
-        {
-            this.Results.Clear();
-            new Task(() =>
-            {
-                this.Instructions = string.Format(LUTTestStep06.InstructionText);
-
-            }).Start();
-        }
-
+        
         public override void Execute(EButtonOptions userAction, string info)
         {
             this.Results.Clear();

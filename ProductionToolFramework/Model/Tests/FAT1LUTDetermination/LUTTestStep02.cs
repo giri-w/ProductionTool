@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Demcon.ProductionTool.Hardware;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using HemicsFat;
 using System.Xml;
 
@@ -15,39 +13,30 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             : this(null)
         { }
 
+        // new value for fixed mask
+        string leftFixedMask = @"D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_grid4L.png";
+        string rightFixedMask = @"D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_grid4R.png";
+
         string localPath    = @"C:\TestFolder\";
         string localFile1   = @"C:\TestFolder\Measurement_test.xml";
         string ftpFile1     = "/Settings/system/testFolder/Measurement_test.xml";
         string hostPath     = "/Settings/system/testFolder/";
 
-        private const string InstructionText =
-                                "Config fixed mask for Grid4 Measurement\n" +
-                                "Update to\n:" +
-                                "- MotorMatrixMask_LUT_grid4L.png\n" +
-                                "- MotorMatrixMask_LUT_grid4R.png\n\n" +
-                                "Press Next to continue to the next step\n";
-
-        string leftFixedMask  = @"D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_grid4L.png";
-        string rightFixedMask = @"D:\Settings\system\FixedMasks\MotorMatrixMask_LUT_grid4R.png";
-
+        
         public LUTTestStep02(TestManager testManager)
             : base(testManager)
         {
-            this.Name 				= "Fixed Mask Setting Grid4";
-            this.Instructions 		= string.Empty;
+            this.Name 				= "2. Fixed Mask Setting Grid4";
+            this.Instructions 		=   "Config fixed mask for Grid4 Measurement\n\n" +
+                                        "Update to:\n" +
+                                        "- MotorMatrixMask_LUT_grid4L.png\n" +
+                                        "- MotorMatrixMask_LUT_grid4R.png\n";
             this.SupportingImage	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
             this.Results 			= new List<Result>();
-            this.OnTestUpdated(false);
-        }
 
-        public override void Start()
-        {
-            this.Results.Clear();
-            new Task(() =>
-            {
-                this.Instructions = string.Format(LUTTestStep02.InstructionText);
-            }).Start();
+            // forward and backward handler
+            this.OnTestUpdated(false);
         }
 
         public override void Execute(EButtonOptions userAction, string info)

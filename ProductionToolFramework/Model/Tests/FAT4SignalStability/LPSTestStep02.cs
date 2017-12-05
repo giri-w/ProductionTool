@@ -25,13 +25,13 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         public LPSTestStep02(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Initial Configuration";
+            this.Name = "2. Initial Configuration";
             this.Instructions =
                             "Initial configuration during measurement\n" +
                             "- Number Of Iteration\n" +
                             "- Fixed Mask\n" +
                             "- Laser Power\n" +
-                            "Press UPDATE to start configuration and continue to the next step";
+                            "Press \"Update\" to start configuration and continue to the next step";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Update;
             this.Results = new List<Result>();

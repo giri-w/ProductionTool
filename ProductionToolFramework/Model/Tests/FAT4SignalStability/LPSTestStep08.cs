@@ -21,12 +21,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         public LPSTestStep08(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Laser Power Stability Test Complete";
+            this.Name = "8. Laser Power Stability Test Complete";
             this.Instructions = 
                                 "Laser Power Stability Test is complete.\n"+
-                                "Press FINISH to go to main menu\n"+
-                                "Press NEXT to continue to the next test, or\n" +
-                                "Press BACK to return to the previous step";                                
+                                "Press \"Next\" to continue to the next test\n" +
+                                "Press \"Back\" to return to review the result\n"+
+                                "Press \"Finish\" to go to main menu";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Finish|EButtonOptions.Back|EButtonOptions.Next;
             this.Results = new List<Result>();
@@ -42,6 +42,16 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
                 this.Results.Add(new BooleanResult("Laser Power Stability", "Laser Power Stability Test is finished", true));
                 this.OnTestUpdated(true);
             }
+
+            if (userAction == EButtonOptions.Finish)
+            {
+                // Back to HomeScreen
+               // MessageBox.Show("Test Finished", "FAT results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Results.Add(new BooleanResult("Laser Power Stability", "Laser Power Stability Test is finished", true));
+                this.OnTestUpdated(true);
+            }
+
+
 
             if (userAction == EButtonOptions.Back)
             {

@@ -21,7 +21,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public SACTestStep12b(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Position Accuracy Analysis";
+            this.Name = "12b. Position Accuracy Analysis: Longitudinal";
             this.Instructions =
                         "- Verify accuracy and reproducibility is within 3mm (Longitudinal)";
 

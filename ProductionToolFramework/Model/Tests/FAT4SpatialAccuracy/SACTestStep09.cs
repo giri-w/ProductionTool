@@ -15,13 +15,14 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public SACTestStep09(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Data Selection : Position Accuracy";
-            this.Instructions =
-                            "- Select the measurement result from the list\n" +
-                            "- Press DOWNLOAD to download the measurement to test folder";
-            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Download;
-            this.Results = new List<Result>();
+            this.Name                = "9. Data Selection : Position Accuracy";
+            this.Instructions        =
+                                    "- Select the measurement result from the list\n" +
+                                    "- Press \"Download\" to download the measurement to local computer";
+            this.SupportingImage    = @"Images\UI Demcon\ImNoAvailable.png";
+            this.ButtonOptions      = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Download;
+            this.Results            = new List<Result>();
+
             this.OnTestUpdated(false);
         }
 

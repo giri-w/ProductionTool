@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Demcon.ProductionTool.Hardware;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TestToolFramework.View;
 
@@ -17,14 +15,16 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         public LUTTestStep04(TestManager testManager)
             : base(testManager)
         {
-            this.Name			 	= "Data Selection: GRID4";
+            this.Name			 	= "4. Data Selection: GRID4";
             this.Instructions 		= 
                                    "- Select the measurement result from the list\n" +
-                                   "- Press DOWNLOAD to download the measurement to test folder";
+                                   "- Press \"Download\" to copy the measurement to local computer";
 
             this.SupportingImage	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions 		= EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Download;
             this.Results 			= new List<Result>();
+
+            // forward and backward handler
             this.OnTestUpdated(false);
         }
 

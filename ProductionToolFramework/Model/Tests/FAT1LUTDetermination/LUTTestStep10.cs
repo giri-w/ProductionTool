@@ -22,21 +22,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         private Double Mass				= 500000;
         private Double Distance			= 50;
         private string testSetting		 = @"Setting\config.xml";
-        private const string InstructionText =
-												" Setting up variable that are used in measurement \n" +
-												" - Grid4 Location  -> {0} \n" +
-												" - Grid Location   -> {1} \n" +
-												" - var Intensity   -> {2} (Default : 0.4)\n" +
-												" - var Mass        -> {3} (Default : 500000)\n" +
-												" - var Distance  ->   {4} (Default : 50)\n" +
-												"\n\nTo start measurement, press Process" +
-												"To check the result, press Next";
-
-
+      
         public LUTTestStep10(TestManager testManager)
             : base(testManager)
         {
             ChangeXml chg = new ChangeXml();
+            
             // set initial value for setting from XML
             Grid4Location 	= chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "GRID4");
             GridLocation 	= chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "GRID");
@@ -44,18 +35,15 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             Mass 			= Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "Mass"));
             Distance 		= Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "Distance"));
 
+            // initiate step
+            this.Name 				= "10. Data Processing";
+            this.Instructions       = 
+                                        " Setting up variable that are used in measurement \n" +
+                                        " - Default Intensity\t\t: 0.4\n" +
+                                        " - Default Mass\t\t: 500000\n" +
+                                        " - Default Distance\t\t: 50\n\n" +
+                                        "Press \"Process\" to start measurement";
 
-            this.Name 				= "Data Processing";
-            this.Instructions 		= 
-												" Setting up variable that are used in measurement \n" +
-												" - Grid4 Location  -> "+Grid4Location+" \n" +
-												" - Grid Location   -> "+GridLocation+" \n" +
-												" - var Intensity   -> "+Intensity+" (Default : 0.4)\n" +
-												" - var Mass        -> "+Mass+" (Default : 500000)\n" +
-												" - var Distance  ->   "+Distance+" (Default : 50)\n" +
-												"\n\nTo start measurement, press Process" +
-												"To check the result, press Next";
-			
             this.SupportingImage	= @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions		= EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
             this.VarOptions			= EVarOptions.Intensity | EVarOptions.Mass | EVarOptions.Distance;
@@ -64,22 +52,6 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 			
 			// forward and backward handler
             this.OnTestUpdated(false);
-        }
-
-        public override void Start()
-        {
-            this.Results.Clear();
-            ChangeXml chg = new ChangeXml();
-            new Task(() =>
-            {
-                Grid4Location		 = chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "GRID4");
-                GridLocation 		 = chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "GRID");
-                Intensity 			 = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "Intensity"));
-                Mass 				 = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "Mass"));
-                Distance 			 = Convert.ToDouble(chg.ObtainElement(testSetting, "Test", "FAT1", "LUT", "Distance"));
-                this.Instructions 	 = string.Format(LUTTestStep10.InstructionText, Grid4Location, GridLocation, Intensity, Mass, Distance);
-
-            }).Start();
         }
 
         public override void Execute(EButtonOptions userAction, string info)
@@ -107,8 +79,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             if (userAction == EButtonOptions.Analyze)
             {
                 ChangeXml chg = new ChangeXml();
-
-
+                
                 Console.WriteLine("Execute LUT");
                 // retrieve variable value from text Box
                 string[] textValue = VarValue.Split(',');

@@ -20,10 +20,10 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SignalStability
         public LPSTestStep04(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Data Selection";
+            this.Name = "4. Data Selection";
             this.Instructions =
                             "- Select the measurement result from the list\n" +
-                            "- Press DOWNLOAD to download the measurement to test folder";
+                            "- Press \"Download\" to download the measurement to local computer";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back|EButtonOptions.Download;
             this.Results = new List<Result>();

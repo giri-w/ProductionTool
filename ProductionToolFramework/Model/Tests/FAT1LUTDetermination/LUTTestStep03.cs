@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Demcon.ProductionTool.Hardware;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
@@ -17,11 +14,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         public LUTTestStep03(TestManager testManager)
             : base(testManager)
         {
-            this.Name 			 = "Data Generation: GRID4";
-            this.Instructions 	 = "1. Start the measurement\n" +
-								   "2. Break measurement when sequence has started\n" +
-								   "3. Record the measurement name in the assignment\n" +
-								   "4. Press Next when finished or Press Back to go to previous step\n";
+            this.Name 			 = "3. Data Generation: GRID4";
+            this.Instructions =    "1. Start the measurement\n" +
+                                   "2. Break measurement when sequence has started\n" +
+                                   "3. Record the measurement name in the assignment\n";
+								   
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions   = EButtonOptions.Next|EButtonOptions.Back;
             this.Results		 = new List<Result>();

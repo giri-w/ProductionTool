@@ -16,9 +16,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         private string SourceLocation = string.Empty;
         private const string InstructionText =
                                     " Measurement configuration:\n" +
-                                    " - Source Location  :  {0}\n\n\n" +
-                                    "Press PROCESS to start analysis\n" +
-                                    "Press NEXT when analysis process complete";
+                                    " - Source Location  :  {0}\n\n" +
+                                    "Press \"Process\" to start analysis";
 
 
         [Obsolete]
@@ -30,19 +29,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
             : base(testManager)
         {
             // obtain location from setting
-            ChangeXml chg = new ChangeXml();
-            SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "SAC", "SourcePS");
+            this.Name               = "6. Position Stability Processing";
+            this.Instructions       = "Loading...";
 
-            this.Name = "Position Stability Processing";
-            this.Instructions =
-                                    " Measurement configuration:\n" +
-                                    " - Source Location  :  " + SourceLocation + "\n\n" +
-                                    "Press PROCESS to start analysis\n" +
-                                    "Press NEXT when analysis process complete";
-
-            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
-            this.Results = new List<Result>();
+            this.SupportingImage    = @"Images\UI Demcon\ImNoAvailable.png";
+            this.ButtonOptions      = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Analyze;
+            this.Results            = new List<Result>();
             this.OnTestUpdated(false);
         }
 
@@ -55,6 +47,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
                 ChangeXml chg = new ChangeXml();
                 SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "SAC", "SourcePS");
                 this.Instructions = string.Format(SACTestStep06.InstructionText, SourceLocation);
+                this.OnTestUpdated(false);
+                System.Threading.Thread.Sleep(10);
 
             }).Start();
         }

@@ -24,13 +24,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
         public SACTestStep02(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Fixed Mask Configuration";
+            this.Name = "2. Fixed Mask Configuration";
             this.Instructions = 
-                                "Config fixed mask for Spacial Accuracy Test\n" +
+                                "Config fixed mask for Spacial Accuracy Test\n\n" +
                                 "Update to:\n" +
                                 "- MotorMatrixMask_accuracyL.png\n" +
-                                "- MotorMatrixMask_accuracyR.png\n" +
-                                "Press UPDATE to start configuration and continue to the next step\n";
+                                "- MotorMatrixMask_accuracyR.png";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Update;
             this.Results = new List<Result>();

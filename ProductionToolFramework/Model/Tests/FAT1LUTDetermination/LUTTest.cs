@@ -25,20 +25,6 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
             this.Description = "Generate Look Up Table for camera images";
             this.Steps = new List<TestStep>()
             {
-                /*
-                new LUTTestStep001(this.testManager),
-                new LUTTestStep0021(this.testManager),
-                new LUTTestStep0022(this.testManager),
-                new LUTTestStep0023(this.testManager),
-                new LUTTestStep0031(this.testManager),
-                new LUTTestStep0032(this.testManager),
-                new LUTTestStep004(this.testManager),
-                new LUTTestStep005(this.testManager),
-                new LUTTestStep006(this.testManager),
-                */
-
-                // New STEP
-                
                 new LUTTestStep01(this.testManager),
                 new LUTTestStep02(this.testManager),
                 new LUTTestStep03(this.testManager),

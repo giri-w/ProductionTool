@@ -10,12 +10,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
     public class SACTestStep10 : TestStep
     {
         // Variable
-        private string testSetting = @"Setting\config.xml";
-        private string SourceLocation = string.Empty;
-        private const string InstructionText =
-                                        "Locate measurement folder for position accuracy test\n\n" +
-                                        "Measurement directory : {0}\n\n" +
-                                        "Press Browse to set new measurement location";
+        private string testSetting              = @"Setting\config.xml";
+        private string SourceLocation           = string.Empty;
+        private const string InstructionText    =
+                                                    "Locate measurement folder for position accuracy test\n\n" +
+                                                    "Measurement directory : {0}\n\n" +
+                                                    "Press \"Browse\" to set new measurement location";
         [Obsolete]
         public SACTestStep10()
             : this(null)
@@ -28,14 +28,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
             ChangeXml chg = new ChangeXml();
             SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "SAC", "SourcePA");
 
-            this.Name = "Source Location : Position Accuracy";
-            this.Instructions =
-                               "Locate measurement folder for position stability test\n\n" +
-                                "Measurement directory : " + SourceLocation + "\n\n" +
-                                "Press Browse to set new measurement location";
-            this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Browse;
-            this.Results = new List<Result>();
+            this.Name                       = "10. Source Location : Position Accuracy";
+            this.Instructions               = "Loading...";
+            this.SupportingImage            = @"Images\UI Demcon\ImNoAvailable.png";
+            this.ButtonOptions              = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Browse;
+            this.Results                    = new List<Result>();
 
             // forward and backward handler
             this.OnTestUpdated(false);
@@ -51,6 +48,8 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4SpatialAccuracy
                 ChangeXml chg = new ChangeXml();
                 SourceLocation = chg.ObtainElement(testSetting, "Test", "FAT4", "SAC", "SourcePA");
                 this.Instructions = string.Format(SACTestStep10.InstructionText, SourceLocation);
+                this.OnTestUpdated(false);
+                System.Threading.Thread.Sleep(10);
             }).Start();
         }
 

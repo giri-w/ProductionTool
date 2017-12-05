@@ -5,12 +5,12 @@
     <LUT>
       <GRID4>C:\Users\GWA\Desktop\Internship DEMCON\1. Matlab to Python Project\20161205_094405_297_grid4</GRID4>
       <GRID>C:\Users\GWA\Desktop\Internship DEMCON\1. Matlab to Python Project\20161205_094535_297_grid</GRID>
-      <Intensity>0.4</Intensity>
+      <Intensity>10</Intensity>
       <Mass>500000</Mass>
       <Distance>50</Distance>
     </LUT>
     <FMG>
-      <Source>C:\TestFolder\P50_20170926_02</Source>
+      <Source>C:\TestFolder\20170629_090733_297 Fieldmask</Source>
       <Threshold>40</Threshold>
     </FMG>
   </FAT1>

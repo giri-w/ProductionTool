@@ -18,20 +18,16 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
         string localFile1 		 = @"Python\figure\FAT1LUTDetermination\PyLeft-MotorMatrix-Low.xml";
 		string localFile2 		 = @"Python\figure\FAT1LUTDetermination\PyRight-MotorMatrix-Low.xml";
         string hostPath			 = "/Settings/system/CameraSettings/";
-
-		private const string InstructionText =
-											"Motor Matrix configurations are ready\n" +
-											"Press Update to upload files to the system\n:" +
-											"Press Next to continue to the next step\n";
+        
 
         public LUTTestStep12(TestManager testManager)
             : base(testManager)
         {
-            this.Name 			 = "Motor Matrix Configuration";
-            this.Instructions 	 = 
-									"Motor Matrix configurations are ready\n" +
-									"Press Update to upload files to the system\n:" +
-									"Press Next to continue to the next step\n";
+            this.Name 			 = "12. Motor Matrix Configuration";
+            this.Instructions =
+                                    "Motor Matrix configurations are ready\n" +
+                                    "Press \"Update\" to upload files to the system\n";
+
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
             this.ButtonOptions	 = EButtonOptions.Next | EButtonOptions.Back | EButtonOptions.Update;
             this.Results		 = new List<Result>();
