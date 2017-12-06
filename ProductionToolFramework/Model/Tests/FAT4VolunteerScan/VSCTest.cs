@@ -21,7 +21,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
         public VSCTest(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "Signal Stability Test";
+            this.Name = "Volunteer Scan";
             this.Description = "Test signal stability from the measurement images";
             this.Steps = new List<TestStep>()
             {

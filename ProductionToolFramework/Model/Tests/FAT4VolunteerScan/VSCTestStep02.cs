@@ -22,11 +22,11 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
         public VSCTestStep02(TestManager testManager)
             : base(testManager)
         {
-            this.Name = "2. Dwonload measurements";
+            this.Name = "2. Download measurements";
             this.Instructions = "- Select the measurement result from the list\n" +
                                 "- Press \"Download\" to download the measurement to local computer";
             this.SupportingImage = @"Images\UI Demcon\ImNoAvailable.png";
-            this.ButtonOptions = EButtonOptions.OK | EButtonOptions.Download | EButtonOptions.Back;
+            this.ButtonOptions = EButtonOptions.Next | EButtonOptions.Download | EButtonOptions.Back;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
