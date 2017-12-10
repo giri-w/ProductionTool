@@ -9,3 +9,14 @@ C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\Rep
 C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.csproj.CoreCompileInputs.cache
 C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.dll
 C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.pdb
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\bin\Debug\Report\Logo.png
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\bin\Debug\Report\Report.css
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\bin\Debug\Report\Report.xslt
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\bin\Debug\Report\ReportHeader.html
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\bin\Debug\dep\wkhtmltopdf.exe
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\bin\Debug\ReportGeneratorLibrary.dll
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\bin\Debug\ReportGeneratorLibrary.pdb
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.csprojResolveAssemblyReference.cache
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.csproj.CoreCompileInputs.cache
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.dll
+E:\Documents\GitHub\ProductionTool\ReportGenerator\ReportGeneratorLibrary\obj\Debug\ReportGeneratorLibrary.pdb

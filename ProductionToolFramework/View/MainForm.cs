@@ -197,7 +197,90 @@ namespace Demcon.ProductionTool.View
 
         private void linkStatus_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            checkConnection();
+            
+            TestSequence sequence = this.TestManager.CreateTest(ETestSequence.Generic);
+
+            // read setting from profile.xml
+            string localSetting = @"Setting\profile.xml";
+            XmlDocument doc = new XmlDocument();
+
+            // load variable values
+            doc.Load(localSetting);
+            
+            // update connection information
+            XmlNode xUsername = doc.SelectSingleNode("/Profile/UserName");
+            XmlNode xPassword = doc.SelectSingleNode("/Profile/Password");
+            XmlNode xIPAdresss = doc.SelectSingleNode("/Profile/IPAddress");
+            XmlNode xFingerprint = doc.SelectSingleNode("/Profile/Fingerprint");
+
+            string _username = xUsername.InnerText;
+            string _password = xPassword.InnerText;
+            string _ipAddress = xIPAdresss.InnerText;
+            string _fingerPrint = xFingerprint.InnerText;
+
+            string remarksCon = "second pass";
+            string additionalInfo2 = null;
+            bool hiddenVariable = true;
+
+            // output from Setting
+            string yusername = string.Empty;
+            string ypassword = string.Empty;
+            string yipAddress = string.Empty;
+            string yfingerPrint = string.Empty;
+
+            // Check Connection
+            while (!string.IsNullOrWhiteSpace(remarksCon))
+            {
+                remarksCon = string.Empty;
+                if (MultiInputDialog.GetInput(this.ParentForm, "Connection Information",
+                    "Machine IP", _ipAddress,
+                    "FingerPrint", _fingerPrint,
+                    "Username", _username,
+                    "Password", _password,
+                    sequence.AddtionalInformationRequestText2, additionalInfo2,
+                    hiddenVariable,
+                    out yipAddress, out yfingerPrint, out yusername, out ypassword, out additionalInfo2))
+                {
+                    remarksCon = sequence.AcceptInputCon(yipAddress, yfingerPrint, yusername, ypassword, additionalInfo2);
+                    if (string.IsNullOrWhiteSpace(remarksCon))
+                    {
+                        if ((_ipAddress != yipAddress) |
+                            (_fingerPrint != yfingerPrint) |
+                            (_username != yusername) |
+                            (_password != ypassword))
+                        {
+                            // Save variable values to XML
+                            xIPAdresss.InnerText = yipAddress;
+                            xFingerprint.InnerText = yfingerPrint;
+                            xUsername.InnerText = yusername;
+                            xPassword.InnerText = ypassword;
+                            doc.Save(localSetting);
+
+                            // Restart Application
+                            if (MessageBox.Show("New connection setting saved\n\nPress OK to restart the program!", "Confirm", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                            {
+                                ProcessStartInfo Info = new ProcessStartInfo();
+                                Info.Arguments = "/C ping 127.0.0.1 -n 2 && \"" + Application.ExecutablePath + "\"";
+                                Info.WindowStyle = ProcessWindowStyle.Hidden;
+                                Info.CreateNoWindow = true;
+                                Info.FileName = "cmd.exe";
+                                Process.Start(Info);
+                                Application.Exit();
+                            }
+
+
+                        }
+                        
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show(remarksCon, "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+            //checkConnection();
 
         }
 

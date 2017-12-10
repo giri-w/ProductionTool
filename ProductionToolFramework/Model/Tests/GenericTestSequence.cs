@@ -25,7 +25,7 @@ namespace Demcon.ProductionTool.Model
             this.Name = "Factory Acceptance Test 01";
             this.Description = "After all pneumatic components have been assembled together, the whole can be tested before completing the rest of the Nano Core assembly.";
             this.AddtionalInformationRequestText1 = "PCA serie nummer";
-            this.AddtionalInformationRequestText2 = "W100 batch nummer";
+            //this.AddtionalInformationRequestText2 = "W100 batch nummer";
             this.Tests = new List<Test>();
             this.Tests.Add(new GenericTest(this.testManager));
             this.Tests.Add(new SelfTest(this.testManager));
@@ -47,6 +47,7 @@ namespace Demcon.ProductionTool.Model
             return retVal;
         }
 
+        /*
         protected override string CheckAdditionalInfo2(string additionalInfo)
         {
             string retVal = string.Empty;
@@ -59,5 +60,7 @@ namespace Demcon.ProductionTool.Model
 
             return retVal;
         }
+
+        */
     }
 }

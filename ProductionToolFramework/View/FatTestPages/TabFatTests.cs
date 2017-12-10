@@ -112,7 +112,10 @@ namespace Demcon.ProductionTool.View
                             xWO.InnerText = dwo;
                             xoperatorID.InnerText = operatorID;
                             xSVN.InnerText = additionalInfo1;
+                            doc.Save(localSetting);
+                            return true;
 
+                            /*
                             // Check Connection
                             while (!string.IsNullOrWhiteSpace(remarksCon))
                             {
@@ -149,6 +152,7 @@ namespace Demcon.ProductionTool.View
                                     }
                                 }
                             }
+                            */
 
 
                         }
