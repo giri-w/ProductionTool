@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using HemicsFat;
 using System.Xml;
+using System.IO;
 
 namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 {
@@ -17,7 +18,7 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
 
         string localFile1 		 = @"Python\figure\FAT1LUTDetermination\PyLeft-MotorMatrix-Low.xml";
 		string localFile2 		 = @"Python\figure\FAT1LUTDetermination\PyRight-MotorMatrix-Low.xml";
-        string hostPath			 = "/Settings/system/CameraSettings/";
+        string hostPath			 = "/Settings/system/testFolder/CameraSettings/";
         
 
         public LUTTestStep12(TestManager testManager)
@@ -58,9 +59,12 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1LUTDetermination
                 FtpTransfer ftp = new FtpTransfer();
                 XmlDocument doc = new XmlDocument();
 
+                // set address
+                string xlocalFile1 = Path.GetFullPath(localFile1);
+                string xlocalFile2 = Path.GetFullPath(localFile2);
                 // upload measurement.xml to server
-                bool resultUpload1 = ftp.Upload(localFile1, hostPath);
-                bool resultUpload2 = ftp.Upload(localFile2, hostPath);
+                bool resultUpload1 = ftp.Upload(xlocalFile1, hostPath);
+                bool resultUpload2 = ftp.Upload(xlocalFile2, hostPath);
 
                 // write result to log window
                 remark = "Motor Matrix Configuration : UPLOADED";

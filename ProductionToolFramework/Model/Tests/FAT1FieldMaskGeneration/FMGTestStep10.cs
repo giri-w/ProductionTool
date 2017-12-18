@@ -15,12 +15,13 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
     {
         
         string checkFiles 						= string.Empty;
+        string currentDir = Environment.CurrentDirectory;
         string localFile1 						= @"Python/figure/FAT1FieldMaskGeneration/left_mask.png";
         string localFile2 						= @"Python/figure/FAT1FieldMaskGeneration/right_mask.png";
         string localFile3 						= @"Python/figure/FAT1FieldMaskGeneration/left_mask_high.png";
         string localFile4 						= @"Python/figure/FAT1FieldMaskGeneration/right_mask_high.png";
 				
-        string hostPath 						= "/Settings/system/testFolder/CameraSettings";
+        string hostPath 						= "/Settings/system/testFolder/CameraSettings/";
 
         private const string InstructionText 	=
 												  "Copy Field Mask images to the machine\n\n" +
@@ -70,12 +71,21 @@ namespace Demcon.ProductionTool.Model.Tests.FAT1FieldMaskGeneration
             this.Results.Clear();
             if (userAction == EButtonOptions.Update)
             {
+                
+                // set address
+                
+                string xlocalFile1 = Path.GetFullPath(localFile1);
+                string xlocalFile2 = Path.GetFullPath(localFile2);
+                string xlocalFile3 = Path.GetFullPath(localFile3);
+                string xlocalFile4 = Path.GetFullPath(localFile4);
+                
+
                 // upload generated images to server
                 FtpTransfer ftp = new FtpTransfer();
-                bool resultUpload1 = ftp.Upload(localFile1, hostPath);
-                bool resultUpload2 = ftp.Upload(localFile2, hostPath);
-                bool resultUpload3 = ftp.Upload(localFile3, hostPath);
-                bool resultUpload4 = ftp.Upload(localFile4, hostPath);
+                bool resultUpload1 = ftp.Upload(xlocalFile1, hostPath);
+                bool resultUpload2 = ftp.Upload(xlocalFile2, hostPath);
+                bool resultUpload3 = ftp.Upload(xlocalFile3, hostPath);
+                bool resultUpload4 = ftp.Upload(xlocalFile4, hostPath);
 
                 bool finalResult = resultUpload1 && resultUpload2 && resultUpload3 && resultUpload4;
 

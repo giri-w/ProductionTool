@@ -4,9 +4,9 @@
   <WO>123</WO>
   <ID>Asakura</ID>
   <SVN>31313</SVN>
-  <IPAddress>172.17.5.108</IPAddress>
-  <Fingerprint>ea:11:8b:78:c3:85:8b:25:3b:a3:7a:38:4e:68:81:d7:07:3d:d6:4f</Fingerprint>
-  <UserName>Service Engineer</UserName>
-  <Password>192+SERV.HEMI</Password>
-  <FTPDir>/Measurements/298</FTPDir>
+  <IPAddress>127.0.0.1</IPAddress>
+  <Fingerprint>ee:57:89:1e:b2:5c:9f:fd:38:b0:76:d5:25:5f:10:ad:fb:12:a3:73</Fingerprint>
+  <UserName>operator</UserName>
+  <Password>operator</Password>
+  <FTPDir>/Settings/Measurement/</FTPDir>
 </Profile>

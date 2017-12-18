@@ -433,7 +433,9 @@ namespace HemicsFat
                         session.Open(sessionOptions);
 
                         // Your code
-
+                        //string currentDir = Environment.CurrentDirectory;
+                        //localFile = localFile.Replace('/', Path.DirectorySeparatorChar);
+                        //localFile = currentDir + Path.DirectorySeparatorChar + localFile;
                         // Upload file
                         TransferOptions transferOptions = new TransferOptions();
                         transferOptions.TransferMode = TransferMode.Binary;
