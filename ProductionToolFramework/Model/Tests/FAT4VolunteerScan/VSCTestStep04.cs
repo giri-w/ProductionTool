@@ -23,9 +23,9 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
         {
             this.Name = "4. Workinstruction";
             this.Instructions = "- You can also do a visual check of the results\n" +
-                                "- The images are located in the folder shown at the results\n" +
+                                "- Click the image below to show the results\n" +
                                 "- Summarize the result in the system validation document";
-            this.SupportingImage = string.Empty;
+            this.SupportingImage = @"Python\figure\FAT4VolunteerScan\P50_20170926_03_responseVIS.png";
             this.ButtonOptions = EButtonOptions.Finish|EButtonOptions.Back;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);

@@ -25,9 +25,9 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
             : base(testManager)
         {
             this.Name = "3. Volunteerscan Check";
-            this.Instructions = "Press 'Ok' to run the Python script checking the volunteerscan";
+            this.Instructions = "Press 'Update' to run the Python script checking the volunteerscan";
             this.SupportingImage = string.Empty;
-            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Analyze;
+            this.ButtonOptions = EButtonOptions.Next|EButtonOptions.Back|EButtonOptions.Update;
             this.Results = new List<Result>();
             this.OnTestUpdated(false);
         }
@@ -55,17 +55,23 @@ namespace Demcon.ProductionTool.Model.Tests.FAT4VolunteerScan
                 this.OnTestCanceled(true);
             }
 
-            if (userAction == EButtonOptions.Analyze)
+            if (userAction == EButtonOptions.Update)
             {
                 // Processing using background worker
-                string pythonLocation = @"Python/checkVolunteerScan_1_9_0.py";
+                string pythonLocation = @"Python/6. VolunteerScan";
                 string fullPath = Path.GetFullPath(pythonLocation);
                 string[] pythonArgument = { fullPath, "2" };
 
+                             
                 // variable for python script
                 Python py = new Python();
-                this.pyFullPath = fullPath;
+                //this.pyFullPath = Path.GetFullPath(pythonLocation);
                 this.pyArgument = py.compArray(pythonArgument);
+                string hasil = py.run_cmd(pythonLocation, pythonArgument);
+                resultBool = py.BoolPython();
+
+                Console.WriteLine("Beres Python nya");
+                Console.WriteLine(hasil);
             }
 
         }

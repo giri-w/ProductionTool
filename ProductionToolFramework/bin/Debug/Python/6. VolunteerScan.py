@@ -1,4 +1,6 @@
 import matplotlib.pyplot as plt
+# import matplotlib
+# matplotlib.use('Agg')
 import matplotlib.image as mpimg
 import numpy as np
 from pylab import *
@@ -10,6 +12,11 @@ import linecache
 import warnings
 import matplotlib.cbook
 warnings.filterwarnings("ignore",category=matplotlib.cbook.mplDeprecation)
+
+import shutil
+import os.path
+os.chdir(r'C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\bin\Debug\Python\figure\FAT4VolunteerScan') 
+savePath = r'C:\Users\GWA\Documents\GitHub\Demcon\ProductionToolFramework\ProductionToolFramework\bin\Debug\Python\figure\FAT4VolunteerScan'
 
 #Close all figures
 close('all')
@@ -23,11 +30,11 @@ ms = '20170911_101149_297 jesse new settings'
 # p = path.Path(dr+'\\'+ms+'\\Result data')
 # p2 = p.dirs()[0]
 # xml = p2.files('rois.xml')[0]
-for i in range(1): #Process all measurements. Insert number of measurements manually.
+for i in range(0,1): #Process all measurements. Insert number of measurements manually.
     
     # Uncomment when using multiple measurements
     p1 = path.Path(dr+'\\')
-    p2 = p1.dirs()[i]   #Should be [i] when using multiple measurements
+    p2 = p1.dirs()[i+4]   #Should be [i] when using multiple measurements
     p = path.Path(p2+'\\Result data')
     p4 = p.dirs()[0]
     xml = p4.files('rois.xml')[0]  
@@ -667,3 +674,9 @@ for i in range(1): #Process all measurements. Insert number of measurements manu
         logfile.write('Volunteer Scan: FAIL \n')
     
     logfile.close()
+    
+## moves PNG
+source = os.listdir(dr)
+for files in source:
+    if files.endswith('.png'):
+        shutil.move(os.path.join(dr,files), os.path.join(savePath,files))
